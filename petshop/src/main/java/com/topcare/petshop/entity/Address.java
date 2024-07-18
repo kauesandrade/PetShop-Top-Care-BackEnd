@@ -22,7 +22,7 @@ public class Address {
     private String cep;
 
     @Column(nullable = false)
-    @Enumerated()
+    @Enumerated
     private State state;
 
     @Column(nullable = false, length = 40)
