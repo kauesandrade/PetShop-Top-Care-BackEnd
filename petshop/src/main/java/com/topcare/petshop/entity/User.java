@@ -18,4 +18,16 @@ public class User {
     @Column(nullable = false, length = 50)
     private String fullname;
 
+    @Column(nullable = false, unique = true, length = 50)
+    private String email;
+
+    @Column(nullable = false, length = 30)
+    private String password;
+
+    @Column(nullable = false, unique = true, length = 11)
+    private String cpf;
+
+    @Column(nullable = false)
+    @Enumerated
+    private UserRole role;
 }
