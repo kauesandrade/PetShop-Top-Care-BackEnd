@@ -28,16 +28,16 @@ public class Customer extends User {
     @Column(nullable = false)
     private Gender gender;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(nullable = false)
-//    private List<Contact> contactInfo;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
+    private List<Contact> contactInfo;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(nullable = false)
-//    private List<Address> addresses;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
+    private List<Address> addresses;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Card> cards;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Card> cards;
 
 //    @OneToMany
 //    private List<Order> orders;
