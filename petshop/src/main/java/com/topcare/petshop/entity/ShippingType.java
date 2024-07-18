@@ -11,21 +11,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class ShippingType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String shippingCode;
+    @Column(nullable = false, length = 30)
+    private String shippingTime;
 
-    private String shippingBy;
+    private Integer time;
 
-    @ManyToOne
-    @Column(nullable = false)
-    private ShippingType shippingType;
-
-    @ManyToMany
-    private List<ShippingStatus> shippingStatus;
+    private Double price;
 
 }

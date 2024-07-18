@@ -4,28 +4,24 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class ShippingStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String shippingCode;
-
-    private String shippingBy;
-
-    @ManyToOne
     @Column(nullable = false)
-    private ShippingType shippingType;
+    private String value;
 
-    @ManyToMany
-    private List<ShippingStatus> shippingStatus;
+    @CreationTimestamp
+    private LocalDateTime dateTime;
 
 }
