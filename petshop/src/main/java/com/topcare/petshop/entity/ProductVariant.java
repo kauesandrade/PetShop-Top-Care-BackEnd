@@ -3,8 +3,10 @@ package com.topcare.petshop.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,7 +21,7 @@ public class ProductVariant extends Product {
     private Long variantCode;
 
 //    @OneToMany
-//    @Column(nullable = false)
+//    @Column(name = "product_variant_id", nullable = false)
 //    private List<ProductImage> images;
 
     @Column(nullable = false)
@@ -29,5 +31,5 @@ public class ProductVariant extends Product {
     private Double discountPrice;
 
     @Column(nullable = false)
-    private boolean available;
+    private Boolean available;
 }

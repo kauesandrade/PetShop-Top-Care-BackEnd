@@ -35,15 +35,15 @@ public class Product {
     private Brand brand;
 
     @OneToMany
-    @Column(nullable = false)
+    @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 
     private Double rating;
 
     @ManyToMany
-    @Column(nullable = false)
-    private List<ProductCategory> categorys;
+    private List<ProductCategory> categories;
 
     @OneToMany
+    @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
 }

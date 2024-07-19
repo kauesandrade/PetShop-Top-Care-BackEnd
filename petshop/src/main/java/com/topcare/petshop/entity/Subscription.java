@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Subscriptiondfghjkl {
+public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Subscriptiondfghjkl {
     private Long code;
 
     @Enumerated
-    private SubscriptionInterval interval;
+    private SubscriptionInterval subscriptionInterval;
 
     @Column(nullable = false)
     private LocalDate nextShippingDate;

@@ -49,5 +49,5 @@ public class Customer extends User {
 //    private List<Pet> pets;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
-//    private List<Product> favorities;
+//    private List<Product> favorites;
 }

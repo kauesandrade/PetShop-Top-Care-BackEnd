@@ -15,14 +15,14 @@ public class CategoryGroup {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String title;
 
     @OneToMany
-    @Column(nullable = false)
-    private List<ProductCategory> categorys;
+    @JoinColumn(name = "category_group_id",nullable = false)
+    private List<ProductCategory> categories;
 
 //    @OneToOne
 //    @Column(nullable = false)

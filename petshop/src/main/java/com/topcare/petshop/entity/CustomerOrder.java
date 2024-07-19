@@ -13,17 +13,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Ordervfbnm {
+public class CustomerOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private Long codigo;
+    private Long code;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false, name = "order_id")
+    @JoinColumn(name = "order_id", nullable = false)
     private List<OrderItem> items;
 
     @ManyToOne

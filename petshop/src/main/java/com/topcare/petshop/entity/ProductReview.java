@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 
@@ -19,13 +20,13 @@ public class ProductReview {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private User user;
+    private Customer user;
 
     private String review;
 
     @Column(nullable = false)
     private Integer rating;
 
-    @Column(nullable = false)
-    private LocalDate date;
+    @CreationTimestamp
+    private LocalDate creationDate;
 }
