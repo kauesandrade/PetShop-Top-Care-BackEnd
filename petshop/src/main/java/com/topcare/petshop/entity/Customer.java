@@ -33,8 +33,7 @@ public class Customer extends User {
     private List<Contact> contactInfo;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
-    private List<Address> addresses;
+    private List<CustomerAddress> addresses;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Card> cards;
@@ -49,5 +48,8 @@ public class Customer extends User {
 //    private List<Pet> pets;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
-//    private List<Product> favorities;
+//    private List<ProductVariant> favorites;
+
+    @OneToOne
+    private Cart cart;
 }

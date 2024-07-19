@@ -3,29 +3,18 @@ package com.topcare.petshop.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class CustomerAddress extends Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String shippingCode;
-
-    private String shippingBy;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private ShippingType shippingType;
-
-    @ManyToMany
-    private List<ShippingStatus> shippingStatus;
 
 }

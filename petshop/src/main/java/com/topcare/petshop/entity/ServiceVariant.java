@@ -4,25 +4,30 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShippingStatus {
+public class ServiceVariant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated
-    @Column(nullable = false)
-    private DeliveryStatus value;
+    @Column(nullable = false, unique = true)
+    private Long variantCode;
 
-    @CreationTimestamp
-    private LocalDateTime dateTime;
+    @Column(nullable = false, length = 60)
+    private String variantTitle;
+
+    @Column(nullable = false)
+    private Double price;
+
+    @Column(nullable = false)
+    private LocalTime estimatedTime;
 
 }

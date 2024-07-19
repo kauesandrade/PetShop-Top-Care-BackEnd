@@ -20,9 +20,7 @@ public class Cart {
     @OneToMany
     private List<CartItem> cartItems;
 
-//    @ManyToOne
-//    private ShippingType shippingType;
-
     @ManyToOne
-    private Address address;
+    private ShippingType shippingType;
+
 }

@@ -5,27 +5,17 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class PetType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String shippingCode;
-
-    private String shippingBy;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private ShippingType shippingType;
-
-    @ManyToMany
-    private List<ShippingStatus> shippingStatus;
+    @Column(nullable = false, length = 15)
+    private String type;
 
 }

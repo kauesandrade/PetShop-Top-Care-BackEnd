@@ -5,27 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Shipping {
+public class ServiceCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String shippingCode;
+    @Column(nullable = false, length = 30)
+    private String title;
 
-    private String shippingBy;
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private ShippingType shippingType;
-
-    @ManyToMany
-    private List<ShippingStatus> shippingStatus;
+    @OneToMany(mappedBy = "category")
+    private List<Service> services;
 
 }
