@@ -15,14 +15,14 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @Column(nullable = false)
-//    private ProductVariant product;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private ProductVariant product;
 
     @Column(nullable = false)
     private Integer amount;
 
-//    @Enumerated
-//    private SubscriptionInterval subscription;
+    @Enumerated
+    private SubscriptionInterval subscription;
 
 }

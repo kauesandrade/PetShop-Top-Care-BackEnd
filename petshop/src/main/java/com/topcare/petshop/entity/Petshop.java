@@ -18,9 +18,9 @@ public class Petshop {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne
-//    @JoinColumn(nullable = false)
-//    private PetshopImage image;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private PetshopImage image;
 
     @Column(nullable = false, length = 50)
     private String name;

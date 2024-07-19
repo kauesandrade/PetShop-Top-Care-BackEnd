@@ -21,9 +21,9 @@ public class Service {
     @Column(nullable = false, unique = true)
     private Long code;
 
-//    @OneToOne
-//    @JoinColumn(name = "image_id", nullable = false)
-//    private ServiceImage image;
+    @OneToOne
+    @JoinColumn(name = "image_id", nullable = false)
+    private ServiceImage image;
 
     @Column(nullable = false, length = 35)
     private String title;

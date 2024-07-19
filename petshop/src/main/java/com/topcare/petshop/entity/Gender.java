@@ -12,5 +12,5 @@ public enum Gender {
     FEMININE("Feminino"),
     OTHER("Outro");
 
-    private final String gender;
+    private String gender;
 }

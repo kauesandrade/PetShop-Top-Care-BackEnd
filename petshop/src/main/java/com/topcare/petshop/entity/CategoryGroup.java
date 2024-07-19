@@ -24,7 +24,7 @@ public class CategoryGroup {
     @JoinColumn(name = "category_group_id",nullable = false)
     private List<ProductCategory> categories;
 
-//    @OneToOne
-//    @Column(nullable = false)
-//    private CategoryImage image;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private CategoryImage image;
 }

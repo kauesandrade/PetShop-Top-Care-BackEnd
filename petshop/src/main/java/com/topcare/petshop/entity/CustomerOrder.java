@@ -33,14 +33,14 @@ public class CustomerOrder {
     @Column(nullable = false)
     private LocalDate expectedDeliveryDate;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @Column(nullable = false)
-//    private Payment payment;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(nullable = false)
+    private Payment payment;
 
     @CreationTimestamp
     private LocalDate orderDate;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    private Shipping shipping;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Shipping shipping;
 
 }

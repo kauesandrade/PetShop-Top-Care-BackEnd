@@ -20,4 +20,5 @@ public class ProductSpecification {
 
     @Column(nullable = false)
     private String description;
+
 }

@@ -26,8 +26,8 @@ public class Subscription {
     @Column(nullable = false)
     private LocalDate nextShippingDate;
 
-//    @OneToOne
-//    @Column(nullable = false)
-//    private Payment payment;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Payment payment;
 
 }

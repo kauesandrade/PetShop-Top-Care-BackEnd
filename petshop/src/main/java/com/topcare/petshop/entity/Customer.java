@@ -3,12 +3,14 @@ package com.topcare.petshop.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.List;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,8 +21,8 @@ public class Customer extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @OneToOne
-//    private CustomerImage profileImage;
+    @OneToOne
+    private CustomerImage profileImage;
 
     @Column(nullable = false)
     private LocalDate birth;
@@ -30,26 +32,30 @@ public class Customer extends User {
     private Gender gender;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "customer_id", nullable = false)
     private List<Contact> contactInfo;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<CustomerAddress> addresses;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
     private List<Card> cards;
 
-//    @OneToMany
-//    private List<Order> orders;
+    @OneToMany
+    @JoinColumn(name = "customer_id")
+    private List<CustomerOrder> orders;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Subscription> subscriptions;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private List<Subscription> subscriptions;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Pet> pets;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private List<Pet> pets;
 
-//    @ManyToMany(cascade = CascadeType.ALL)
-//    private List<ProductVariant> favorites;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<ProductVariant> favorites;
 
     @OneToOne
     private Cart cart;

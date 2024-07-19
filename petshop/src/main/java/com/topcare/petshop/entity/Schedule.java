@@ -31,9 +31,9 @@ public class Schedule {
     @JoinColumn(nullable = false)
     private Petshop petshop;
 
-//    @OneToOne
-//    @JoinColumn(nullable = false)
-//    private Payment payment;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Payment payment;
 
     @Column(nullable = false)
     private LocalDateTime dateTime;

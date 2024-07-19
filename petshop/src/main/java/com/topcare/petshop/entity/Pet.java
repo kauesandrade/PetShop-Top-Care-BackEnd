@@ -22,9 +22,9 @@ public class Pet {
     @Column(nullable = false)
     private PetColor idColor;
 
-//    @OneToOne
-//    @JoinColumn(nullable = false)
-//    private PetImage image;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private PetImage image;
 
     @Column(nullable = false, length = 50)
     private String name;

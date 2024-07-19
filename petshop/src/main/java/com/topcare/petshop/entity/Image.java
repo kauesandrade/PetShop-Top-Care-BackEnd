@@ -16,9 +16,8 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private MultipartFile file;
-
-
+    @Lob
+    @Column(columnDefinition="BLOB", nullable = false)
+    private byte[] file;
 
 }
