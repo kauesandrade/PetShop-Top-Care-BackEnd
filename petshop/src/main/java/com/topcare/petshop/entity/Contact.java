@@ -25,4 +25,10 @@ public class Contact {
     public ContactRequestGetDTO toDTO(){
         return new ContactRequestGetDTO(this.cellphone);
     };
+
+    public void setTelephone(boolean telephone) {
+    }
+
+    public void setCellphone(boolean cellphone) {
+    }
 }

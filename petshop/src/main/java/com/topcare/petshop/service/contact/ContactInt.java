@@ -16,4 +16,6 @@ public interface ContactInt {
     Contact editContact (ContactRequestPutDTO contactDTO);
 
     boolean deletContactById (Long id);
+
+    boolean deleteContactById(Long id);
 }
