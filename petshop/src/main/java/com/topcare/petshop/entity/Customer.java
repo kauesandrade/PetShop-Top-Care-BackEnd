@@ -26,6 +26,7 @@ public class Customer extends User {
     private LocalDate birth;
 
     @Column(nullable = false)
+    @Enumerated
     private Gender gender;
 
     @OneToMany(cascade = CascadeType.ALL)

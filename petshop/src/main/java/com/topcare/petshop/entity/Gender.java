@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
