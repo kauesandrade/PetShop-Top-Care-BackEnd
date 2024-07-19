@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.contact.ContactRequestGetDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +21,8 @@ public class Contact {
 
     @Column(length = 11)
     private String telephone;
+
+    public ContactRequestGetDTO toDTO(){
+        return new ContactRequestGetDTO(this.cellphone);
+    };
 }
