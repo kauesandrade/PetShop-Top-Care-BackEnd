@@ -22,6 +22,9 @@ public class ProductVariant extends Product {
     @Column(nullable = false)
     private Long variantCode;
 
+    @Column(nullable = false)
+    private String variantTitle;
+
     @OneToMany
     @JoinColumn(name = "product_variant_id", nullable = false)
     private List<ProductImage> images;

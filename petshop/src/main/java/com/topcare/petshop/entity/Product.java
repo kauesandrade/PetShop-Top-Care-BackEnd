@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,4 +47,15 @@ public class Product {
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
+
+    public Product(ProductRequestPostDTO productPostDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications) {
+        setCode(productPostDTO.code());
+        setTitle(productPostDTO.title());
+        setDescription(productPostDTO.description());
+        setLittleDescription(productPostDTO.littleDescription());
+        setBrand(brand);
+        setSpecifications(productSpecifications);
+        setCategories(productCategories);
+    }
+
 }
