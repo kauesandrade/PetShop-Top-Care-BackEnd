@@ -17,10 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @OneToOne
     private CustomerImage profileImage;
 

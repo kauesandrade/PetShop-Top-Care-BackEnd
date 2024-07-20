@@ -1,9 +1,7 @@
 package com.topcare.petshop.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -12,12 +10,13 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob
-    @Column(columnDefinition="BLOB", nullable = false)
+    @Column(columnDefinition = "BLOB", nullable = false)
     private byte[] file;
 
 }

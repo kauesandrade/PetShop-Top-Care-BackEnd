@@ -15,12 +15,11 @@ import java.util.List;
 @Data
 public class ProductVariant extends Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable = false)
     private Long variantCode;
+
+    @Column(nullable = false)
+    private String variantTitle;
 
     @OneToMany
     @JoinColumn(name = "product_variant_id", nullable = false)

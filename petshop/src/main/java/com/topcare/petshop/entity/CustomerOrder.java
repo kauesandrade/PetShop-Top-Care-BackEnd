@@ -28,7 +28,7 @@ public class CustomerOrder {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Address deliveryAddress;
+    private CustomerAddress deliveryAddress;
 
     @Column(nullable = false)
     private LocalDate expectedDeliveryDate;
