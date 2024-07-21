@@ -16,5 +16,6 @@ public record ProductResponseDTO(
         List<ProductSpecification> specifications,
         Double rating,
         List<ProductCategory> categories,
-        List<ProductReview> reviews
+        List<ProductReview> reviews,
+        List<ProductVariantResponseDTO> variants
 ) { }

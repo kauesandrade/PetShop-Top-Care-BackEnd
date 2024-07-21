@@ -1,20 +1,20 @@
 package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseGetDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.Product;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface ProductServiceInt {
 
-    ProductResponseGetDTO findProductByCode(Long code);
+    ProductResponseDTO findProductByCode(Long code);
 
-    void createProduct(ProductRequestPostDTO productPostDTO);
+    Product createProduct(ProductRequestPostDTO productPostDTO);
 
-    ProductResponseGetDTO editProduct(ProductRequestPutDTO productPutDTO);
+    ProductResponseDTO editProduct(ProductRequestPutDTO productPutDTO);
 
-    boolean deletProductByCode(Long code);
+    boolean deleteProductByCode(Long code);
 
 }

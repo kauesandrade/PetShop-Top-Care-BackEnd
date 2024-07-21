@@ -1,18 +1,20 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Product {
 
     @Id
@@ -48,7 +50,11 @@ public class Product {
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
 
-    public Product(ProductRequestPostDTO productPostDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications) {
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
+    private List<ProductVariant> variants;
+
+    public Product(ProductRequestPostDTO productPostDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications,  List<ProductVariant> productVariants) {
         setCode(productPostDTO.code());
         setTitle(productPostDTO.title());
         setDescription(productPostDTO.description());
@@ -56,6 +62,26 @@ public class Product {
         setBrand(brand);
         setSpecifications(productSpecifications);
         setCategories(productCategories);
+        setVariants(productVariants);
+    }
+
+    public ProductResponseDTO toDTO(){
+
+        List< ProductVariantResponseDTO > variantsDTO =
+                getVariants().stream().map(variants -> variants.toDTO()).toList();
+
+        return new ProductResponseDTO(
+                getCode(),
+                getTitle(),
+                getDescription(),
+                getLittleDescription(),
+                getBrand(),
+                getSpecifications(),
+                getRating(),
+                getCategories(),
+                getReviews(),
+                variantsDTO
+        );
     }
 
 }

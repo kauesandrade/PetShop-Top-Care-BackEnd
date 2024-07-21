@@ -2,6 +2,7 @@ package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,12 +11,15 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ProductVariant extends Product {
+public class ProductVariant {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private Long variantCode;
@@ -31,7 +35,7 @@ public class ProductVariant extends Product {
     private Double price;
 
     @Column(nullable = false)
-    private Double discountPrice;
+    private Double discount;
 
     @Column(nullable = false)
     private Integer stock;
@@ -40,12 +44,12 @@ public class ProductVariant extends Product {
     private Boolean available;
 
 
-    public ProductVariant(ProductVariantRequestPostDTO productVariant, Product product) {
+    public ProductVariant(ProductVariantRequestPostDTO productVariant) {
         setVariantCode(productVariant.variantCode());
         setVariantTitle(productVariant.variantTitle());
         setPrice(productVariant.price());
         setImages(productVariant.images());
-        setDiscountPrice(productVariant.discount());
+        setDiscount(productVariant.discount());
         setStock(productVariant.amountStock());
 
         if(stock > 0){
@@ -53,13 +57,22 @@ public class ProductVariant extends Product {
         }else {
             setAvailable(false);
         }
+    }
 
-        setCode(product.getCode());
-        setTitle(product.getTitle());
-        setDescription(product.getDescription());
-        setLittleDescription(product.getLittleDescription());
-        setBrand(product.getBrand());
-        setSpecifications(null);
-        setCategories(product.getCategories());
+    public ProductVariantResponseDTO toDTO(){
+
+        Boolean isStockAvailable = stock > 0;
+        Double subscriptionPrice = (price - (price * 0.20));
+        Double discountPrice = price - (price * (discount/100));
+
+        return new ProductVariantResponseDTO(
+                getVariantTitle(),
+                getVariantCode(),
+                getPrice(),
+                discountPrice,
+                subscriptionPrice,
+                isStockAvailable,
+                getImages()
+        );
     }
 }
