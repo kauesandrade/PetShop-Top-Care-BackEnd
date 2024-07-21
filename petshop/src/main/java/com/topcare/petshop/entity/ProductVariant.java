@@ -15,10 +15,6 @@ import java.util.List;
 @Data
 public class ProductVariant extends Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(nullable = false)
     private Long variantCode;
 
