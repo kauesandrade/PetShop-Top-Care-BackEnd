@@ -16,7 +16,10 @@ public class BrandServiceImpl implements BrandServiceInt{
 
     @Override
     public Brand findBrandByName(String name) {
-        Brand brand = repository.findBrandbyName(name).get();
+        Brand brand = new Brand();
+        if(repository.findBrandByName(name).isPresent()){
+            brand = repository.findBrandByName(name).get();
+        }
         return brand;
     }
 }
