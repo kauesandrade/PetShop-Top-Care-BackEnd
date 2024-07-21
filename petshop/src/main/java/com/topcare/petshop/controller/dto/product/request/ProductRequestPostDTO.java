@@ -11,9 +11,9 @@ public record ProductRequestPostDTO(
         String description,
         String littleDescription,
         String brand,
-        List<String> category,
-        List<ProductSpecificationResponseDTO> productSpecificationsDTO,
-        List<ProductVariantRequestPostDTO> productVariantsDTO
+        List<String> categories,
+        List<ProductSpecificationResponseDTO> specifications,
+        List<ProductVariantRequestPostDTO> variants
 
 ) {
 }
