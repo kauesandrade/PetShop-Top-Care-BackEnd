@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductServiceInt {
 
     @Override
     public ProductResponseDTO findProductByCode(Long code) {
-        ProductResponseDTO productResponseDTO = findProductByCode(code);
+        ProductResponseDTO productResponseDTO = repository.findByCode(code).get().toDTO();
         return productResponseDTO;
     }
 

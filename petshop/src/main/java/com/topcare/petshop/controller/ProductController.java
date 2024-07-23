@@ -20,16 +20,28 @@ public class ProductController {
    private final ProductServiceImpl productService;
 
 
+   @GetMapping("/{code}")
+   public ResponseEntity<ProductResponseDTO> findProductByCode(@PathVariable Long code){
+
+       ProductResponseDTO product = productService.findProductByCode(code);
+
+       if(product == null){
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       }
+
+       return new ResponseEntity<>(product, HttpStatus.OK);
+   }
+
     @PostMapping
     public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestPostDTO productDTO) {
 
         ProductResponseDTO product = productService.createProduct(productDTO).toDTO();
 
-        if(product != null) {
-            return new ResponseEntity<>(product, HttpStatus.CREATED);
+        if(product == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
-        return new ResponseEntity<>(product, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
 
     }
 
@@ -38,9 +50,11 @@ public class ProductController {
         Boolean delete = productService.deleteProductByCode(code);
 
         if(delete == false) {
-            return new ResponseEntity<>(delete, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(delete, HttpStatus.OK);
     }
+
+
 }
