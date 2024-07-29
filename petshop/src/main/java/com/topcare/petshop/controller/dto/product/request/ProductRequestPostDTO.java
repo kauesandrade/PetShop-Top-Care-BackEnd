@@ -9,7 +9,7 @@ public record ProductRequestPostDTO(
         String title,
         Long code,
         String description,
-        String littleDescription,
+        String shortDescription,
         String brand,
         List<String> categories,
         List<ProductSpecificationResponseDTO> specifications,

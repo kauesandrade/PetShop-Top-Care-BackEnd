@@ -25,7 +25,7 @@ public class Shipping {
     @JoinColumn(nullable = false)
     private ShippingType shippingType;
 
-    @ManyToMany
+    @OneToMany
     private List<ShippingStatus> shippingStatus;
 
 }

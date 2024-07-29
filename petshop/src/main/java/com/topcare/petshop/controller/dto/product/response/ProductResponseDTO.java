@@ -11,7 +11,7 @@ public record ProductResponseDTO(
         Long code,
         String title,
         String description,
-        String littleDescription,
+        String shortDescription,
         Brand brand,
         List<ProductSpecification> specifications,
         Double rating,

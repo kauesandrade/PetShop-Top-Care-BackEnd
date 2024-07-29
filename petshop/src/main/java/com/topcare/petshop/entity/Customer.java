@@ -32,6 +32,7 @@ public class Customer extends User {
     private List<Contact> contactInfo;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id", nullable = false)
     private List<CustomerAddress> addresses;
 
     @OneToMany(cascade = CascadeType.ALL)

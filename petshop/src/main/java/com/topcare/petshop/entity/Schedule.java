@@ -25,7 +25,7 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Customer user;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(nullable = false)

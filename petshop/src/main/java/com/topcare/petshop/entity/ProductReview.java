@@ -20,7 +20,7 @@ public class ProductReview {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Customer user;
+    private Customer customer;
 
     private String review;
 
