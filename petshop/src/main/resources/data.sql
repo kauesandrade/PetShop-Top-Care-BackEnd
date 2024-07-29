@@ -1,3 +1,5 @@
+SELECT * FROM user;
+
 INSERT INTO address (id, cep, city, complement, name, neighborhood, number, state, street)
 VALUES (null, "89253308", "Jaraguá do Sul", null, "Casa", "Jaraguá Esquerdo", 25, 23, "Servidão 45"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
@@ -32,3 +34,6 @@ VALUES (null, "23514396000", "usuario@gmail.com", "Usuário da Silva", "usuario1
        (null, "56810850074", "usuario3@gmail.com", "Usuário3 da Silva", "usuario125", 1),
        (null, "24216922023", "usuario4@gmail.com", "Usuário4 da Silva", "usuario126", 0),
        (null, "75659052088", "usuario5@gmail.com", "Usuário5 da Silva", "usuario127", 3);
+
+# INSERT INTO customer (id, birth, gender, cart_id, profile_image_id)
+# VALUES ();
