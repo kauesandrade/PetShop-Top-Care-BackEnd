@@ -4,27 +4,25 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryGroup {
+public class ShippingStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated
     @Column(nullable = false)
-    private String title;
+    private DeliveryStatus value;
 
-    @OneToMany
-    @JoinColumn(name = "category_group_id",nullable = false)
-    private List<ProductCategory> categories;
+    @CreationTimestamp
+    private LocalDateTime dateTime;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private CategoryImage image;
 }

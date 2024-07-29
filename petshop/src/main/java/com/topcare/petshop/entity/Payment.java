@@ -11,20 +11,28 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryGroup {
+public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private String title;
+    private Double subTotal;
 
-    @OneToMany
-    @JoinColumn(name = "category_group_id",nullable = false)
-    private List<ProductCategory> categories;
+    @Column(nullable = false)
+    private Double shippingFee;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private CategoryImage image;
+    @Column(nullable = false)
+    private Double total;
+
+    @ManyToOne
+    private PaymentMethod method;
+
+    @Column(nullable = false)
+    private Integer parcels;
+
+    @Enumerated
+    private PaymentStatus status;
+
 }

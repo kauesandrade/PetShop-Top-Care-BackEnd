@@ -11,20 +11,17 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryGroup {
+public class ShippingType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
+    @Column(nullable = false, length = 30)
+    private String shippingTime;
 
-    @OneToMany
-    @JoinColumn(name = "category_group_id",nullable = false)
-    private List<ProductCategory> categories;
+    private Integer time;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private CategoryImage image;
+    private Double price;
+
 }

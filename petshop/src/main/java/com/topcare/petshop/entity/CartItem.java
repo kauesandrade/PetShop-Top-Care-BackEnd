@@ -5,26 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryGroup {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String title;
-
-    @OneToMany
-    @JoinColumn(name = "category_group_id",nullable = false)
-    private List<ProductCategory> categories;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(nullable = false)
-    private CategoryImage image;
+    private ProductVariant product;
+
+    @Column(nullable = false)
+    private Integer amount;
+
+    @Enumerated
+    private SubscriptionInterval subscription;
+
 }

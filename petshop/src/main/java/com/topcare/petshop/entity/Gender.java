@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -11,5 +12,5 @@ public enum Gender {
     FEMININE("Feminino"),
     OTHER("Outro");
 
-    private final String gender;
+    private String gender;
 }

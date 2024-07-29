@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class Subscription {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Service {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +21,21 @@ public class Subscription {
     @Column(nullable = false, unique = true)
     private Long code;
 
-    @Enumerated
-    private SubscriptionInterval subscriptionInterval;
+    @OneToOne
+    @JoinColumn(name = "image_id", nullable = false)
+    private ServiceImage image;
+
+    @Column(nullable = false, length = 35)
+    private String title;
 
     @Column(nullable = false)
-    private LocalDate nextShippingDate;
+    private String description;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(nullable = false)
-    private Payment payment;
+    private ServiceCategory category;
+
+    @ManyToMany
+    private List<PetType> servedPets;
 
 }

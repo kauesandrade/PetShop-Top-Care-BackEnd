@@ -1,6 +1,9 @@
 package com.topcare.petshop.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,11 +12,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Employee extends User{
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Petshop petshop;
+public class CategoryImage extends Image {
 }

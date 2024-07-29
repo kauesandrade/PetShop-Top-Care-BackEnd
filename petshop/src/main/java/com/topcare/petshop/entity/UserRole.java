@@ -14,6 +14,6 @@ public enum UserRole {
     VETERINARIAN("Veterinário"),
     CUSTOMER("Cliente");
 
-    private final String role;
+    private String role;
 
 }

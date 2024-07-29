@@ -18,7 +18,7 @@ public class Brand {
     @Column(nullable = false)
     private String name;
 
-//    @OneToOne
-//    @Column(nullable = false)
-//    private BrandImage image;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private BrandImage image;
 }

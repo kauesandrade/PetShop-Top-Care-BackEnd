@@ -9,11 +9,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class Employee extends User{
-
-    @ManyToOne
-    @JoinColumn(nullable = false)
-    private Petshop petshop;
+public class CustomerAddress extends Address {
 }

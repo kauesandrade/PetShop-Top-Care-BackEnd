@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Address {
 
     @Id
@@ -22,7 +23,7 @@ public class Address {
     private String cep;
 
     @Column(nullable = false)
-    @Enumerated()
+    @Enumerated
     private State state;
 
     @Column(nullable = false, length = 40)
