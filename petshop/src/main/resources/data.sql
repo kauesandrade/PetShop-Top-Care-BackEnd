@@ -81,7 +81,7 @@ VALUES (null, 1, "Ração Golden Special", 3, "- Indicada para cães adultos;
 INSERT INTO product_variant (id, variant_code, variant_title, available, discount, price, stock, product_id)
 VALUES (null, 11, "15kg", 1, 0, 149.99, 100, 1),
        (null, 21, "12kg", 1, 0, 45.90, 250, 2),
-       (null, 31, "14un", 1, 0, 149.99, 100, 1);
+       (null, 31, "14un", 1, 0, 149.99, 100, 3);
 
 INSERT INTO product_image (id, product_variant_id)
 VALUES (1, 1),
@@ -215,10 +215,10 @@ VALUES (null, 1, 1, 1, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheir
        (null, 2, 2, 2, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
        (null, 3, 2, 3, "Vacinação", "Chô doença, vai embora!");
 
-INSERT INTO service_variant (id, variant_code, variant_title, estimated_time, price)
-VALUES (1, 11, "Banho higiênico", "00:30:00", 59.90),
-       (2, 22, "Consulta veterinária", "01:30:00", 109.90),
-       (3, 33, "Vacina contra raiva", "00:15:00", 69.90);
+INSERT INTO service_variant (id, service_id, variant_code, variant_title, estimated_time, price)
+VALUES (null, 1, 11, "Banho higiênico", "00:30:00", 59.90),
+       (null, 2, 22, "Consulta veterinária", "01:30:00", 109.90),
+       (null, 3, 33, "Vacina contra raiva", "00:15:00", 69.90);
 
 INSERT INTO service_served_pets(served_pets_id, service_id)
 VALUES (1, 1),
