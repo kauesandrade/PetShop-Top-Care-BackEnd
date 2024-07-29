@@ -10,13 +10,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @Service
 @AllArgsConstructor
 public class ContactImpl implements ContactInt {
 
-    private ContactRepository repository;
+    private final ContactRepository repository;
+
+    public ContactImpl(ContactRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public ContactRequestGetDTO findContactById(Long id) {
@@ -33,38 +35,35 @@ public class ContactImpl implements ContactInt {
     @Override
     public Contact createContact(ContactRequestPostDTO contactDTO) {
         Contact newContact = new Contact();
-        newContact.setCellphone(contactDTO.getCellphone());
-        newContact.setTelephone(contactDTO.getTelephone()); // Verifica se o método getTelephone está sendo reconhecido corretamente
+        newContact.setCellphone(contactDTO.cellphone());
+        newContact.setTelephone(contactDTO.telephone());
 
-        return (Contact) repository.save(newContact);
+        return repository.save(newContact);
     }
-
 
     @Override
     public Contact editContact(ContactRequestPutDTO contactDTO) {
-        Optional<Contact> optionalContact = repository.findById(contactDTO.getId());
+        Optional<Contact> optionalContact = repository.findById(contactDTO.id());
 
         if (optionalContact.isPresent()) {
             Contact existingContact = optionalContact.get();
 
-            if (contactDTO.getCellphone() != null) {
-                existingContact.setCellphone(contactDTO.getCellphone());
+            if (contactDTO.cellphone() != null) {
+                existingContact.setCellphone(contactDTO.cellphone());
             }
-            if (contactDTO.getTelephone() != null) {
-                existingContact.setTelephone(contactDTO.getTelephone());
+            if (contactDTO.telephone() != null) {
+                existingContact.setTelephone(contactDTO.telephone());
             }
 
-            return (Contact) repository.save(existingContact);
-
+            return repository.save(existingContact);
         } else {
-            throw new RuntimeException("Contact not found with id: " + id);
+            throw new RuntimeException("Contato não encontrado com ID: " + contactDTO.id());
         }
     }
 
-
     @Override
     public boolean deletContactById(Long id) {
-        return false;
+        return deleteContactById(id);
     }
 
     @Override
@@ -79,4 +78,3 @@ public class ContactImpl implements ContactInt {
         }
     }
 }
-

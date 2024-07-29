@@ -22,13 +22,15 @@ public class Contact {
     @Column(length = 11)
     private String telephone;
 
-    public ContactRequestGetDTO toDTO(){
-        return new ContactRequestGetDTO(this.cellphone);
-    };
-
-    public void setTelephone(boolean telephone) {
+    public ContactRequestGetDTO toDTO() {
+        return new ContactRequestGetDTO(this.cellphone, this.telephone);
     }
 
-    public void setCellphone(boolean cellphone) {
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setCellphone(String cellphone) {
+        this.cellphone = cellphone;
     }
 }
