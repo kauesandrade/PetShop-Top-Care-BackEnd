@@ -1,6 +1,5 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.UserGetDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

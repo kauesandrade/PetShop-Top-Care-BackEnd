@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.User.UserGetDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,4 +32,14 @@ public class User {
     @Column(nullable = false)
     @Enumerated
     private UserRole role;
+
+    public UserGetDTO toDto(){
+        return new UserGetDTO(
+                this.fullname,
+                this.email,
+                this.password,
+                this.cpf,
+                this.role
+        );
+    }
 }
