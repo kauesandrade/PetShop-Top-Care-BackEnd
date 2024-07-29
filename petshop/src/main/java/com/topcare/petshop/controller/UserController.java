@@ -7,18 +7,18 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("/User")
+@RequestMapping("/topcare/user")
 public class UserController {
 
     private final UserServiceImpl service;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<UserGetDTO> doLogin(@RequestBody UserRequestLoginDTO dto){
         return new ResponseEntity<>(
                 service.doLogin(dto), HttpStatus.OK
