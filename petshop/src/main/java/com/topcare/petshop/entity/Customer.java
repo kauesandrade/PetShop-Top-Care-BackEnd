@@ -45,10 +45,6 @@ public class Customer extends User {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "customer_id")
-    private List<Subscription> subscriptions;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
     private List<Pet> pets;
 
     @ManyToMany(cascade = CascadeType.ALL)

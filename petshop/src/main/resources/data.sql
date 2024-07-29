@@ -109,9 +109,9 @@ INSERT INTO cart (id, shipping_type_id)
 VALUES (null, 1),
        (null, 2);
 
-INSERT INTO cart_item (id, amount, subscription, product_id, cart_id)
-VALUES (null, 3, null, 1, 1),
-       (null, 1, null, 1, 2);
+INSERT INTO cart_item (id, amount, product_id, cart_id)
+VALUES (null, 3, 1, 1),
+       (null, 1, 1, 2);
 
 INSERT INTO customer (id, birth, gender, cart_id, profile_image_id)
 VALUES (1, "2000-06-15", 0, 1, 1),
@@ -215,11 +215,10 @@ VALUES (null, 1, 1, 1, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheir
        (null, 2, 2, 2, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
        (null, 3, 2, 3, "Vacinação", "Chô doença, vai embora!");
 
-# CONTINUA AÍ
 INSERT INTO service_variant (id, variant_code, variant_title, estimated_time, price)
-VALUES (null, 11, 1, 1, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheirosinho"),
-       (null, 2, 2, 2, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
-       (null, 3, 2, 3, "Vacinação", "Chô doença, vai embora!");
+VALUES (1, 11, "Banho higiênico", "00:30:00", 59.90),
+       (2, 22, "Consulta veterinária", "01:30:00", 109.90),
+       (3, 33, "Vacina contra raiva", "00:15:00", 69.90);
 
 INSERT INTO service_served_pets(served_pets_id, service_id)
 VALUES (1, 1),
@@ -230,3 +229,31 @@ INSERT INTO schedule_services (schedule_id, services_id)
 VALUES (1, 1),
        (1, 2),
        (2, 3);
+
+INSERT INTO shipping_status (id, value, date_time)
+VALUES (null, 0, "2024-07-29 18:00:00"),
+       (null, 1, "2024-07-30 18:00:00"),
+       (null, 2, null),
+       (null, 3, null),
+       (null, 4, null),
+       (null, 5, null),
+       (null, 0, "2024-07-30 18:00:00"),
+       (null, 1, "2024-07-31 18:00:00"),
+       (null, 2, null),
+       (null, 3, null),
+       (null, 4, null),
+       (null, 5, null);
+
+INSERT INTO shipping_shipping_status (shipping_id, shipping_status_id)
+VALUES (1, 1),
+       (1, 2),
+       (1, 3),
+       (1, 4),
+       (1, 5),
+       (1, 6),
+       (2, 7),
+       (2, 8),
+       (2, 9),
+       (2, 10),
+       (2, 11),
+       (2, 12);
