@@ -9,7 +9,9 @@ import com.topcare.petshop.repository.ProductVariantRepository;
 import com.topcare.petshop.service.brand.BrandServiceImpl;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class ProductServiceImpl implements ProductServiceInt {
         List<ProductSpecification> productSpecifications =
                 productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
 
+
+        //Fazer na controler a questão de criar uma variação de produto
         List<ProductVariant> productVariants = productPostDTO.variants().stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
@@ -45,8 +49,17 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public ProductResponseDTO editProduct(ProductRequestPutDTO productPutDTO) {
-        return null;
+    public ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code) {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        Product product = modelMapper.map(productPutDTO, Product.class);
+        product.setCode(code);
+
+        repository.save(product);
+        System.out.println(product);
+
+        return repository.save(product).toDTO();
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.topcare.petshop.controller;
 
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.service.product.ProductServiceImpl;
@@ -44,6 +45,14 @@ public class ProductController {
         return new ResponseEntity<>(product, HttpStatus.CREATED);
 
     }
+
+    @PutMapping("/{code}")
+    public ResponseEntity<ProductResponseDTO> editProduct(@PathVariable Long code,
+                                                          @RequestBody ProductRequestPostDTO productDTO){
+
+       return new ResponseEntity<>(productService.editProduct(productDTO, code), HttpStatus.OK);
+    }
+
 
     @DeleteMapping("/{code}")
     public ResponseEntity<Boolean> deleteProduct(@PathVariable Long code) {

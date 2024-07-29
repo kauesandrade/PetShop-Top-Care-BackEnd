@@ -13,7 +13,7 @@ public interface ProductServiceInt {
 
     Product createProduct(ProductRequestPostDTO productPostDTO);
 
-    ProductResponseDTO editProduct(ProductRequestPutDTO productPutDTO);
+    ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
 
     boolean deleteProductByCode(Long code);
 
