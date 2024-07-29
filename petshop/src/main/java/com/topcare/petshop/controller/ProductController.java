@@ -19,8 +19,12 @@ public class ProductController {
 
    private final ProductServiceImpl productService;
 
+    public ProductController(ProductServiceImpl productService) {
+        this.productService = productService;
+    }
 
-   @GetMapping("/{code}")
+
+    @GetMapping("/{code}")
    public ResponseEntity<ProductResponseDTO> findProductByCode(@PathVariable Long code){
 
        ProductResponseDTO product = productService.findProductByCode(code);
