@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.card.CardRequestGetPostDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,4 +29,13 @@ public class Card {
 
     @Column(nullable = false)
     private Boolean mainCard;
+
+    public CardRequestGetPostDTO toDto(){
+        return new CardRequestGetPostDTO(
+                this.name,
+                this.lastDigits,
+                this.expirationDate,
+                this.mainCard
+        );
+    }
 }
