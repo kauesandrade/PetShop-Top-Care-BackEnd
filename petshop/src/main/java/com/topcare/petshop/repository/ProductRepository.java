@@ -1,9 +1,13 @@
 package com.topcare.petshop.repository;
 
 import com.topcare.petshop.entity.Product;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -14,5 +18,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     boolean existsByCode(Long code);
 
-
+    @Modifying
+    @Transactional
+    @Query("DELETE FROM product_categories WHERE categories_id=:id")
+    void deleteById(Long id);
 }
