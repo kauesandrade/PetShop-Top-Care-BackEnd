@@ -9,7 +9,6 @@ public record ProductVariantResponseDTO(
         Long variantCode,
         Double price,
         Double discountPrice,
-        Double subscriptionPrice,
         Boolean stock,
         List<ProductImage> images
         ) { }
