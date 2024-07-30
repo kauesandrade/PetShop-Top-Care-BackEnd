@@ -11,6 +11,7 @@ import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -57,4 +58,5 @@ public class ProductServiceImpl implements ProductServiceInt {
         repository.deleteByCode(code);
         return true;
     }
+
 }

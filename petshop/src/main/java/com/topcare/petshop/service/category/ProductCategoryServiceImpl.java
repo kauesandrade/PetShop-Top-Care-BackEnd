@@ -24,6 +24,6 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
             productCategories.add(repository.findProductCategorieByTitle(title).get());
         }
 
-        return null;
+        return productCategories;
     }
 }

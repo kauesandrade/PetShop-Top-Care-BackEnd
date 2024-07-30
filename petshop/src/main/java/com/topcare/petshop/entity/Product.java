@@ -42,7 +42,7 @@ public class Product {
 
     private Double rating;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<ProductCategory> categories;
 
     @OneToMany
