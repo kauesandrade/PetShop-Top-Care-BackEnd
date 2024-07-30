@@ -1,14 +1,13 @@
 package com.topcare.petshop.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
@@ -17,18 +16,23 @@ public class User {
     private Long id;
 
     @Column(nullable = false, length = 50)
+    @NonNull
     private String fullname;
 
     @Column(nullable = false, unique = true, length = 50)
+    @NonNull
     private String email;
 
     @Column(nullable = false, length = 30)
+    @NonNull
     private String password;
 
     @Column(nullable = false, unique = true, length = 11)
+    @NonNull
     private String cpf;
 
     @Column(nullable = false)
     @Enumerated
+    @NonNull
     private UserRole role;
 }
