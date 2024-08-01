@@ -10,4 +10,6 @@ public interface ProductCategoryServiceInt {
 
     List<ProductCategory> findAllProductCategory(List<String> categories);
 
+    List<ProductCategory> findAllProductCategoryByCategoryGroup(Long id);
+
 }

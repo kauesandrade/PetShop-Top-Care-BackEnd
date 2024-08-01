@@ -23,7 +23,7 @@ public class CategoryGroup {
     @Column(nullable = false)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_group_id", nullable = false)
     private List<ProductCategory> categories;
 

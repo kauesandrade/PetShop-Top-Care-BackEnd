@@ -14,8 +14,6 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
 
     private final ProductCategoryRepository repository;
 
-
-
     @Override
     public List<ProductCategory> findAllProductCategory(List<String> categories) {
         List<ProductCategory> productCategories = new ArrayList<>();
@@ -26,4 +24,11 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
 
         return productCategories;
     }
+
+    @Override
+    public List<ProductCategory> findAllProductCategoryByCategoryGroup(Long id) {
+        return repository.findAllByCategory_group_id(id);
+    }
+
+
 }

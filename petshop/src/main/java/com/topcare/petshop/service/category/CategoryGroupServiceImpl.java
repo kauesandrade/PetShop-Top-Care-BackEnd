@@ -16,6 +16,7 @@ import java.util.List;
 public class CategoryGroupServiceImpl implements CategoryGroupServiceInt {
 
     private final CategoryGroupRepository repository;
+    private final ProductCategoryServiceImpl categoryService;
     private final ProductServiceImpl productService;
 
     @Override
@@ -48,6 +49,11 @@ public class CategoryGroupServiceImpl implements CategoryGroupServiceInt {
     public Boolean deleteCategoryGroupByTitle(String title) {
         if(!repository.existsCategoryGroupByTitle(title)){
             return false;
+        }
+
+
+        for(ProductCategory productCategory : categoryService.findAllProductCategoryByCategoryGroup(repository.findCategoryGroupByTitle(title).get().getId())){
+            repository.deleteByCategoryId(productCategory.getId());
         }
 
         repository.deleteCategoryGroupByTitle(title);
