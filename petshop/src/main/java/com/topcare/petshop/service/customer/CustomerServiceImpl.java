@@ -16,15 +16,17 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class CustomerServiceImpl {
+public class CustomerServiceImpl implements CustomerServiceInt {
 
     private final CustomerRepository repository;
 
+    @Override
     public List<CustomerResponseDTO> getCustomers() {
         List<Customer> customers = repository.findAll();
         return customers.stream().map(Customer::toDTO).toList();
     }
 
+    @Override
     public Customer getCustomer(Long id) throws Exception {
         Optional<Customer> customerOptional = repository.findById(id);
         if (customerOptional.isEmpty()) {
@@ -34,6 +36,7 @@ public class CustomerServiceImpl {
         return customerOptional.get();
     }
 
+    @Override
     public CustomerResponseDTO getCustomerById(Long id) throws Exception {
         Optional<Customer> customerOptional = repository.findById(id);
         if (customerOptional.isEmpty()) {
@@ -44,10 +47,12 @@ public class CustomerServiceImpl {
         return customer.toDTO();
     }
 
+    @Override
     public CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer) {
         return repository.save(new Customer(customer)).toDTO();
     }
 
+    @Override
     public CustomerResponseDTO editCustomer(Long id, CustomerRequestPutDTO customerDTO) throws Exception {
         Optional<Customer> customerOptional = repository.findById(id);
         if (customerOptional.isEmpty()) {
@@ -66,6 +71,7 @@ public class CustomerServiceImpl {
         return repository.save(customer).toDTO();
     }
 
+    @Override
     public CustomerResponseDTO changePassword(Long id, CustomerPasswordRequestPatchDTO passwords) throws Exception {
         Customer customer = repository.findById(id).get();
         if (!customer.getPassword().equals(passwords.oldPassword())) {
@@ -75,10 +81,12 @@ public class CustomerServiceImpl {
         return repository.save(customer).toDTO();
     }
 
+    @Override
     public void deleteCustomer(Long id) throws Exception {
         if (!repository.existsById(id)) {
             throw new Exception("Id de cliente não encontrado!");
         }
         repository.deleteById(id);
     }
+    
 }
