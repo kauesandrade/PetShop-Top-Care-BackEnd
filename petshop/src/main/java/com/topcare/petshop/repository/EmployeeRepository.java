@@ -1,4 +1,4 @@
-package com.topcare.petshop.Repository;
+package com.topcare.petshop.repository;
 
 import com.topcare.petshop.entity.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;

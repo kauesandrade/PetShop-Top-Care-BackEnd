@@ -1,11 +1,8 @@
-package com.topcare.petshop.controller.dto.User;
+package com.topcare.petshop.controller.dto.user;
 
 import com.topcare.petshop.entity.*;
 
-import java.time.LocalDate;
-import java.util.List;
-
-public record UserGetDTO(
+public record UserResponseDTO(
 
         String fullName,
         String email,

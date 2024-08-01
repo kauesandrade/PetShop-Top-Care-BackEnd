@@ -1,8 +1,8 @@
 package com.topcare.petshop.controller;
 
-import com.topcare.petshop.controller.dto.User.UserGetDTO;
-import com.topcare.petshop.controller.dto.User.UserRequestLoginDTO;
-import com.topcare.petshop.service.User.UserServiceImpl;
+import com.topcare.petshop.controller.dto.user.UserResponseDTO;
+import com.topcare.petshop.controller.dto.user.UserRequestPostDTO;
+import com.topcare.petshop.service.user.UserServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +19,15 @@ public class UserController {
     private final UserServiceImpl service;
 
     @PostMapping
-    public ResponseEntity<UserGetDTO> doLogin(@RequestBody UserRequestLoginDTO dto){
-        return new ResponseEntity<>(
-                service.doLogin(dto), HttpStatus.OK
-        );
+    public ResponseEntity doLogin(@RequestBody UserRequestPostDTO dto) {
+        try {
+            return new ResponseEntity<>(
+                    service.doLogin(dto), HttpStatus.OK
+            );
+        } catch (Exception e) {
+            return new ResponseEntity<>(
+                    e.getMessage(), HttpStatus.BAD_REQUEST
+            );
+        }
     }
 }

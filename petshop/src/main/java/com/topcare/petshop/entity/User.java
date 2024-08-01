@@ -1,6 +1,6 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.User.UserGetDTO;
+import com.topcare.petshop.controller.dto.user.UserResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -37,8 +37,8 @@ public class User {
     @NonNull
     private UserRole role;
 
-    public UserGetDTO toDto(){
-        return new UserGetDTO(
+    public UserResponseDTO toDto(){
+        return new UserResponseDTO(
                 this.fullname,
                 this.email,
                 this.password,
