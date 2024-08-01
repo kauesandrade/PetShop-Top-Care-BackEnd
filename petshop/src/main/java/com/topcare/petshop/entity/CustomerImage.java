@@ -14,4 +14,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class CustomerImage extends Image {
+
+    public CustomerImage(byte[] image) {
+        super(image);
+    }
+
 }

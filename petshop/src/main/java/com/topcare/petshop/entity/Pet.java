@@ -56,7 +56,7 @@ public class Pet {
     // Em kilos
     private Double weight;
 
-    @OneToMany(mappedBy = "pet")
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Schedule> schedules;
 
 }

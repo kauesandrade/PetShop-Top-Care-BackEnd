@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Image {
 
@@ -17,6 +18,7 @@ public class Image {
 
     @Lob
     @Column(columnDefinition = "BLOB", nullable = false)
+    @NonNull
     private byte[] file;
 
 }
