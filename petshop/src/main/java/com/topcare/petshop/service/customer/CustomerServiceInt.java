@@ -22,10 +22,6 @@ public interface CustomerServiceInt {
 
     CustomerResponseDTO getCustomerToDTO(Long id) throws Exception;
 
-    Card getCustomerMainCard(Long id) throws Exception;
-
-    CardResponseDTO getCustomerMainCardToDTO(Long id) throws Exception;
-
     Customer saveCustomer(Customer customer);
     CustomerResponseDTO saveCustomerFromDTO(CustomerRequestPostDTO customer);
 
