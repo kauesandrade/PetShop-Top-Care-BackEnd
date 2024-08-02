@@ -8,8 +8,9 @@ import java.util.List;
 @Service
 public interface ProductCategoryServiceInt {
 
-    List<ProductCategory> findAllProductCategory(List<String> categories);
+    List<ProductCategory> getAllProductCategory(List<String> categories);
+    List<ProductCategory> getAllProductCategoryByCategoryGroup(Long id);
+    ProductCategory getProductCategoryByTitle(String title) throws Exception;
 
-    List<ProductCategory> findAllProductCategoryByCategoryGroup(Long id);
 
 }

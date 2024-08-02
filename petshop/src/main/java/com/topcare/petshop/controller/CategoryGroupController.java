@@ -1,10 +1,9 @@
 package com.topcare.petshop.controller;
 
 
-import com.topcare.petshop.controller.dto.category.CategoryGroupRequestPostDTO;
-import com.topcare.petshop.controller.dto.category.CategoryGroupResponseDTO;
-import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
-import com.topcare.petshop.service.category.CategoryGroupServiceImpl;
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupRequestDTO;
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupResponseDTO;
+import com.topcare.petshop.service.category.categoryGroup.CategoryGroupServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,49 +19,51 @@ public class CategoryGroupController {
     CategoryGroupServiceImpl categoryGroupService;
 
     @PostMapping
-    public ResponseEntity<CategoryGroupResponseDTO> createCategoryGroup(@RequestBody CategoryGroupRequestPostDTO categoryGroupDTO){
-        CategoryGroupResponseDTO categoryGroup = categoryGroupService.createCategoryGroup(categoryGroupDTO);
+    public ResponseEntity createCategoryGroup(@RequestBody CategoryGroupRequestDTO categoryGroupDTO){
 
-        if(categoryGroup == null){
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        try {
+            return new  ResponseEntity<>(categoryGroupService.createCategoryGroup(categoryGroupDTO), HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
-
-        return new ResponseEntity<>( categoryGroup, HttpStatus.OK);
     }
 
     @GetMapping("/{title}")
-    public ResponseEntity<CategoryGroupResponseDTO> findCategoryGroupByTitle(@PathVariable String title){
+    public ResponseEntity findCategoryGroupByTitle(@PathVariable String title){
 
-        CategoryGroupResponseDTO categoryGroup = categoryGroupService.findCategoryGroupByTitle(title);
-
-        if(categoryGroup == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try{
+            return new ResponseEntity<>(categoryGroupService.getCategoryGroupByTitle(title), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(categoryGroup, HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryGroupResponseDTO>> findAllCategoryGroup(){
-        List<CategoryGroupResponseDTO> allCategoriesGroup = categoryGroupService.getAllCategoriesGroup();
+    public ResponseEntity findAllCategoryGroup(){
+        return new ResponseEntity<>(categoryGroupService.getAllCategoriesGroup(), HttpStatus.OK);
+    }
 
-        if(allCategoriesGroup.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @PutMapping("/{id}")
+    public ResponseEntity editCategoryGroup(@PathVariable Long id, @RequestBody CategoryGroupRequestDTO categoryGroupDTO){
+        try{
+            return new ResponseEntity<>(categoryGroupService.editCategoryGroup(id, categoryGroupDTO) ,HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(allCategoriesGroup, HttpStatus.OK);
     }
 
     @DeleteMapping("/{title}")
-    public ResponseEntity<Boolean> deleteCategoryGroupByTitle(@PathVariable String title){
+    public ResponseEntity deleteCategoryGroupByTitle(@PathVariable String title){
 
-        Boolean delete = categoryGroupService.deleteCategoryGroupByTitle(title);
+       try {
+           categoryGroupService.deleteCategoryGroupByTitle(title);
+           return new ResponseEntity<>(HttpStatus.OK);
+       }catch (Exception e){
+           return new ResponseEntity<>(e.getMessage(),
+                   HttpStatus.NOT_FOUND);
+       }
 
-        if(delete == false){
-            return new ResponseEntity<>(delete, HttpStatus.NOT_FOUND);
-        }
 
-        return new ResponseEntity<>(delete,HttpStatus.OK);
     }
 
 }

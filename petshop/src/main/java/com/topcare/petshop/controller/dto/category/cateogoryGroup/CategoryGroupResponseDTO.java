@@ -1,5 +1,6 @@
-package com.topcare.petshop.controller.dto.category;
+package com.topcare.petshop.controller.dto.category.cateogoryGroup;
 
+import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
 import com.topcare.petshop.entity.CategoryImage;
 
 import java.util.List;

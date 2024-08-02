@@ -1,11 +1,10 @@
-package com.topcare.petshop.controller.dto.category;
+package com.topcare.petshop.controller.dto.category.cateogoryGroup;
 
 import com.topcare.petshop.entity.CategoryImage;
-import io.micrometer.common.KeyValues;
 
 import java.util.List;
 
-public record CategoryGroupRequestPostDTO(
+public record CategoryGroupRequestDTO(
         String title,
         List<String> categories,
         CategoryImage image

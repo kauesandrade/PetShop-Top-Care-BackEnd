@@ -15,7 +15,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
     private final ProductCategoryRepository repository;
 
     @Override
-    public List<ProductCategory> findAllProductCategory(List<String> categories) {
+    public List<ProductCategory> getAllProductCategory(List<String> categories) {
         List<ProductCategory> productCategories = new ArrayList<>();
 
         for(String title : categories){
@@ -26,8 +26,17 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
     }
 
     @Override
-    public List<ProductCategory> findAllProductCategoryByCategoryGroup(Long id) {
+    public List<ProductCategory> getAllProductCategoryByCategoryGroup(Long id) {
         return repository.findAllByCategory_group_id(id);
+    }
+
+    @Override
+    public ProductCategory getProductCategoryByTitle(String title) throws Exception {
+
+        if(repository.findProductCategorieByTitle(title).isEmpty()){
+            throw new Exception("Categoria não encontrada");
+        }
+        return repository.findProductCategorieByTitle(title).get();
     }
 
 

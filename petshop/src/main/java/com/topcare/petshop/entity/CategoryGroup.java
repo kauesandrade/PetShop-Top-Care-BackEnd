@@ -1,7 +1,7 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.category.CategoryGroupRequestPostDTO;
-import com.topcare.petshop.controller.dto.category.CategoryGroupResponseDTO;
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupRequestDTO;
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupResponseDTO;
 import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -31,7 +31,7 @@ public class CategoryGroup {
     @JoinColumn(nullable = false)
     private CategoryImage image;
 
-    public CategoryGroup(CategoryGroupRequestPostDTO categoryGroupDTO, List<ProductCategory> productCategories) {
+    public CategoryGroup(CategoryGroupRequestDTO categoryGroupDTO, List<ProductCategory> productCategories) {
         setTitle(categoryGroupDTO.title());
         setCategories(productCategories);
         setImage(categoryGroupDTO.image());
@@ -46,5 +46,11 @@ public class CategoryGroup {
                 categoriesDTO,
                 getImage()
         );
+    }
+
+    public void edit(CategoryGroupRequestDTO categoryGroupDTO, List<ProductCategory> productCategories) {
+        setTitle(categoryGroupDTO.title());
+        setCategories(productCategories);
+//        setImage(categoryGroupDTO.image());
     }
 }
