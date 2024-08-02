@@ -7,12 +7,10 @@ import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
 import com.topcare.petshop.entity.Card;
 import com.topcare.petshop.entity.Customer;
-import com.topcare.petshop.entity.CustomerImage;
 import com.topcare.petshop.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -52,29 +50,6 @@ public class CustomerServiceImpl implements CustomerServiceInt {
 
         Customer customer = customerOptional.get();
         return customer.toDTO();
-    }
-
-    @Override
-    public Card getCustomerMainCard(Long id) throws Exception {
-        if (!repository.existsById(id)) {
-            throw new Exception("Id de cliente não encontrado!");
-        }
-
-        return repository.findByIdAndMainCardIsTrue(id).orElseThrow(() -> new Exception("Cartão principal não encontrado!"));
-    }
-
-    public CardResponseDTO getCustomerMainCardToDTO(Long id) throws Exception {
-        if (!repository.existsById(id)) {
-            throw new Exception("Id de cliente não encontrado!");
-        }
-
-        Optional<Card> cardOpt = repository.findByIdAndMainCardIsTrue(id);
-
-        if (cardOpt.isEmpty()) {
-            throw new Exception("Cartão principal não encontrado!");
-        }
-
-        return cardOpt.get().toDTO();
     }
 
     @Override
