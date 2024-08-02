@@ -6,7 +6,7 @@ import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import java.time.LocalDate;
 import java.util.List;
 
-public record CustomerResponseDTO(Long id, byte[] customer_image, String fullname, String email, String cpf,
+public record CustomerResponseDTO(Long id, byte[] profileImage, String fullname, String email, String cpf,
                                   LocalDate birth, String gender,
                                   List<ContactResponseGetDTO> contactInfo,
                                   List<CustomerAddressResponseGetDTO> addresses) {
