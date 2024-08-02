@@ -3,6 +3,16 @@ VALUES (null, "89253308", "Jaraguá do Sul", null, "Casa", "Jaraguá Esquerdo", 
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
        (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
+       (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
+       (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
        (null, "01000000", "São Paulo", "Andar 15", "Sala Comercial", "Centro", 500, 26, "Avenida Paulista");
 
 INSERT INTO image (id, file)
@@ -10,7 +20,34 @@ VALUES (null, "image1"),
        (null, "image2"),
        (null, "image3"),
        (null, "image4"),
-       (null, "image5");
+       (null, "image5"),
+       (null, "image6"),
+       (null, "image7"),
+       (null, "image8"),
+       (null, "image9"),
+       (null, "image10"),
+       (null, "image11"),
+       (null, "image12"),
+       (null, "image13"),
+       (null, "image14"),
+       (null, "image15"),
+       (null, "image16"),
+       (null, "image17"),
+       (null, "image18"),
+       (null, "image19"),
+       (null, "image20"),
+       (null, "image21"),
+       (null, "image22"),
+       (null, "image23"),
+       (null, "image24"),
+       (null, "image25"),
+       (null, "image26"),
+       (null, "image27"),
+       (null, "image28"),
+       (null, "image29"),
+       (null, "image30"),
+       (null, "image31"),
+       (null, "image32");
 
 INSERT INTO brand_image (id)
 VALUES (1),
@@ -27,32 +64,32 @@ VALUES (null, "Royal", 1),
        (null, "Zee.dog", 5);
 
 INSERT INTO category_image (id)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5);
+VALUES (6),
+       (7),
+       (8),
+       (9),
+       (10);
 
 INSERT INTO customer_image (id)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5);
+VALUES (11),
+       (12),
+       (13),
+       (14),
+       (15);
 
 INSERT INTO pet_image (id)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5);
+VALUES (16),
+       (17),
+       (18),
+       (19),
+       (20);
 
 INSERT INTO petshop_image (id)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5);
+VALUES (21),
+       (22),
+       (23),
+       (24),
+       (25);
 
 INSERT INTO product (id, code, title, rating, description, short_description, brand_id)
 VALUES (null, 1, "Ração Golden Special", 3, "- Indicada para cães adultos;
@@ -84,15 +121,15 @@ VALUES (null, 11, "15kg", 1, 0, 149.99, 100, 1),
        (null, 31, "14un", 1, 0, 149.99, 100, 3);
 
 INSERT INTO product_image (id, product_variant_id)
-VALUES (1, 1),
-       (2, 2);
+VALUES (26, 1),
+       (27, 2);
 
 INSERT INTO service_image (id)
-VALUES (1),
-       (2),
-       (3),
-       (4),
-       (5);
+VALUES (28),
+       (29),
+       (30),
+       (31),
+       (32);
 
 INSERT INTO user (id, cpf, email, fullname, password, role)
 VALUES (null, "23514396000", "usuario@gmail.com", "Usuário da Silva", "usuario123", 3),
@@ -114,18 +151,18 @@ VALUES (null, 3, 1, 1),
        (null, 1, 1, 2);
 
 INSERT INTO customer (id, birth, gender, cart_id, profile_image_id)
-VALUES (1, "2000-06-15", 0, 1, 1),
-       (5, "2000-06-15", 1, 2, 2);
+VALUES (1, "2000-06-15", 0, 1, 11),
+       (5, "2000-06-15", 1, 2, 12);
 
 INSERT INTO card (id, name, last_digits, expiration_date, main_card, customer_id)
 VALUES (null, "Usuário da Silva", "1234", "2034-07-01", 1, 1),
        (null, "Usuário5 da Silva", "4321", "2034-08-01", 1, 5);
 
 INSERT INTO category_group (id, title, image_id)
-VALUES (null, "Pet", 1),
-       (null, "Porte de Raça", 2),
-       (null, "Idade", 3),
-       (null, "Marca", 4);
+VALUES (null, "Pet", 6),
+       (null, "Porte de Raça", 7),
+       (null, "Idade", 8),
+       (null, "Marca", 9);
 
 INSERT INTO contact (id, cellphone, telephone, customer_id)
 VALUES (1, "47999999999", null, 1),
@@ -156,11 +193,11 @@ VALUES (null, 1, 1, "2024-07-30", 1, "2024-07-29", 1, 1),
        (null, 2, 2, "2024-07-30", 2, "2024-07-29", 2, 5);
 
 INSERT INTO petshop_address (id)
-VALUES (1), (2);
+VALUES (3), (4);
 
 INSERT INTO petshop (id, name, telephone, image_id, address_id)
-VALUES (null, "Topcare Vila Nova", "47111111111", 1, 1),
-       (null, "Topcare Figueira", "47222222222", 2, 2);
+VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3),
+       (null, "Topcare Figueira", "47222222222", 22, 4);
 
 INSERT INTO employee (id, petshop_id)
 VALUES (2, 1),
@@ -176,8 +213,8 @@ VALUES (null, "Roedor"),
        (null, "Ave");
 
 INSERT INTO pet (id, id_color, image_id, name, type_id, race, size, microchip, gender, color, birth, rga, weight, customer_id)
-VALUES (null, 0, 1, "Topolino da Silva", 1, "Rato de esgoto", "Colossal", null, 0, "Cinza", null, null, 25.8, 1),
-       (null, 0, 2, "Cleyton", 2, "Galinha de macumba", "Médio", null, 1, "Branca", null, null, 2.2, 5);
+VALUES (null, 0, 16, "Topolino da Silva", 1, "Rato de esgoto", "Colossal", null, 0, "Cinza", null, null, 25.8, 1),
+       (null, 0, 17, "Cleyton", 2, "Galinha de macumba", "Médio", null, 1, "Branca", null, null, 2.2, 5);
 
 INSERT INTO product_category (id, title, category_group_id)
 VALUES (null, "Gato", 1),
@@ -211,9 +248,9 @@ VALUES (null, "Higiene"),
        (null, "Saúde");
 
 INSERT INTO service (id, code, category_id, image_id, title, description)
-VALUES (null, 1, 1, 1, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheirosinho"),
-       (null, 2, 2, 2, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
-       (null, 3, 2, 3, "Vacinação", "Chô doença, vai embora!");
+VALUES (null, 1, 1, 28, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheirosinho"),
+       (null, 2, 2, 29, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
+       (null, 3, 2, 30, "Vacinação", "Chô doença, vai embora!");
 
 INSERT INTO service_variant (id, service_id, variant_code, variant_title, estimated_time, price)
 VALUES (null, 1, 11, "Banho higiênico", "00:30:00", 59.90),

@@ -31,8 +31,7 @@ public class Schedule {
     @JoinColumn(nullable = false)
     private Petshop petshop;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Payment payment;
 
     @Column(nullable = false)
