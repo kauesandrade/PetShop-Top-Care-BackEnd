@@ -60,13 +60,7 @@ public class CustomerServiceImpl implements CustomerServiceInt {
         }
 
         Customer customer = customerOptional.get();
-
-        customer.setProfileImage(new CustomerImage(customerDTO.profileImage().getBytes(StandardCharsets.UTF_8)));
-        customer.setFullname(customerDTO.fullname());
-        customer.setEmail(customerDTO.email());
-        customer.setCpf(customerDTO.cpf());
-        customer.setBirth(customerDTO.birth());
-        customer.setGender(customerDTO.gender());
+        customer = customer.edit(customerDTO);
 
         return repository.save(customer).toDTO();
     }

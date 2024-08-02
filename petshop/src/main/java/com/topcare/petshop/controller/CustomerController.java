@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/topcare/customer")
+@CrossOrigin("*")
 @AllArgsConstructor
 public class CustomerController {
 
@@ -68,3 +69,4 @@ public class CustomerController {
     }
 
 }
+

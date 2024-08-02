@@ -3,6 +3,7 @@ package com.topcare.petshop.entity;
 import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
+import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -65,7 +66,7 @@ public class Customer extends User {
         super(customer.fullname(), customer.email(), customer.password(), customer.cpf(), UserRole.CUSTOMER);
 
         this.setContactInfo(List.of(new Contact(customer.cellphone(), customer.telephone())));
-        this.setGender(Gender.valueOf(customer.gender()));
+        this.setGender(Gender.defineGender(customer.gender()));
         this.setBirth(LocalDate.parse(customer.birth()));
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
@@ -82,6 +83,7 @@ public class Customer extends User {
         List<CustomerAddressResponseGetDTO> addresses = this.getAddresses().stream().map(Address::toDTO).toList();
 
         return new CustomerResponseDTO(
+                this.getId(),
                 this.getProfileImage().getFile(),
                 this.getFullname(),
                 this.getEmail(),
@@ -93,4 +95,13 @@ public class Customer extends User {
         );
     }
 
+    public Customer edit(CustomerRequestPutDTO customerDTO) {
+        this.setProfileImage(new CustomerImage(customerDTO.profileImage().getBytes(StandardCharsets.UTF_8)));
+        this.setFullname(customerDTO.fullname());
+        this.setEmail(customerDTO.email());
+        this.setCpf(customerDTO.cpf());
+        this.setBirth(customerDTO.birth());
+        this.setGender(customerDTO.gender());
+        return this;
+    }
 }
