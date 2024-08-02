@@ -15,7 +15,8 @@ import java.util.List;
 public interface CustomerServiceInt {
 
 
-    List<CustomerResponseDTO> getCustomers();
+    List<Customer> getCustomers();
+    List<CustomerResponseDTO> getCustomersToDTO();
 
     Customer getCustomer(Long id) throws Exception;
 
@@ -25,9 +26,10 @@ public interface CustomerServiceInt {
 
     CardResponseDTO getCustomerMainCardToDTO(Long id) throws Exception;
 
-    CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer);
+    Customer saveCustomer(Customer customer);
+    CustomerResponseDTO saveCustomerFromDTO(CustomerRequestPostDTO customer);
 
-    CustomerResponseDTO editCustomer(Long id, CustomerRequestPutDTO customerDTO) throws Exception;
+    CustomerResponseDTO editCustomerFromDTO(Long id, CustomerRequestPutDTO customerDTO) throws Exception;
 
     CustomerResponseDTO changePassword(Long id, CustomerPasswordRequestPatchDTO passwords) throws Exception;
 

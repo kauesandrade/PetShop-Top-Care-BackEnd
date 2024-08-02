@@ -23,7 +23,12 @@ public class CustomerServiceImpl implements CustomerServiceInt {
     private final CustomerRepository repository;
 
     @Override
-    public List<CustomerResponseDTO> getCustomers() {
+    public List<Customer> getCustomers() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<CustomerResponseDTO> getCustomersToDTO() {
         List<Customer> customers = repository.findAll();
         return customers.stream().map(Customer::toDTO).toList();
     }
@@ -72,12 +77,17 @@ public class CustomerServiceImpl implements CustomerServiceInt {
         return cardOpt.get().toDTO();
     }
 
-    public CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer) {
+    @Override
+    public Customer saveCustomer(Customer customer) {
+        return repository.save(customer);
+    }
+
+    public CustomerResponseDTO saveCustomerFromDTO(CustomerRequestPostDTO customer) {
         return repository.save(new Customer(customer)).toDTO();
     }
 
     @Override
-    public CustomerResponseDTO editCustomer(Long id, CustomerRequestPutDTO customerDTO) throws Exception {
+    public CustomerResponseDTO editCustomerFromDTO(Long id, CustomerRequestPutDTO customerDTO) throws Exception {
         Optional<Customer> customerOptional = repository.findById(id);
         if (customerOptional.isEmpty()) {
             throw new Exception("Id de cliente não encontrado!");
