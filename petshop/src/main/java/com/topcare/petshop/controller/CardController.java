@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@RestController
 @AllArgsConstructor
 @RequestMapping("/topcare/card")
 public class CardController {
@@ -17,11 +18,11 @@ public class CardController {
     public ResponseEntity getCard(@PathVariable Long id){
         try {
             return new ResponseEntity<>(
-                    service.getCard(id), HttpStatus.OK
+                    service.getCardDTO(id), HttpStatus.OK
             );
         } catch (Exception e){
             return new ResponseEntity<>(
-                    e.getMessage(), HttpStatus.NOT_FOUND
+                    e.getMessage(), HttpStatus.BAD_REQUEST
             );
         }
     }
@@ -52,7 +53,7 @@ public class CardController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity editCard(@PathVariable Long id, @RequestBody CardRequestDTO dto){
         try {
             return new ResponseEntity(

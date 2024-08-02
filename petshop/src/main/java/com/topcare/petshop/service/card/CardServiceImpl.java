@@ -10,6 +10,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -19,14 +21,20 @@ public class CardServiceImpl implements CardServiceInt {
     private CustomerServiceImpl customerService;
 
     @Override
+    public CardResponseDTO getCardDTO(Long id) {
+        Card card = repository.findById(id).get();
+        return card.toDTO();
+    }
+
+    @Override
     public Card getCard(Long id) {
         Card card = repository.findById(id).get();
         return card;
     }
 
     @Override
-    public List<Card> getAllCards() {
-        return repository.findAll();
+    public List<CardResponseDTO> getAllCards() {
+        return repository.findAll().stream().map(Card::toDTO).toList();
     }
 
     @Override
@@ -36,9 +44,8 @@ public class CardServiceImpl implements CardServiceInt {
         newCard.setExpirationDate(dto.expirationDate());
         newCard.setLastDigits(dto.lastDigits());
 
-        Card oldCard = customerService.getCustomerMainCard(dto.userId());
-
         Customer customer = customerService.getCustomer(dto.userId());
+        newCard.setCustomer(customer);
 
         List<Card> cards = customer.getCards();
 
@@ -47,6 +54,7 @@ public class CardServiceImpl implements CardServiceInt {
         } else if (!dto.mainCard()){
             newCard.setMainCard(dto.mainCard());
         } else {
+            Card oldCard = repository.findByCustomer_IdAndMainCardIsTrue(dto.userId()).get();
             newCard.setMainCard(dto.mainCard());
             int indexCard = cards.indexOf(oldCard);
             oldCard.setMainCard(false);
@@ -54,36 +62,40 @@ public class CardServiceImpl implements CardServiceInt {
         }
         cards.add(newCard);
         customerService.saveCustomer(customer);
-        return newCard.toDto();
+        return newCard.toDTO();
     }
 
     @Override
     public CardResponseDTO editCard(Long id, CardRequestDTO dto) throws Exception {
         Card newCard = getCard(id);
         newCard.setName(dto.name());
-        newCard.setLastDigits(dto.lastDigits());
         newCard.setExpirationDate(dto.expirationDate());
+        newCard.setLastDigits(dto.lastDigits());
 
-        if (!dto.mainCard()){
-            newCard.setMainCard(dto.mainCard());
-            repository.save(newCard);
-            return newCard.toDto();
-        }
-
-        Card oldCard = customerService.getCustomerMainCard(dto.userId());
-
+        Customer customer = customerService.getCustomer(dto.userId());
+        newCard.setCustomer(customer);
         newCard.setMainCard(dto.mainCard());
-        oldCard.setMainCard(false);
-        repository.save(newCard);
-        repository.save(oldCard);
-        return newCard.toDto();
+        Card oldCard = repository.findByCustomer_IdAndMainCardIsTrue(dto.userId()).get();
+
+        if (dto.mainCard() && !Objects.equals(newCard.getId(), oldCard.getId())){
+            oldCard.setMainCard(false);
+        }
+        customerService.saveCustomer(customer);
+        return newCard.toDTO();
     }
 
     @Override
     public void deleteCard(Long id) throws Exception {
-        if(!repository.existsById(id)){
+        Optional<Card> optCard = repository.findById(id);
+        if(optCard.isEmpty()){
             throw new Exception("Cartão não encontrado");
         }
+        Card card = optCard.get();
         repository.deleteById(id);
+        Optional<Card> newMainCard = repository.findFirstByCustomer_Id(card.getCustomer().getId());
+        if(newMainCard.isPresent()){
+            newMainCard.get().setMainCard(true);
+            repository.save(newMainCard.get());
+        }
     }
 }
