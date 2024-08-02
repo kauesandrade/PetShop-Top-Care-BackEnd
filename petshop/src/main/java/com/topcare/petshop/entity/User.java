@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.user.ForgotPasswordResponseDTO;
 import com.topcare.petshop.controller.dto.user.UserResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
