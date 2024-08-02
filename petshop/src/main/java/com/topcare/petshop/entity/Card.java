@@ -30,6 +30,9 @@ public class Card {
     @Column(nullable = false)
     private Boolean mainCard;
 
+    @ManyToOne
+    private Customer customer;
+
     public CardResponseDTO toDTO() {
         return new CardResponseDTO(this.name, this.lastDigits, this.expirationDate, this.mainCard);
     }
