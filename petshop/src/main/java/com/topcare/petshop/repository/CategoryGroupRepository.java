@@ -15,13 +15,7 @@ import java.util.Optional;
 public interface CategoryGroupRepository extends JpaRepository<CategoryGroup, Long> {
 
     Optional<CategoryGroup> findCategoryGroupByTitle(String title);
-
     void deleteCategoryGroupByTitle(String title);
-
     Boolean existsCategoryGroupByTitle(String title);
 
-    @Modifying
-    @Transactional
-    @Query(value = "DELETE FROM product_categories WHERE categories_id = :id", nativeQuery = true)
-    void deleteByCategoryId(@Param("id") Long id);
 }

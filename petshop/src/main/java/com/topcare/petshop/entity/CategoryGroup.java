@@ -23,13 +23,21 @@ public class CategoryGroup {
     @Column(nullable = false)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_group_id", nullable = false)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryGroup")
+//    @JoinColumn(name = "category_group_id", nullable = false)
     private List<ProductCategory> categories;
 
     @OneToOne
     @JoinColumn(nullable = false)
     private CategoryImage image;
+
+
+    public void setCategories(List<ProductCategory> categories) {
+        this.categories = categories;
+        categories.forEach(category -> {
+            category.setCategoryGroup(this);
+        });
+    }
 
     public CategoryGroup(CategoryGroupRequestDTO categoryGroupDTO, List<ProductCategory> productCategories) {
         setTitle(categoryGroupDTO.title());
@@ -42,6 +50,7 @@ public class CategoryGroup {
                 productCategory -> productCategory.toDTO()).toList();
 
         return new CategoryGroupResponseDTO(
+                getId(),
                 getTitle(),
                 categoriesDTO,
                 getImage()

@@ -9,11 +9,12 @@ import java.util.List;
 @Service
 public interface CategoryGroupServiceInt {
 
-    CategoryGroupResponseDTO createCategoryGroup(CategoryGroupRequestDTO categoryGroupDTO) throws Exception;
-    CategoryGroupResponseDTO getCategoryGroupByTitle(String title) throws Exception;
+    CategoryGroupResponseDTO getCategoryGroupById(Long id) throws Exception;
     List<CategoryGroupResponseDTO> getAllCategoriesGroup();
+    CategoryGroupResponseDTO createCategoryGroup(CategoryGroupRequestDTO categoryGroupDTO) throws Exception;
     CategoryGroupResponseDTO editCategoryGroup(Long id, CategoryGroupRequestDTO categoryGroupDTO) throws Exception;
-    void deleteCategoryGroupByTitle(String title) throws Exception;
+    void deleteCategoryGroupById(Long id) throws Exception;
+    Boolean existCategoryGroupById(Long id) throws Exception;
 
 
 }

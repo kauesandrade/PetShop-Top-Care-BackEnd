@@ -1,11 +1,9 @@
 package com.topcare.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
@@ -19,6 +17,11 @@ public class ProductCategory {
 
     @Column(nullable = false)
     private String title;
+
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private CategoryGroup categoryGroup;
 
     public ProductCategory(String title) {
         setTitle(title);

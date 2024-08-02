@@ -7,6 +7,7 @@ import java.util.List;
 
 public record CategoryGroupResponseDTO(
 
+        Long id,
         String title,
         List<CategoryResponseDTO> categories,
         CategoryImage image

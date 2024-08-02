@@ -28,11 +28,11 @@ public class CategoryGroupController {
         }
     }
 
-    @GetMapping("/{title}")
-    public ResponseEntity findCategoryGroupByTitle(@PathVariable String title){
+    @GetMapping("/{id}")
+    public ResponseEntity findCategoryGroupById(@PathVariable Long id){
 
         try{
-            return new ResponseEntity<>(categoryGroupService.getCategoryGroupByTitle(title), HttpStatus.OK);
+            return new ResponseEntity<>(categoryGroupService.getCategoryGroupById(id), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
@@ -52,11 +52,11 @@ public class CategoryGroupController {
         }
     }
 
-    @DeleteMapping("/{title}")
-    public ResponseEntity deleteCategoryGroupByTitle(@PathVariable String title){
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteCategoryGroupById(@PathVariable Long id){
 
        try {
-           categoryGroupService.deleteCategoryGroupByTitle(title);
+           categoryGroupService.deleteCategoryGroupById(id);
            return new ResponseEntity<>(HttpStatus.OK);
        }catch (Exception e){
            return new ResponseEntity<>(e.getMessage(),
