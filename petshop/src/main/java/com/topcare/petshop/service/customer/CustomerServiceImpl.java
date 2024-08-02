@@ -4,6 +4,7 @@ import com.topcare.petshop.controller.dto.customer.CustomerPasswordRequestPatchD
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.entity.Card;
 import com.topcare.petshop.entity.Customer;
 import com.topcare.petshop.entity.CustomerImage;
 import com.topcare.petshop.repository.CustomerRepository;
@@ -42,6 +43,14 @@ public class CustomerServiceImpl {
 
         Customer customer = customerOptional.get();
         return customer.toDTO();
+    }
+
+    public Card getCustomerMainCard(Long id) throws Exception {
+        if (!repository.existsById(id)) {
+            throw new Exception("Id de cliente não encontrado!");
+        }
+
+        return repository.findByIdAndMainCardIsTrue(id).orElseThrow(() -> new Exception("Cartão principal não encontrado!"));
     }
 
     public CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer) {
