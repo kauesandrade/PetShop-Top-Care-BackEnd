@@ -1,5 +1,7 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.user.ForgotPasswordResponseDTO;
+import com.topcare.petshop.controller.dto.user.UserResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -35,4 +37,14 @@ public class User {
     @Enumerated
     @NonNull
     private UserRole role;
+
+    public UserResponseDTO toDto(){
+        return new UserResponseDTO(
+                this.fullname,
+                this.email,
+                this.password,
+                this.cpf,
+                this.role
+        );
+    }
 }
