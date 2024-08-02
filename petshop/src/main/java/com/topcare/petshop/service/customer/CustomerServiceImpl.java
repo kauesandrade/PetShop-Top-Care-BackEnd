@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerServiceInt {
             throw new Exception("Cartão principal não encontrado!");
         }
 
-        return cardOpt.get().toDTO();
+        return cardOpt.get().toDto();
     }
 
     public CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer) {
