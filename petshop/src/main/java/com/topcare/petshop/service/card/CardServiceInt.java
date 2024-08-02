@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public interface CardServiceInt {
 
-    CardResponseDTO getCardDTO(Long id);
-    Card getCard(Long id);
+    CardResponseDTO getCardToDTO(Long id) throws Exception;
+    Card getCard(Long id) throws Exception;
     List<CardResponseDTO> getAllCards();
     CardResponseDTO registerCard(CardRequestDTO dto) throws Exception;
     CardResponseDTO editCard(Long id, CardRequestDTO dto) throws Exception;

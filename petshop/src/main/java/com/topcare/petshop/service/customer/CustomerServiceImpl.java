@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerServiceInt {
         }
 
         Customer customer = customerOptional.get();
-        customer = customer.edit(customerDTO);
+        customer.edit(customerDTO);
 
         return repository.save(customer).toDTO();
     }

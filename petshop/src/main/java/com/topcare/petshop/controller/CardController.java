@@ -18,7 +18,7 @@ public class CardController {
     public ResponseEntity getCard(@PathVariable Long id){
         try {
             return new ResponseEntity<>(
-                    service.getCardDTO(id), HttpStatus.OK
+                    service.getCardToDTO(id), HttpStatus.OK
             );
         } catch (Exception e){
             return new ResponseEntity<>(

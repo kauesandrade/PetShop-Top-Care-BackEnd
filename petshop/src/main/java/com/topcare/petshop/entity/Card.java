@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.card.CardRequestDTO;
 import com.topcare.petshop.controller.dto.card.CardResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,23 @@ public class Card {
     @ManyToOne
     private Customer customer;
 
+    public Card(CardRequestDTO dto) {
+        this.name = dto.name();
+        this.lastDigits = dto.lastDigits();
+        this.expirationDate = dto.expirationDate();
+        this.mainCard = dto.mainCard();
+        this.customer = new Customer(dto.userId());
+    }
+
     public CardResponseDTO toDTO() {
         return new CardResponseDTO(this.name, this.lastDigits, this.expirationDate, this.mainCard);
+    }
+
+    public void edit(CardRequestDTO dto) {
+        this.name = dto.name();
+        this.lastDigits = dto.lastDigits();
+        this.expirationDate = dto.expirationDate();
+        this.mainCard = dto.mainCard();
+        this.customer = new Customer(dto.userId());
     }
 }

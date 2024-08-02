@@ -38,6 +38,10 @@ public class User {
     @NonNull
     private UserRole role;
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     public UserResponseDTO toDto(){
         return new UserResponseDTO(
                 this.fullname,
