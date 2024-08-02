@@ -17,7 +17,7 @@ import java.util.Random;
 public class UserServiceImpl implements UserServiceInt {
 
     private final UserRepository repository;
-    private final CustomerServiceImpl customerService;
+//    private final CustomerServiceImpl customerService;
 //    private final EmployeeServiceImpl employeeService;
 
     @Override
@@ -58,8 +58,14 @@ public class UserServiceImpl implements UserServiceInt {
     }
 
     @Override
-    public void changePassword(Long id, NewPasswordRequestDTO dto) {
-        User user = repository.findById(id).get();
+    public void changePassword(Long id, NewPasswordRequestDTO dto) throws Exception {
+        Optional<User> optUser = repository.findById(id);
+
+        if (optUser.isEmpty()){
+            throw new Exception("Usuário inexistente");
+        }
+
+        User user = optUser.get();
         user.setPassword(dto.newPassword());
         repository.save(user);
     }
