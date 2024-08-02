@@ -6,14 +6,15 @@ import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
 import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/topcare/customer")
+@CrossOrigin("*")
 @AllArgsConstructor
 public class CustomerController {
 
@@ -21,13 +22,13 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<List<CustomerResponseDTO>> getCustomers() {
-        return ResponseEntity.ok(service.getCustomers());
+        return new ResponseEntity(service.getCustomersToDTO(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity getCustomerById(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(service.getCustomerById(id));
+            return ResponseEntity.ok(service.getCustomerToDTO(id));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -35,24 +36,24 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestPostDTO customer) {
-        return ResponseEntity.ok(service.saveCustomer(customer));
+        return new ResponseEntity(service.saveCustomerFromDTO(customer), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity editCustomer(@PathVariable Long id, @RequestBody CustomerRequestPutDTO customer) {
         try {
-            return ResponseEntity.ok(service.editCustomer(id, customer));
+            return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 
     @PatchMapping("/{id}")
     public ResponseEntity changePassword(@PathVariable Long id, @RequestBody CustomerPasswordRequestPatchDTO passwords) {
         try {
-            return ResponseEntity.ok(service.changePassword(id, passwords));
+            return new ResponseEntity(service.changePassword(id, passwords), HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -60,10 +61,11 @@ public class CustomerController {
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
         try {
             service.deleteCustomer(id);
-            return ResponseEntity.ok().build();
+            return new ResponseEntity(HttpStatus.OK);
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
 }
+
