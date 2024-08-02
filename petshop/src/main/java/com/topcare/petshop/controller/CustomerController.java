@@ -8,7 +8,6 @@ import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +22,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseEntity<List<CustomerResponseDTO>> getCustomers() {
-        return new ResponseEntity(service.getCustomers(), HttpStatus.OK);
+        return new ResponseEntity(service.getCustomersToDTO(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -46,13 +45,13 @@ public class CustomerController {
 
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestPostDTO customer) {
-        return new ResponseEntity(service.saveCustomer(customer), HttpStatus.CREATED);
+        return new ResponseEntity(service.saveCustomerFromDTO(customer), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity editCustomer(@PathVariable Long id, @RequestBody CustomerRequestPutDTO customer) {
         try {
-            return new ResponseEntity(service.editCustomer(id, customer), HttpStatus.OK);
+            return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
