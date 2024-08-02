@@ -9,6 +9,8 @@ import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class CardServiceImpl implements CardServiceInt {
@@ -23,24 +25,35 @@ public class CardServiceImpl implements CardServiceInt {
     }
 
     @Override
+    public List<Card> getAllCards() {
+        return repository.findAll();
+    }
+
+    @Override
     public CardResponseDTO registerCard(CardRequestDTO dto) throws Exception {
         Card newCard = new Card();
         newCard.setName(dto.name());
         newCard.setExpirationDate(dto.expirationDate());
         newCard.setLastDigits(dto.lastDigits());
 
-        if (!dto.mainCard()){
-            newCard.setMainCard(dto.mainCard());
-            repository.save(newCard);
-            return newCard.toDto();
-        }
-
         Card oldCard = customerService.getCustomerMainCard(dto.userId());
 
-        newCard.setMainCard(dto.mainCard());
-        oldCard.setMainCard(false);
-        repository.save(newCard);
-        repository.save(oldCard);
+        Customer customer = customerService.getCustomer(dto.userId());
+
+        List<Card> cards = customer.getCards();
+
+        if (cards.isEmpty()){
+            newCard.setMainCard(true);
+        } else if (!dto.mainCard()){
+            newCard.setMainCard(dto.mainCard());
+        } else {
+            newCard.setMainCard(dto.mainCard());
+            int indexCard = cards.indexOf(oldCard);
+            oldCard.setMainCard(false);
+            cards.set(indexCard, oldCard);
+        }
+        cards.add(newCard);
+        customerService.saveCustomer(customer);
         return newCard.toDto();
     }
 
@@ -59,8 +72,6 @@ public class CardServiceImpl implements CardServiceInt {
 
         Card oldCard = customerService.getCustomerMainCard(dto.userId());
 
-        Customer customer = customerService.getCustomer(dto.userId());
-        
         newCard.setMainCard(dto.mainCard());
         oldCard.setMainCard(false);
         repository.save(newCard);

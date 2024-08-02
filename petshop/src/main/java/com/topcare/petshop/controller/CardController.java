@@ -26,6 +26,19 @@ public class CardController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity getAllCards(){
+        try {
+            return new ResponseEntity<>(
+                    service.getAllCards(), HttpStatus.OK
+            );
+        } catch (Exception e){
+            return new ResponseEntity<>(
+                    e.getMessage(), HttpStatus.NOT_FOUND
+            );
+        }
+    }
+
     @PostMapping
     public ResponseEntity registerCard(@RequestBody CardRequestDTO dto){
         try {
@@ -55,9 +68,8 @@ public class CardController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCard(@PathVariable Long id){
         try {
-            return new ResponseEntity<>(
-                    service.deleteCard(id), HttpStatus.OK
-            );
+            service.deleteCard(id);
+            return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e){
             return new ResponseEntity<>(
                     e.getMessage(), HttpStatus.BAD_REQUEST
