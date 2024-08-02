@@ -40,15 +40,15 @@ public class Customer extends User {
     @JoinColumn(name = "customer_id", nullable = false)
     private List<CustomerAddress> addresses;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<Card> cards;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "customer_id")
     private List<CustomerOrder> orders;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
     private List<Pet> pets;
 
     @ManyToMany

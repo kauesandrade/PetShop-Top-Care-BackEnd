@@ -34,15 +34,6 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/mainCard/{id}")
-    public ResponseEntity getCustomerMainCardById(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(service.getCustomerMainCardToDTO(id));
-        } catch (Exception e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
-
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestPostDTO customer) {
         return new ResponseEntity(service.saveCustomerFromDTO(customer), HttpStatus.CREATED);
