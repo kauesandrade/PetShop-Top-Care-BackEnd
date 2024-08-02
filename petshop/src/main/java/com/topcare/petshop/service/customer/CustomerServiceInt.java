@@ -4,6 +4,7 @@ import com.topcare.petshop.controller.dto.customer.CustomerPasswordRequestPatchD
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.entity.Card;
 import com.topcare.petshop.entity.Customer;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +18,11 @@ public interface CustomerServiceInt {
 
     Customer getCustomer(Long id) throws Exception;
 
-    CustomerResponseDTO getCustomerById(Long id) throws Exception;
+    CustomerResponseDTO getCustomerToDTO(Long id) throws Exception;
+
+    Card getCustomerMainCard(Long id) throws Exception;
+
+    CardResponseDTO getCustomerMainCardToDTO(Long id) throws Exception;
 
     CustomerResponseDTO saveCustomer(CustomerRequestPostDTO customer);
 

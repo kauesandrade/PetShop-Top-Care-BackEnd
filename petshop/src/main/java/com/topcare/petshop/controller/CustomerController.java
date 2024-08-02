@@ -29,7 +29,16 @@ public class CustomerController {
     @GetMapping("/{id}")
     public ResponseEntity getCustomerById(@PathVariable Long id) {
         try {
-            return new ResponseEntity(service.getCustomerById(id), HttpStatus.OK);
+            return ResponseEntity.ok(service.getCustomerToDTO(id));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/mainCard/{id}")
+    public ResponseEntity getCustomerMainCardById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(service.getCustomerMainCardToDTO(id));
         } catch (Exception e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
