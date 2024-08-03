@@ -62,7 +62,6 @@ public class ProductVariant {
     public ProductVariantResponseDTO toDTO(){
 
         Boolean isStockAvailable = stock > 0;
-        Double subscriptionPrice = (price - (price * 0.20));
         Double discountPrice = price - (price * (discount/100));
 
         return new ProductVariantResponseDTO(
@@ -70,7 +69,6 @@ public class ProductVariant {
                 getVariantCode(),
                 getPrice(),
                 discountPrice,
-                subscriptionPrice,
                 isStockAvailable,
                 getImages()
         );

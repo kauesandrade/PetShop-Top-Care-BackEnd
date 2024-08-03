@@ -22,7 +22,4 @@ public class CartItem {
     @Column(nullable = false)
     private Integer amount;
 
-    @Enumerated
-    private SubscriptionInterval subscription;
-
 }

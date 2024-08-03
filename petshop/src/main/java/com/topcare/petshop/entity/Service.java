@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Service {
 
     @Id
@@ -37,5 +36,9 @@ public class Service {
 
     @ManyToMany
     private List<PetType> servedPets;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "service_id")
+    private List<ServiceVariant> variants;
 
 }

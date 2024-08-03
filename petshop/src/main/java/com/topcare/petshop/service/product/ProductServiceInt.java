@@ -6,6 +6,8 @@ import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.Product;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ProductServiceInt {
 
