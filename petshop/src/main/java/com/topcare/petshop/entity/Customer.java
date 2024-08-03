@@ -60,6 +60,10 @@ public class Customer extends User {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<ProductReview> reviews;
 
+    public Customer(Long id) {
+        super(id);
+    }
+
     public Customer(CustomerRequestPostDTO customer) {
         super(customer.fullname(), customer.email(), customer.password(), customer.cpf(), UserRole.CUSTOMER);
 
@@ -93,13 +97,12 @@ public class Customer extends User {
         );
     }
 
-    public Customer edit(CustomerRequestPutDTO customerDTO) {
+    public void edit(CustomerRequestPutDTO customerDTO) {
         this.setProfileImage(new CustomerImage(customerDTO.profileImage().getBytes(StandardCharsets.UTF_8)));
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
         this.setGender(customerDTO.gender());
-        return this;
     }
 }
