@@ -22,27 +22,24 @@ public class ProductController {
 
 
    @GetMapping("/{code}")
-   public ResponseEntity<ProductResponseDTO> findProductByCode(@PathVariable Long code){
+   public ResponseEntity findProductByCode(@PathVariable Long code){
 
-       ProductResponseDTO product = productService.findProductByCode(code);
-
-       if(product == null){
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       try{
+           return new ResponseEntity<>(productService.findProductByCode(code), HttpStatus.OK);
+       }catch (Exception e){
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
        }
-
-       return new ResponseEntity<>(product, HttpStatus.OK);
    }
 
     @PostMapping
-    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody ProductRequestPostDTO productDTO) {
+    public ResponseEntity createProduct(@RequestBody ProductRequestPostDTO productDTO) throws Exception {
 
-        ProductResponseDTO product = productService.createProduct(productDTO).toDTO();
-
-        if(product == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        try{
+            return new ResponseEntity<>(productService.createProduct(productDTO).toDTO(),
+                    HttpStatus.CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
-
-        return new ResponseEntity<>(product, HttpStatus.CREATED);
 
     }
 
@@ -55,14 +52,15 @@ public class ProductController {
 
 
     @DeleteMapping("/{code}")
-    public ResponseEntity<Boolean> deleteProduct(@PathVariable Long code) {
-        Boolean delete = productService.deleteProductByCode(code);
+    public ResponseEntity deleteProduct(@PathVariable Long code) {
 
-        if(delete == false) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        try{
+            productService.deleteProductByCode(code);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(delete, HttpStatus.OK);
     }
 
 

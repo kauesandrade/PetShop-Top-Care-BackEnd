@@ -25,15 +25,19 @@ public class ProductServiceImpl implements ProductServiceInt {
     private final ProductCategoryServiceImpl productCategoryService;
 
     @Override
-    public ProductResponseDTO findProductByCode(Long code) {
-        ProductResponseDTO productResponseDTO = repository.findByCode(code).get().toDTO();
-        return productResponseDTO;
+    public ProductResponseDTO findProductByCode(Long code) throws Exception {
+       existProductByCode(code);
+       return repository.findByCode(code).get().toDTO();
     }
 
     @Override
-    public Product createProduct(ProductRequestPostDTO productPostDTO) {
-        Brand brand = brandService.findBrandByName(productPostDTO.brand());
+    public Product createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
 
+        if(repository.existsByCode(productPostDTO.code())){
+            throw new Exception("Esse código já está vinculado a um produto");
+        }
+
+        Brand brand = brandService.findBrandByName(productPostDTO.brand());
         List<ProductCategory> productCategories = productCategoryService.findAllProductCategory(productPostDTO.categories());
 
         List<ProductSpecification> productSpecifications =
@@ -43,8 +47,15 @@ public class ProductServiceImpl implements ProductServiceInt {
         //Fazer na controler a questão de criar uma variação de produto
         List<ProductVariant> productVariants = productPostDTO.variants().stream().map(ProductVariant::new).toList();
 
-        Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
+//        List<ProductCategory> productCategories =
+//                productCategoryService.getAllProductCategory(productPostDTO.categories());
+//        List<ProductSpecification> productSpecifications =
+//                productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
+//        List<ProductVariant> productVariants = productPostDTO.variants()
+//                .stream().map(ProductVariant::new).toList();
 
+
+        Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
         return repository.save(product);
     }
 
@@ -63,11 +74,16 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public boolean deleteProductByCode(Long code) {
-        if (!repository.existsByCode(code)) {
-            return false;
-        }
+    public void deleteProductByCode(Long code) throws Exception {
+        existProductByCode(code);
         repository.deleteByCode(code);
+    }
+
+    @Override
+    public Boolean existProductByCode(Long code) throws Exception {
+        if(code == null || !repository.existsByCode(code)){
+            throw new Exception("Produto não encontrado!");
+        }
         return true;
     }
 }

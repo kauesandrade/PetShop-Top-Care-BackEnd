@@ -9,12 +9,20 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ProductServiceInt {
 
-    ProductResponseDTO findProductByCode(Long code);
+    ProductResponseDTO findProductByCode(Long code) throws Exception;
 
-    Product createProduct(ProductRequestPostDTO productPostDTO);
+    Product createProduct(ProductRequestPostDTO productPostDTO) throws Exception;
 
     ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
 
-    boolean deleteProductByCode(Long code);
+    void deleteProductByCode(Long code) throws Exception;
+
+    Boolean existProductByCode(Long code) throws Exception;
+
+//    ProductResponseDTO findProductByCode(Long code) throws Exception;
+//    Product createProduct(ProductRequestPostDTO productPostDTO) throws Exception;
+//    ProductResponseDTO editProduct(ProductRequestPutDTO productPutDTO);
+//    void deleteProductByCode(Long code) throws Exception;
+
 
 }
