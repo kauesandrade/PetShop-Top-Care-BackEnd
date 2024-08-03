@@ -25,14 +25,13 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Customer user;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(nullable = false)
     private Petshop petshop;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Payment payment;
 
     @Column(nullable = false)

@@ -9,12 +9,15 @@ import lombok.NoArgsConstructor;
 import java.time.LocalTime;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ServiceVariant extends Service {
+public class ServiceVariant {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private Long variantCode;

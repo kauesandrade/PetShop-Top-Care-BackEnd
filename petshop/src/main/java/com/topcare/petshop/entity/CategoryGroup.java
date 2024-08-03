@@ -21,7 +21,7 @@ public class CategoryGroup {
     private String title;
 
     @OneToMany
-    @JoinColumn(name = "category_group_id",nullable = false)
+    @JoinColumn(name = "category_group_id", nullable = false)
     private List<ProductCategory> categories;
 
     @OneToOne

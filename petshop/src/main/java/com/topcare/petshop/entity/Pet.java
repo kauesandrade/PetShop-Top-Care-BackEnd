@@ -53,9 +53,10 @@ public class Pet {
     @Column(unique = true)
     private String rga;
 
+    // Em kilos
     private Double weight;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Schedule> schedules;
 
 }

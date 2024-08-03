@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,11 +26,11 @@ public class Product {
     @Column(nullable = false, length = 150)
     private String title;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 800)
     private String description;
 
     @Column(nullable = false, length = 100)
-    private String littleDescription;
+    private String shortDescription;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -58,7 +57,7 @@ public class Product {
         setCode(productPostDTO.code());
         setTitle(productPostDTO.title());
         setDescription(productPostDTO.description());
-        setLittleDescription(productPostDTO.littleDescription());
+        setShortDescription(productPostDTO.shortDescription());
         setBrand(brand);
         setSpecifications(productSpecifications);
         setCategories(productCategories);
@@ -74,7 +73,7 @@ public class Product {
                 getCode(),
                 getTitle(),
                 getDescription(),
-                getLittleDescription(),
+                getShortDescription(),
                 getBrand(),
                 getSpecifications(),
                 getRating(),
