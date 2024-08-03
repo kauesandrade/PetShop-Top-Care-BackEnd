@@ -14,7 +14,6 @@ import java.util.List;
 public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
 
     private final ProductCategoryRepository repository;
-    private final CategoryGroupRepository categoryGroupRepository;
 
     @Override
     public ProductCategory getProductCategoryById(Long id) throws Exception {
@@ -31,11 +30,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
     }
 
     @Override
-    public List<ProductCategory> getAllProductCategory(List<String> categories) {
+    public List<ProductCategory> getAllProductCategory(List<ProductCategory> categories) throws Exception {
         List<ProductCategory> productCategories = new ArrayList<>();
 
-        for(String title : categories){
-            productCategories.add(repository.findProductCategorieByTitle(title).get());
+        for(ProductCategory productCategory : categories){
+            if (!existProductCategoryById(productCategory.getId())){
+                throw new Exception("A categoria não foi encontrada!");
+            }
+            productCategories.add(repository.findById(productCategory.getId()).get());
         }
 
         return productCategories;

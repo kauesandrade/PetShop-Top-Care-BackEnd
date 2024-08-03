@@ -37,23 +37,14 @@ public class ProductServiceImpl implements ProductServiceInt {
             throw new Exception("Esse código já está vinculado a um produto");
         }
 
-        Brand brand = brandService.findBrandByName(productPostDTO.brand());
-        List<ProductCategory> productCategories = productCategoryService.findAllProductCategory(productPostDTO.categories());
+        Brand brand = brandService.findBrandByName(productPostDTO.brand().getName());
 
+        List<ProductCategory> productCategories =
+                productCategoryService.getAllProductCategory(productPostDTO.categories());
         List<ProductSpecification> productSpecifications =
                 productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
-
-
-        //Fazer na controler a questão de criar uma variação de produto
-        List<ProductVariant> productVariants = productPostDTO.variants().stream().map(ProductVariant::new).toList();
-
-//        List<ProductCategory> productCategories =
-//                productCategoryService.getAllProductCategory(productPostDTO.categories());
-//        List<ProductSpecification> productSpecifications =
-//                productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
-//        List<ProductVariant> productVariants = productPostDTO.variants()
-//                .stream().map(ProductVariant::new).toList();
-
+        List<ProductVariant> productVariants = productPostDTO.variants()
+                .stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
         return repository.save(product);

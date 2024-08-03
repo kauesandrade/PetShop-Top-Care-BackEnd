@@ -48,7 +48,7 @@ public class ProductVariant {
         setVariantCode(productVariant.variantCode());
         setVariantTitle(productVariant.variantTitle());
         setPrice(productVariant.price());
-        setImages(productVariant.images());
+//        setImages(productVariant.images());
         setDiscount(productVariant.discount());
         setStock(productVariant.amountStock());
 
