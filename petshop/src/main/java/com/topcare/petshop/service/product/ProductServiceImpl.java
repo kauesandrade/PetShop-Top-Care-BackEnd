@@ -59,7 +59,6 @@ public class ProductServiceImpl implements ProductServiceInt {
         product.setCode(code);
 
         repository.save(product);
-        System.out.println(product);
 
         return repository.save(product).toDTO();
     }

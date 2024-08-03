@@ -36,7 +36,7 @@ public class Product {
     @JoinColumn(nullable = false)
     private Brand brand;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 

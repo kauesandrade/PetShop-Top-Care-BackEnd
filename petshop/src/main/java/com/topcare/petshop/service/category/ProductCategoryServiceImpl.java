@@ -21,6 +21,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
         return repository.findById(id).get();
     }
 
+
     @Override
     public void deleteProductCategoryById(Long id) throws Exception {
         if (existProductCategoryById(id)) {
@@ -44,23 +45,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
     }
 
     @Override
-    public ProductCategory getProductCategoryByTitle(String title) throws Exception {
-
-        if(repository.findProductCategorieByTitle(title).isEmpty()){
-            throw new Exception("Categoria não encontrada!");
-        }
-        return repository.findProductCategorieByTitle(title).get();
-    }
-
-    @Override
     public List<ProductCategory> getAllProductCategoryByCategoryGroup(Long id) {
         return repository.findAllByCategoryGroup_Id(id);
     }
 
     @Override
-    public Boolean existProductCategoryById(Long id) {
+    public Boolean existProductCategoryById(Long id) throws Exception {
         if(id == null|| !repository.existsById(id)){
-            return false;
+            throw new Exception("A categoria não foi encontrada!");
         }
         return true;
     }
