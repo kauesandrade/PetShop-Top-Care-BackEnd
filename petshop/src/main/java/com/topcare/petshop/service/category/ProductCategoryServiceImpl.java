@@ -14,7 +14,6 @@ import java.util.List;
 public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
 
     private final ProductCategoryRepository repository;
-    private final CategoryGroupRepository categoryGroupRepository;
 
     @Override
     public ProductCategory getProductCategoryById(Long id) throws Exception {
