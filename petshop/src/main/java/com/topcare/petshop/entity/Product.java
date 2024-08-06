@@ -23,6 +23,8 @@ public class Product {
     @Column(nullable = false)
     private Long code;
 
+    private Boolean enabled = true;
+
     @Column(nullable = false, length = 150)
     private String title;
 
@@ -81,6 +83,10 @@ public class Product {
                 getReviews(),
                 variantsDTO
         );
+    }
+
+    public void changeEnableProduct(){
+        setEnabled(!getEnabled());
     }
 
 }

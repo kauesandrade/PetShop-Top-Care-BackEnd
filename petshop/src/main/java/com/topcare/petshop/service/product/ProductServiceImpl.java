@@ -1,7 +1,6 @@
 package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.*;
 import com.topcare.petshop.repository.ProductRepository;
@@ -11,7 +10,6 @@ import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.ModelMap;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     private final ProductCategoryServiceImpl productCategoryService;
 
     @Override
-    public ProductResponseDTO findProductByCode(Long code) throws Exception {
+    public ProductResponseDTO getProductByCode(Long code) throws Exception {
        existProductByCode(code);
        return repository.findByCode(code).get().toDTO();
     }
@@ -58,20 +56,18 @@ public class ProductServiceImpl implements ProductServiceInt {
         Product product = modelMapper.map(productPutDTO, Product.class);
         product.setCode(code);
 
-        repository.save(product);
-
         return repository.save(product).toDTO();
     }
 
     @Override
     public void deleteProductByCode(Long code) throws Exception {
         existProductByCode(code);
-        repository.deleteByCode(code);
+        repository.findByCode(code).get().changeEnableProduct();
     }
 
     @Override
     public Boolean existProductByCode(Long code) throws Exception {
-        if(code == null || !repository.existsByCode(code)){
+        if(code == null || !repository.existsByCode(code) || !repository.findByCode(code).get().getEnabled()){
             throw new Exception("Produto não encontrado!");
         }
         return true;

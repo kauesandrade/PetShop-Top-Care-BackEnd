@@ -2,9 +2,7 @@ package com.topcare.petshop.controller;
 
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
-import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.service.product.ProductServiceImpl;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
@@ -25,7 +23,7 @@ public class ProductController {
    public ResponseEntity findProductByCode(@PathVariable Long code){
 
        try{
-           return new ResponseEntity<>(productService.findProductByCode(code), HttpStatus.OK);
+           return new ResponseEntity<>(productService.getProductByCode(code), HttpStatus.OK);
        }catch (Exception e){
            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
        }
