@@ -10,7 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.Base64;
 
 @Entity
 @Data
@@ -43,13 +45,7 @@ public class Image {
     }
 
     public ImageResponseDTO toDTO() throws IOException {
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(this.file);
-
-        BufferedImage newImage = ImageIO.read(inputStream);
-        File image = new File(this.name + this.type);
-        ImageIO.write(newImage, this.type, image);
-
-        return new ImageResponseDTO(this.name, this.type, this.size, image.toURI().toURL().toString());
+        return new ImageResponseDTO(this.name, this.type, this.size, Base64.getEncoder().encode(this.file));
     }
 
     public void edit(ImageRequestDTO imageDTO) throws IOException {

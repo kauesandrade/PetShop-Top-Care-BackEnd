@@ -4,6 +4,7 @@ import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
 import com.topcare.petshop.service.image.ImageServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
