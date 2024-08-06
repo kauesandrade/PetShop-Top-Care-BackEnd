@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("topcare/product")
 @AllArgsConstructor
-@Transactional
 public class ProductController {
 
    private final ProductServiceImpl productService;

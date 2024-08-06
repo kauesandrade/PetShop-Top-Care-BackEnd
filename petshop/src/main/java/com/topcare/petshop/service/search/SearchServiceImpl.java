@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class SearchServiceImpl {
 
-    private final ProductRepository productRespository;
-    private final ServiceRepository serviceRepository;
-    private final OrderRepository orderRepository;
-    private final CustomerOrderRepository customerOrderRepository;
+//    private final ProductRepository productRespository;
+//    private final ServiceRepository serviceRepository;
+//    private final OrderRepository orderRepository;
+//    private final CustomerOrderRepository customerOrderRepository;
 
 
 
