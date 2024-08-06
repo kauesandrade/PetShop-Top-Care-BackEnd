@@ -76,7 +76,7 @@ public class CategoryGroupServiceImpl implements CategoryGroupServiceInt {
     @Override
     public Boolean existCategoryGroupById(Long id) throws Exception {
         if (id == null || !repository.existsById(id)){
-            throw new Exception("Grupo de categories não encontrado!");
+            throw new Exception("O grupo de categorias não foi encontrado!");
         }
         return true;
     }
