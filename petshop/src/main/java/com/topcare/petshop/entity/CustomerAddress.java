@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.address.CustomerAddressRequestPostDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +10,12 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class CustomerAddress extends Address {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public CustomerAddress(CustomerAddressRequestPostDTO address) {
+        super(address.name(), address.cep(),  State.valueOf(address.state()), address.city(),
+                address.neighborhood(), address.street(), address.number(), address.complement());
+    }
 
 }

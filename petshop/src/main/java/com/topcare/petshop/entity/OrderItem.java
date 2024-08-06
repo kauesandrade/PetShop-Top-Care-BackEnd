@@ -16,7 +16,6 @@ public class OrderItem {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
     private ProductVariant product;
 
     @Column(nullable = false)

@@ -22,13 +22,12 @@ public class CustomerOrder {
     @Column(nullable = false, unique = true)
     private Long code;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "order_id", nullable = false)
     private List<OrderItem> items;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
-    private Address deliveryAddress;
+    private CustomerAddress deliveryAddress;
 
     @Column(nullable = false)
     private LocalDate expectedDeliveryDate;
