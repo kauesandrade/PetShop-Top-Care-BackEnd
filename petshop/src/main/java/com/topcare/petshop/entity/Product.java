@@ -23,6 +23,7 @@ public class Product {
     @Column(nullable = false)
     private Long code;
 
+    @Column(nullable = false)
     private Boolean enabled = true;
 
     @Column(nullable = false, length = 150)
