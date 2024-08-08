@@ -1,9 +1,12 @@
-package com.topcare.petshop.service.image;
+package com.topcare.petshop.service.image.pet;
 
 import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
 import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
-import com.topcare.petshop.entity.Image;
-import com.topcare.petshop.repository.ImageRepository;
+import com.topcare.petshop.entity.PetImage;
+import com.topcare.petshop.entity.PetImage;
+import com.topcare.petshop.repository.CustomerImageRepository;
+import com.topcare.petshop.repository.PetImageRepository;
+import com.topcare.petshop.service.image.ImageServiceInt;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +15,13 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class ImageServiceImpl implements ImageServiceInt<Image> {
+public class PetImageServiceImpl implements ImageServiceInt<PetImage> {
 
-    private final ImageRepository repository;
+    private final PetImageRepository repository;
 
     @Override
-    public Image findImageById(Long id) throws Exception {
-        Optional<Image> optionalImage = repository.findById(id);
+    public PetImage findImageById(Long id) throws Exception {
+        Optional<PetImage> optionalImage = repository.findById(id);
 
         if (optionalImage.isEmpty()) {
             throw new Exception("Imagem não encontrada!");
@@ -29,24 +32,24 @@ public class ImageServiceImpl implements ImageServiceInt<Image> {
 
     @Override
     public ImageResponseDTO findImageByIdToDTO(Long id) throws Exception {
-        Image image = findImageById(id);
+        PetImage image = findImageById(id);
         return image.toDTO();
     }
 
     @Override
-    public Image saveImage(Image image) throws IOException {
+    public PetImage saveImage(PetImage image) throws IOException {
         return repository.save(image);
     }
 
     @Override
     public ImageResponseDTO createImageFromDTO(ImageRequestDTO imageDTO) throws IOException {
-        Image newImage = new Image(imageDTO);
+        PetImage newImage = new PetImage(imageDTO);
         return saveImage(newImage).toDTO();
     }
 
     @Override
     public ImageResponseDTO editImage(Long id, ImageRequestDTO imageDTO) throws Exception {
-        Image image = findImageById(id);
+        PetImage image = findImageById(id);
         image.edit(imageDTO);
         return saveImage(image).toDTO();
     }

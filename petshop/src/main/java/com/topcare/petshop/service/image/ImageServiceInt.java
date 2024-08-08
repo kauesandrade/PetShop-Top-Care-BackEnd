@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public interface ImageServiceInt {
+public interface ImageServiceInt<T> {
 
-    ImageResponseDTO findImageById(Long id) throws Exception;
+    T findImageById(Long id) throws Exception;
+    ImageResponseDTO findImageByIdToDTO(Long id) throws Exception;
 
-    ImageResponseDTO createImage(ImageRequestDTO imageDTO) throws IOException;
+    T saveImage(T image) throws IOException;
+    ImageResponseDTO createImageFromDTO(ImageRequestDTO imageDTO) throws IOException;
 
     ImageResponseDTO editImage(Long id, ImageRequestDTO imageDTO) throws Exception;
 
