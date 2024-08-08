@@ -31,7 +31,6 @@ public class ImageServiceImpl implements ImageServiceInt {
     @Override
     public ImageResponseDTO createImage(ImageRequestDTO imageDTO) throws IOException {
         Image newImage = new Image(imageDTO);
-
         return repository.save(newImage).toDTO();
     }
 

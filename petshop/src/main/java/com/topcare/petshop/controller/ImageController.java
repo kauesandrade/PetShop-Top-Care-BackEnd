@@ -28,7 +28,7 @@ public class ImageController {
     }
 
     @PostMapping
-    public ResponseEntity createImage(@RequestBody ImageRequestDTO imageDTO) {
+    public ResponseEntity createImage(ImageRequestDTO imageDTO) {
         try {
             return new ResponseEntity<>(imageService.createImage(imageDTO), HttpStatus.CREATED);
         } catch (IOException e) {

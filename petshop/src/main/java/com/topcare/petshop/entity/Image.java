@@ -45,7 +45,8 @@ public class Image {
     }
 
     public ImageResponseDTO toDTO() throws IOException {
-        return new ImageResponseDTO(this.name, this.type, this.size, Base64.getEncoder().encode(this.file));
+        String url = "data:" + this.type + ";base64," + Base64.getEncoder().encodeToString(this.file);
+        return new ImageResponseDTO(this.name, this.type, this.size, url);
     }
 
     public void edit(ImageRequestDTO imageDTO) throws IOException {

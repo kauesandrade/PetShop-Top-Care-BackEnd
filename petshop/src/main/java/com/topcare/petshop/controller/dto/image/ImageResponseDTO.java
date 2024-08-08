@@ -6,6 +6,6 @@ public record ImageResponseDTO(
         String name,
         String type,
         Long size,
-        byte[] file
+        String url
 ) {
 }
