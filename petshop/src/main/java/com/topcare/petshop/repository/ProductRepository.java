@@ -1,6 +1,7 @@
 package com.topcare.petshop.repository;
 
 import com.topcare.petshop.entity.Product;
+import com.topcare.petshop.entity.ProductCategory;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,5 +17,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Optional<Product> findByCode(Long code);
     void deleteByCode(Long code);
     boolean existsByCode(Long code);
+
+    List<Product> findByCategoriesContains(ProductCategory productCategory);
+
+    List<Product> findAllByCategoriesIsContaining(List<ProductCategory> categories);
 
 }

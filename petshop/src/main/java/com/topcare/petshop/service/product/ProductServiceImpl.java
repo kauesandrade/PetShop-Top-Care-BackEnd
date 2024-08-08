@@ -7,10 +7,16 @@ import com.topcare.petshop.repository.ProductRepository;
 import com.topcare.petshop.repository.ProductVariantRepository;
 import com.topcare.petshop.service.brand.BrandServiceImpl;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
+import com.topcare.petshop.service.filter.FilterServiceImpl;
+import com.topcare.petshop.service.filter.FilterServiceInt;
+import com.topcare.petshop.service.orderBy.OrderByServiceImpl;
+import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +27,9 @@ public class ProductServiceImpl implements ProductServiceInt {
     private final ProductVariantRepository productVariantRepository;
     private final BrandServiceImpl brandService;
     private final ProductCategoryServiceImpl productCategoryService;
+    private final FilterServiceImpl filterService;
+    private  final OrderByServiceImpl orderByService;
+    private  final SearchServiceImpl searchService;
 
     @Override
     public ProductResponseDTO getProductByCode(Long code) throws Exception {
@@ -71,6 +80,29 @@ public class ProductServiceImpl implements ProductServiceInt {
             throw new Exception("Produto não encontrado!");
         }
         return true;
+    }
+
+    @Override
+    public Page<Product> searchProduct(String seachValue, String orderBy, List<ProductCategory> productCategoryList) {
+        Page<Product> productPage = null;
+
+//        filterService.filterProducts(repository.findAll())
+
+
+        return productPage;
+    }
+
+    public List<Product> test(List<ProductCategory> productCategoryList) throws Exception {
+
+        List<ProductCategory> productCategories = new ArrayList<>();
+
+        for (ProductCategory productCategory : productCategoryList){
+            productCategories.add(productCategoryService.getProductCategoryById(productCategory.getId()));
+        }
+
+        System.out.println(productCategories);
+
+        return repository.findAllByCategoriesIsContaining(productCategories);
     }
 
 }
