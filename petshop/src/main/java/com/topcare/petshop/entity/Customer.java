@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer extends User {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private CustomerImage profileImage;
 
     @Column(nullable = false)
@@ -72,7 +73,8 @@ public class Customer extends User {
         this.setBirth(LocalDate.parse(customer.birth()));
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
-        this.setProfileImage(new CustomerImage("TesteXD".getBytes(StandardCharsets.UTF_8)));
+        // tem q fzr p iniciar com image
+        this.setProfileImage(new CustomerImage("topcare".getBytes()));
         this.setCards(List.of());
         this.setOrders(List.of());
         this.setPets(List.of());
@@ -86,7 +88,7 @@ public class Customer extends User {
 
         return new CustomerResponseDTO(
                 this.getId(),
-                this.getProfileImage().getFile(),
+                this.getProfileImage().toDTO(),
                 this.getFullname(),
                 this.getEmail(),
                 this.getCpf(),
@@ -97,8 +99,8 @@ public class Customer extends User {
         );
     }
 
-    public void edit(CustomerRequestPutDTO customerDTO) {
-        this.setProfileImage(new CustomerImage(customerDTO.profileImage().getBytes(StandardCharsets.UTF_8)));
+    public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
+        this.setProfileImage(new CustomerImage(customerDTO.profileImage()));
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());
         this.setCpf(customerDTO.cpf());

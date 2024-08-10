@@ -4,6 +4,9 @@ import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
 import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
 import com.topcare.petshop.entity.CustomerImage;
 import com.topcare.petshop.entity.CustomerImage;
+import com.topcare.petshop.entity.CustomerImage;
+import com.topcare.petshop.entity.Image;
+import com.topcare.petshop.repository.CustomerImageRepository;
 import com.topcare.petshop.repository.CustomerImageRepository;
 import com.topcare.petshop.service.image.ImageServiceInt;
 import lombok.AllArgsConstructor;
@@ -14,36 +17,29 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class CustomerImageServiceImpl implements ImageServiceInt<CustomerImage> {
+public class CustomerImageServiceImpl implements ImageServiceInt {
 
     private final CustomerImageRepository repository;
 
     @Override
     public CustomerImage findImageById(Long id) throws Exception {
-        Optional<CustomerImage> optionalImage = repository.findById(id);
-
-        if (optionalImage.isEmpty()) {
-            throw new Exception("Imagem não encontrada!");
-        }
-
-        return optionalImage.get();
+        return repository.findById(id).orElseThrow(() -> new Exception("Imagem não encontrada!"));
     }
 
     @Override
     public ImageResponseDTO findImageByIdToDTO(Long id) throws Exception {
-        CustomerImage image = findImageById(id);
-        return image.toDTO();
+        return findImageById(id).toDTO();
     }
 
     @Override
-    public CustomerImage saveImage(CustomerImage image) throws IOException {
-        return repository.save(image);
+    public CustomerImage saveImage(Image image) throws IOException {
+        return repository.save((CustomerImage) image);
     }
 
     @Override
     public ImageResponseDTO createImageFromDTO(ImageRequestDTO imageDTO) throws IOException {
-        CustomerImage newImage = new CustomerImage(imageDTO);
-        return saveImage(newImage).toDTO();
+        CustomerImage image = new CustomerImage(imageDTO);
+        return saveImage(image).toDTO();
     }
 
     @Override

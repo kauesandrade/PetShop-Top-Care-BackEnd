@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -22,8 +23,12 @@ public class CustomerImage extends Image {
         super(imageDTO);
     }
 
-    public CustomerImage(byte[] image) {
-        super(image);
+    public CustomerImage(MultipartFile file) throws IOException {
+        super(file);
     }
 
+
+    public CustomerImage(byte[] bytes) {
+        super(bytes);
+    }
 }

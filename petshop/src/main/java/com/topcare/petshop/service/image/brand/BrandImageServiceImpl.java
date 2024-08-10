@@ -10,40 +10,32 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class BrandImageServiceImpl implements ImageServiceInt<BrandImage> {
+public class BrandImageServiceImpl implements ImageServiceInt {
 
     private final BrandImageRepository repository;
 
     @Override
     public BrandImage findImageById(Long id) throws Exception {
-        Optional<BrandImage> optionalImage = repository.findById(id);
-
-        if (optionalImage.isEmpty()) {
-            throw new Exception("Imagem não encontrada!");
-        }
-
-        return optionalImage.get();
+        return repository.findById(id).orElseThrow(() -> new Exception("Imagem não encontrada!"));
     }
 
     @Override
     public ImageResponseDTO findImageByIdToDTO(Long id) throws Exception {
-        BrandImage image = findImageById(id);
-        return image.toDTO();
+        return findImageById(id).toDTO();
     }
 
     @Override
-    public BrandImage saveImage(BrandImage image) throws IOException {
-        return repository.save(image);
+    public BrandImage saveImage(Image image) throws IOException {
+        return repository.save((BrandImage) image);
     }
 
     @Override
     public ImageResponseDTO createImageFromDTO(ImageRequestDTO imageDTO) throws IOException {
-        BrandImage newImage = new BrandImage(imageDTO);
-        return saveImage(newImage).toDTO();
+        BrandImage image = new BrandImage(imageDTO);
+        return saveImage(image).toDTO();
     }
 
     @Override

@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Address {
+public abstract class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

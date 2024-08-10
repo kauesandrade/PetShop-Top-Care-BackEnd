@@ -1,7 +1,7 @@
-package com.topcare.petshop.controller.image;
+package com.topcare.petshop.controller.image.service;
 
 import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
-import com.topcare.petshop.service.image.ImageServiceImpl;
+import com.topcare.petshop.service.image.service.ServiceImageServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/topcare/image")
+@RequestMapping("/topcare/image/service")
 @AllArgsConstructor
-public class ImageController {
+public class ServiceImageController {
 
-    private final ImageServiceImpl imageService;
+    private final ServiceImageServiceImpl service;
 
     @GetMapping("/{id}")
+
     public ResponseEntity getImage(@PathVariable Long id) {
         try{
-            return new ResponseEntity<>(imageService.findImageByIdToDTO(id), HttpStatus.OK);
+            return new ResponseEntity<>(service.findImageByIdToDTO(id), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -29,7 +30,7 @@ public class ImageController {
     @PostMapping
     public ResponseEntity createImage(ImageRequestDTO imageDTO) {
         try {
-            return new ResponseEntity<>(imageService.createImageFromDTO(imageDTO), HttpStatus.CREATED);
+            return new ResponseEntity<>(service.createImageFromDTO(imageDTO), HttpStatus.CREATED);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -37,9 +38,9 @@ public class ImageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity editImage(@PathVariable Long id, @RequestBody ImageRequestDTO imageDTO) {
+    public ResponseEntity editImage(@PathVariable Long id, ImageRequestDTO imageDTO) {
         try {
-            return new ResponseEntity<>(imageService.editImage(id, imageDTO), HttpStatus.OK);
+            return new ResponseEntity<>(service.editImage(id, imageDTO), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -49,7 +50,7 @@ public class ImageController {
     @DeleteMapping("/{id}")
     public ResponseEntity deleteImage(@PathVariable Long id) {
         try {
-            imageService.deleteImageById(id);
+            service.deleteImageById(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             e.printStackTrace();

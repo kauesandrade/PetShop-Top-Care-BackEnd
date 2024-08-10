@@ -1,7 +1,7 @@
-package com.topcare.petshop.controller.image.brand;
+package com.topcare.petshop.controller.image.petshop;
 
 import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
-import com.topcare.petshop.service.image.brand.BrandImageServiceImpl;
+import com.topcare.petshop.service.image.petshop.PetshopImageServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/topcare/image/brand")
+@RequestMapping("/topcare/image/petshop")
 @AllArgsConstructor
-public class BrandImageController {
+public class PetshopImageController {
 
-    private final BrandImageServiceImpl service;
+    private final PetshopImageServiceImpl service;
 
     @GetMapping("/{id}")
 

@@ -40,7 +40,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity editCustomer(@PathVariable Long id, @RequestBody CustomerRequestPutDTO customer) {
+    public ResponseEntity editCustomer(@PathVariable Long id, CustomerRequestPutDTO customer) {
         try {
             return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);
         } catch (Exception e) {
