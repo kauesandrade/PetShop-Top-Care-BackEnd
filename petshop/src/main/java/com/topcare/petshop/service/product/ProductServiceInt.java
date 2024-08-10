@@ -19,8 +19,9 @@ public interface ProductServiceInt {
     void deleteProductByCode(Long code) throws Exception;
     Boolean existProductByCode(Long code) throws Exception;
     Page<Product> searchProduct(String seachValue,
+                                Integer page,
                                 String orderBy,
-                                List<ProductCategory> productCategoryList);
+                                List<Long> productCategoryList) throws Exception;
 
 
 

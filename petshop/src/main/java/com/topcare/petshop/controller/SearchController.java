@@ -20,14 +20,18 @@ public class SearchController {
     @GetMapping("/product")
     public ResponseEntity searchProduct(@RequestParam String search,
                                         @RequestParam String orderBy,
-                                        @RequestBody List<ProductCategory> productCategoryList){
+                                        @RequestParam Integer page,
+                                        @RequestBody List<Long> productCategoryList){
 
-            return new ResponseEntity(productService.searchProduct(search,
+
+        return new ResponseEntity(productService.searchProduct(search,page,
                     orderBy, productCategoryList), HttpStatus.OK);
+
     }
 
-    @GetMapping("/test")
-    public ResponseEntity test(@RequestBody List<ProductCategory> productCategoryList) throws Exception {
-        return new ResponseEntity(productService.test(productCategoryList), HttpStatus.OK);
-    }
+//    @GetMapping("/test")
+//    public ResponseEntity test(@RequestBody List<Long> productCategoryList) {
+//        productService.getProductByProductCategoryId(productCategoryList);
+//        return new ResponseEntity(HttpStatus.OK);
+//    }
 }

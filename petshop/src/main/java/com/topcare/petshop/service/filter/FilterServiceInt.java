@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public interface FilterServiceInt {
 
-    List<Product> filterProducts(List<Product> productList, List<ProductCategory> productCategoryList);
+    List<Product> filterProducts(List<Long> productCategoryList);
 
 
 //    List<Schedule> filterSchedules(List<Schedule> scheduleList, List<String> categoryList);

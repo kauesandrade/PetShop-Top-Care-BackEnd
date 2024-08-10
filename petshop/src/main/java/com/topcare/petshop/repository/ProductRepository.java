@@ -20,6 +20,10 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> findByCategoriesContains(ProductCategory productCategory);
 
-    List<Product> findAllByCategoriesIsContaining(List<ProductCategory> categories);
+    @Modifying
+    @Transactional
+    @Query(value = "SELECT product_id FROM product_categories WHERE categories_id IN :categories", nativeQuery = true)
+    List<Long> getAllByCategoriesIds(@Param("categories") List<Long> categories);
+
 
 }

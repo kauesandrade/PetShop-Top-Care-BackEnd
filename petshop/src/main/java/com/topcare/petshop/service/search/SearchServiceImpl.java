@@ -6,21 +6,32 @@ import com.topcare.petshop.entity.Schedule;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 @AllArgsConstructor
 public class SearchServiceImpl implements SearchServiceInt {
 
     //    private final ProductRepository productRespository;
-//    private final ServiceRepository serviceRepository;
-//    private final OrderRepository orderRepository;
-//    private final CustomerOrderRepository customerOrderRepository;
 
 
     @Override
     public List<Product> searchProducts(List<Product> productList, String searchValue) {
-        return null;
+
+
+        List<Product> productsSearch = new ArrayList<>();
+        String convertString = searchValue.toLowerCase().replaceAll("-"," ");
+
+        for (Product product : productList){
+            if(product.getTitle().toLowerCase()
+                    .contains(convertString)){
+                productsSearch.add(product);
+            }
+        }
+
+        return productsSearch;
     }
 
     @Override

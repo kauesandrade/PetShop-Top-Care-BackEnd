@@ -8,15 +8,13 @@ import com.topcare.petshop.repository.ProductVariantRepository;
 import com.topcare.petshop.service.brand.BrandServiceImpl;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
 import com.topcare.petshop.service.filter.FilterServiceImpl;
-import com.topcare.petshop.service.filter.FilterServiceInt;
-import com.topcare.petshop.service.orderBy.OrderByServiceImpl;
+import com.topcare.petshop.service.orderBy.SortByServiceImpl;
 import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,7 +26,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     private final BrandServiceImpl brandService;
     private final ProductCategoryServiceImpl productCategoryService;
     private final FilterServiceImpl filterService;
-    private  final OrderByServiceImpl orderByService;
+    private  final SortByServiceImpl orderByService;
     private  final SearchServiceImpl searchService;
 
     @Override
@@ -83,26 +81,14 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public Page<Product> searchProduct(String seachValue, String orderBy, List<ProductCategory> productCategoryList) {
-        Page<Product> productPage = null;
+    public Page<Product> searchProduct(String seachValue, Integer page, String orderBy, List<Long> productCategoryList) {
+        Page<Product> productPage;
+        List<Product> productList;
 
-//        filterService.filterProducts(repository.findAll())
-
+        productList = filterService.filterProducts(productCategoryList);
+        productList = searchService.searchProducts(productList, seachValue);
+        productPage = orderByService.sortProductsBy(productList, orderBy, page);
 
         return productPage;
     }
-
-    public List<Product> test(List<ProductCategory> productCategoryList) throws Exception {
-
-        List<ProductCategory> productCategories = new ArrayList<>();
-
-        for (ProductCategory productCategory : productCategoryList){
-            productCategories.add(productCategoryService.getProductCategoryById(productCategory.getId()));
-        }
-
-        System.out.println(productCategories);
-
-        return repository.findAllByCategoriesIsContaining(productCategories);
-    }
-
 }

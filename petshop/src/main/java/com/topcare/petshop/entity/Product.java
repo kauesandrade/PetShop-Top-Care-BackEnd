@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
@@ -7,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -35,23 +37,33 @@ public class Product {
     @Column(nullable = false, length = 100)
     private String shortDescription;
 
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(nullable = false)
     private Brand brand;
 
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 
     private Double rating;
 
+    @ToString.Exclude
+    @JsonIgnore
     @ManyToMany
     private List<ProductCategory> categories;
 
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
 
+    @ToString.Exclude
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<ProductVariant> variants;
