@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,8 @@ public class Brand {
     @OneToOne
     @JoinColumn(nullable = false)
     private BrandImage image;
+
+    public BrandResponseDTO toDTO() {
+        return new BrandResponseDTO(this.name, this.image.toDTO());
+    }
 }
