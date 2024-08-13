@@ -1,5 +1,6 @@
 package com.topcare.petshop.controller;
 
+import com.topcare.petshop.controller.dto.SearchResquestDTO;
 import com.topcare.petshop.entity.ProductCategory;
 import com.topcare.petshop.service.product.ProductServiceImpl;
 import com.topcare.petshop.service.search.SearchServiceImpl;
@@ -18,14 +19,17 @@ public class SearchController {
     private final ProductServiceImpl productService;
 
     @GetMapping("/product")
-    public ResponseEntity searchProduct(@RequestParam String search,
-                                        @RequestParam String orderBy,
-                                        @RequestParam Integer page,
-                                        @RequestBody List<Long> productCategoryList){
+    public ResponseEntity searchProduct(@RequestParam(required = false) String search,
+                                        @RequestParam(required = false) String sortBy,
+                                        @RequestParam(defaultValue = "0") Integer page,
+                                        @RequestParam(defaultValue = "10") Integer size,
+                                        @RequestBody(required = false) List<Long> productCategoryList){
 
 
-        return new ResponseEntity(productService.searchProduct(search,page,
-                    orderBy, productCategoryList), HttpStatus.OK);
+        SearchResquestDTO searchDTO =
+                new SearchResquestDTO(search, sortBy, page, size, productCategoryList);
+
+        return new ResponseEntity(productService.searchProduct(searchDTO), HttpStatus.OK);
 
     }
 

@@ -1,5 +1,6 @@
 package com.topcare.petshop.service.product;
 
+import com.topcare.petshop.controller.dto.SearchResquestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.Product;
@@ -18,10 +19,7 @@ public interface ProductServiceInt {
     ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
     void deleteProductByCode(Long code) throws Exception;
     Boolean existProductByCode(Long code) throws Exception;
-    Page<Product> searchProduct(String seachValue,
-                                Integer page,
-                                String orderBy,
-                                List<Long> productCategoryList) throws Exception;
+    Page<Product> searchProduct(SearchResquestDTO searchResquestDTO) throws Exception;
 
 
 
