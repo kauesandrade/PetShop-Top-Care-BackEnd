@@ -4,10 +4,12 @@ import com.topcare.petshop.controller.dto.productReview.ProductReviewGetDTO;
 import com.topcare.petshop.controller.dto.productReview.ProductReviewPostDTO;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ProductReviewServiceInt {
 
-    ProductReviewGetDTO getProductReview(Long id);
+    List<ProductReviewGetDTO> getProductReview(Long id);
     ProductReviewPostDTO createProductReview(ProductReviewPostDTO dto);
 
 }

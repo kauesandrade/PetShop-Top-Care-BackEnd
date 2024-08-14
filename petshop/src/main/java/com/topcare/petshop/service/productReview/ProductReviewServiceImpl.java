@@ -2,9 +2,12 @@ package com.topcare.petshop.service.productReview;
 
 import com.topcare.petshop.controller.dto.productReview.ProductReviewGetDTO;
 import com.topcare.petshop.controller.dto.productReview.ProductReviewPostDTO;
+import com.topcare.petshop.entity.ProductReview;
 import com.topcare.petshop.repository.ProductReviewRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -13,12 +16,23 @@ public class ProductReviewServiceImpl implements ProductReviewServiceInt {
     private ProductReviewRepository repository;
 
     @Override
-    public ProductReviewGetDTO getProductReview(Long id) {
-        return null;
+    public List<ProductReviewGetDTO> getProductReview(Long id) {
+        List<ProductReviewGetDTO> reviews = repository.findAllByProduct_Id(id);
+
+        return reviews;
     }
 
     @Override
     public ProductReviewPostDTO createProductReview(ProductReviewPostDTO dto) {
-        return null;
+        ProductReview productReview = ProductReview.builder()
+                .customer(dto.customer())
+                .product(dto.product())
+                .review(dto.review())
+                .creationDate(dto.creationDate())
+                .rating(dto.rating()).build();
+
+        repository.save(productReview);
+
+        return dto;
     }
 }

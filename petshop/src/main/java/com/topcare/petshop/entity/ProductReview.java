@@ -2,6 +2,7 @@ package com.topcare.petshop.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ProductReview {
 
     @Id
@@ -28,4 +30,7 @@ public class ProductReview {
 
     @CreationTimestamp
     private LocalDate creationDate;
+
+    @ManyToOne
+    private Product product;
 }

@@ -45,8 +45,7 @@ public class Product {
     @ManyToMany
     private List<ProductCategory> categories;
 
-    @OneToMany
-    @JoinColumn(name = "product_id")
+    @OneToMany(mappedBy = "product")
     private List<ProductReview> reviews;
 
     @OneToMany(cascade = CascadeType.ALL)
