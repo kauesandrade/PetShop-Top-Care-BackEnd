@@ -3,6 +3,7 @@ package com.topcare.petshop.repository;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.ProductCategory;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,6 +25,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Query(value = "SELECT product_id FROM product_categories WHERE categories_id IN :categories", nativeQuery = true)
     List<Long> getAllByCategoriesIds(@Param("categories") List<Long> categories);
+
+    @Modifying
+    @Transactional
+    @Query(value = "SELECT * FROM product WHERE id IN :products", nativeQuery = true)
+    Page<Product> getPageProduct(@Param("products") List<Long> products);
 
 
 }

@@ -9,7 +9,7 @@ import com.topcare.petshop.repository.ProductVariantRepository;
 import com.topcare.petshop.service.brand.BrandServiceImpl;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
 import com.topcare.petshop.service.filter.FilterServiceImpl;
-import com.topcare.petshop.service.orderBy.SortByServiceImpl;
+import com.topcare.petshop.service.sortBy.SortByServiceImpl;
 import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

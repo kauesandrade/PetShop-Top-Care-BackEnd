@@ -1,4 +1,4 @@
-package com.topcare.petshop.service.orderBy;
+package com.topcare.petshop.service.sortBy;
 
 import com.topcare.petshop.controller.dto.SearchResquestDTO;
 import com.topcare.petshop.entity.OrderItem;
