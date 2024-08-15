@@ -1,15 +1,14 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.contact.ContactRequestGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Contact {
 
     @Id
@@ -22,15 +21,8 @@ public class Contact {
     @Column(length = 11)
     private String telephone;
 
-    public ContactRequestGetDTO toDTO() {
-        return new ContactRequestGetDTO(this.cellphone, this.telephone);
+    public ContactDTO toDTO() {
+        return new ContactDTO(this.cellphone, this.telephone);
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
-
-    public void setCellphone(String cellphone) {
-        this.cellphone = cellphone;
-    }
 }
