@@ -28,7 +28,7 @@ public class PetImageController {
     }
 
     @PostMapping
-    public ResponseEntity createImage(ImageRequestDTO imageDTO) {
+    public ResponseEntity createImage(@ModelAttribute ImageRequestDTO imageDTO) {
         try {
             return new ResponseEntity<>(service.createImageFromDTO(imageDTO), HttpStatus.CREATED);
         } catch (IOException e) {
@@ -38,7 +38,7 @@ public class PetImageController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity editImage(@PathVariable Long id, ImageRequestDTO imageDTO) {
+    public ResponseEntity editImage(@PathVariable Long id, @ModelAttribute ImageRequestDTO imageDTO) {
         try {
             return new ResponseEntity<>(service.editImage(id, imageDTO), HttpStatus.OK);
         } catch (Exception e) {

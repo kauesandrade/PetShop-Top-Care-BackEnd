@@ -1,7 +1,7 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
@@ -12,7 +12,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -68,7 +67,12 @@ public class Customer extends User {
     public Customer(CustomerRequestPostDTO customer) {
         super(customer.fullname(), customer.email(), customer.password(), customer.cpf(), UserRole.CUSTOMER);
 
-        this.setContactInfo(List.of(new Contact(customer.cellphone(), customer.telephone())));
+        Contact contact = Contact.builder()
+                .cellphone(customer.cellphone())
+                .telephone(customer.telephone())
+                .build();
+
+        this.setContactInfo(List.of(contact));
         this.setGender(Gender.defineGender(customer.gender()));
         this.setBirth(LocalDate.parse(customer.birth()));
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
@@ -83,7 +87,7 @@ public class Customer extends User {
     }
 
     public CustomerResponseDTO toDTO() {
-        List<ContactResponseGetDTO> contacts = this.getContactInfo().stream().map(Contact::toDTO).toList();
+        List<ContactResponseDTO> contacts = this.getContactInfo().stream().map(Contact::toDTO).toList();
         List<CustomerAddressResponseGetDTO> addresses = this.getAddresses().stream().map(Address::toDTO).toList();
 
         return new CustomerResponseDTO(
@@ -106,5 +110,6 @@ public class Customer extends User {
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
         this.setGender(customerDTO.gender());
+        this.setContactInfo(customerDTO.contacts().stream().map(Contact::new).toList());
     }
 }

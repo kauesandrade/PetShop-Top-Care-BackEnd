@@ -41,7 +41,7 @@ public class CustomerController {
 
     @PutMapping("/{id}")
     // Tem q ser form-data p poder receber a imagem
-    public ResponseEntity editCustomer(@PathVariable Long id, CustomerRequestPutDTO customer) {
+    public ResponseEntity editCustomer(@PathVariable Long id, @ModelAttribute CustomerRequestPutDTO customer) {
         try {
             return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);
         } catch (Exception e) {

@@ -30,7 +30,7 @@ public class BrandController {
 
     @PostMapping
     // Tem q ser form-data p poder receber a imagem
-    public ResponseEntity createBrand(BrandRequestDTO brand) {
+    public ResponseEntity createBrand(@ModelAttribute BrandRequestDTO brand) {
         try {
             return new ResponseEntity(service.saveBrandFromDTO(brand), HttpStatus.OK);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class BrandController {
 
     @PutMapping("/{id}")
     // Tem q ser form-data p poder receber a imagem
-    public ResponseEntity editBrand(@PathVariable Long id, BrandRequestDTO brand) {
+    public ResponseEntity editBrand(@PathVariable Long id, @ModelAttribute BrandRequestDTO brand) {
         try {
             return new ResponseEntity(service.editBrandFromDTO(id, brand), HttpStatus.OK);
         } catch (Exception e) {

@@ -2,7 +2,7 @@ package com.topcare.petshop.controller.dto.card;
 
 import java.time.LocalDate;
 
-public record CardRequestPostDTO(
+public record CardRequestDTO(
 
         String name,
         String lastDigits,

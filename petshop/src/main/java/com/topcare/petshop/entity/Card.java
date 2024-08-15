@@ -43,7 +43,7 @@ public class Card {
     }
 
     public CardResponseDTO toDTO() {
-        return new CardResponseDTO(this.name, this.lastDigits, this.expirationDate, this.mainCard);
+        return new CardResponseDTO(this.id, this.name, this.lastDigits, this.expirationDate, this.mainCard);
     }
 
     public void edit(CardRequestDTO dto) {
