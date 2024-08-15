@@ -15,7 +15,6 @@ import java.util.Objects;
 @AllArgsConstructor
 public class FilterServiceImpl implements FilterServiceInt{
 
-
     private final ProductRepository productRepository;
 
     @Override
@@ -24,34 +23,13 @@ public class FilterServiceImpl implements FilterServiceInt{
         if(productCategoryList.isEmpty()){
             return productRepository.findAll();
         }
-
-
-        List<Product> allProduct = getProductByProductCategoryId(productCategoryList);
-        List<Product> productsFilter = new ArrayList<>();
-
-        for (Product product : allProduct){
-            int exist = 0;
-            for (Long idCategory : productCategoryList){
-                for (ProductCategory productCategory : product.getCategories()){
-                    if(Objects.equals(productCategory.getId(), idCategory)){
-                        exist++;
-
-                    }
-                }
-            }
-
-            if (exist == productCategoryList.size()){
-                productsFilter.add(product);
-            }
-        }
-
-        return productsFilter;
+        return findAllByCategoryIds(productCategoryList);
     }
 
-    private List<Product> getProductByProductCategoryId(List<Long> productCategoryList) {
+    private List<Product> findAllByCategoryIds(List<Long> productCategoryList) {
 
         HashMap<Long, Product> productList = new HashMap<>();
-        for(Long idProduct : productRepository.getAllByCategoriesIds(productCategoryList)){
+        for(Long idProduct : productRepository.findAllByCategoryIds(productCategoryList, productCategoryList.size())){
             productList.put(idProduct, productRepository.findById(idProduct).get());
         }
 

@@ -14,6 +14,8 @@ import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,7 +33,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     private  final SearchServiceImpl searchService;
 
     @Override
-    public ProductResponseDTO getProductByCode(Long code) throws Exception {
+    public ProductResponseDTO findProductByCode(Long code) throws Exception {
        existProductByCode(code);
        return repository.findByCode(code).get().toDTO();
     }
@@ -91,5 +93,10 @@ public class ProductServiceImpl implements ProductServiceInt {
         productPage = orderByService.sortProductsBy(productList, searchResquestDTO);
 
         return productPage;
+    }
+
+    @Override
+    public Page<Product> findAllProductByIds(List<Long> productIds, Pageable pageable) {
+        return repository.findAllByIdIn(productIds, pageable);
     }
 }

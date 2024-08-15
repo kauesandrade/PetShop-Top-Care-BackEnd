@@ -4,6 +4,8 @@ import com.topcare.petshop.controller.dto.SearchResquestDTO;
 import com.topcare.petshop.entity.OrderItem;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.Schedule;
+import com.topcare.petshop.repository.ProductRepository;
+import com.topcare.petshop.service.product.ProductServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -17,43 +19,15 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SortByServiceImpl implements SortByServiceInt {
 
+//    private final ProductServiceImpl productService;
+    private final ProductRepository productRepository;
+
     @Override
     public Page<Product> sortProductsBy(List<Product> productList, SearchResquestDTO searchRequestDTO) {
 
-        Sort.Order order = convertSortBy(searchRequestDTO.sortBy()).iterator().next();
-        Comparator<Product> comparator = (o1, o2) -> {
-            try {
-                Field field = Product.class.getDeclaredField(order.getProperty());
-                field.setAccessible(true);
-
-                Object value1 = field.get(o1);
-                Object value2 = field.get(o2);
-                field.setAccessible(false);
-
-                if (value1 instanceof Comparable && value2 instanceof Comparable) {
-                    return order.isAscending()
-                            ? ((Comparable) value1).compareTo(value2)
-                            : ((Comparable) value2).compareTo(value1);
-                } else {
-                    System.out.println("Se não for comparável, considera igual");
-                    return 0;
-                }
-            } catch (Exception e) {
-                System.out.println("Erro ao acessar o atributo: " + e.getMessage());
-                return 0;
-            }
-        };
-
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
+        return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
 
-        List<Product> listaOrdenada = productList.stream()
-                .sorted(comparator)
-                .collect(Collectors.toList());
-
-        int start = (int) pageable.getOffset();
-        int end = Math.min((start + pageable.getPageSize()), listaOrdenada.size());
-
-        return new PageImpl<>(listaOrdenada.subList(start, end), pageable, listaOrdenada.size());
     }
 
     @Override
@@ -93,7 +67,9 @@ public class SortByServiceImpl implements SortByServiceInt {
             case "Nome (Z-A)" ->{
                 return Sort.by("title").descending();
             }
+            default -> {
+                return Sort.by("rating").ascending();
+            }
         }
-        return null;
     }
 }
