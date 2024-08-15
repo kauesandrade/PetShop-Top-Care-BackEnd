@@ -21,7 +21,7 @@ public class CustomerController {
     private final CustomerServiceImpl service;
 
     @GetMapping
-    public ResponseEntity<List<CustomerResponseDTO>> getCustomers() {
+    public ResponseEntity<List<CustomerResponseDTO>> getAllCustomers() {
         return new ResponseEntity(service.getCustomersToDTO(), HttpStatus.OK);
     }
 
@@ -40,6 +40,7 @@ public class CustomerController {
     }
 
     @PutMapping("/{id}")
+    // Tem q ser form-data p poder receber a imagem
     public ResponseEntity editCustomer(@PathVariable Long id, CustomerRequestPutDTO customer) {
         try {
             return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);

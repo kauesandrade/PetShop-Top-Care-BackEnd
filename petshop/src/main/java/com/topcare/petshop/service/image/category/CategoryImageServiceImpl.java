@@ -3,16 +3,13 @@ package com.topcare.petshop.service.image.category;
 import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
 import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
 import com.topcare.petshop.entity.CategoryImage;
-import com.topcare.petshop.entity.CategoryImage;
 import com.topcare.petshop.entity.Image;
-import com.topcare.petshop.repository.BrandImageRepository;
 import com.topcare.petshop.repository.CategoryImageRepository;
 import com.topcare.petshop.service.image.ImageServiceInt;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -44,7 +41,7 @@ public class CategoryImageServiceImpl implements ImageServiceInt {
     @Override
     public ImageResponseDTO editImage(Long id, ImageRequestDTO imageDTO) throws Exception {
         CategoryImage image = findImageById(id);
-        image.edit(imageDTO);
+        image.editFromDTO(imageDTO);
         return saveImage(image).toDTO();
     }
 

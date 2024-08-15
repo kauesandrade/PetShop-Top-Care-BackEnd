@@ -41,7 +41,7 @@ public class PetshopImageServiceImpl implements ImageServiceInt {
     @Override
     public ImageResponseDTO editImage(Long id, ImageRequestDTO imageDTO) throws Exception {
         PetshopImage image = findImageById(id);
-        image.edit(imageDTO);
+        image.editFromDTO(imageDTO);
         return saveImage(image).toDTO();
     }
 

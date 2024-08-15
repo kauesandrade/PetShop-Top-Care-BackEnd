@@ -41,7 +41,7 @@ public class ServiceImageServiceImpl implements ImageServiceInt {
     @Override
     public ImageResponseDTO editImage(Long id, ImageRequestDTO imageDTO) throws Exception {
         ServiceImage image = findImageById(id);
-        image.edit(imageDTO);
+        image.editFromDTO(imageDTO);
         return saveImage(image).toDTO();
     }
 
