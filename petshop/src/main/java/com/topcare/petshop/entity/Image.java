@@ -62,4 +62,10 @@ public abstract class Image {
         editFromFile(imageDTO.file());
     }
 
+    public void edit(MultipartFile file) throws IOException {
+        this.name = file.getName();
+        this.type = file.getContentType();
+        this.size = file.getSize();
+        this.file = file.getBytes();
+    }
 }

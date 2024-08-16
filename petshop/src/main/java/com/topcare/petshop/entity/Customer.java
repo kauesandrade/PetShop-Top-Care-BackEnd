@@ -1,6 +1,7 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactRequestPutDTO;
 import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
@@ -104,12 +105,17 @@ public class Customer extends User {
     }
 
     public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
-        this.setProfileImage(new CustomerImage(customerDTO.profileImage()));
+        this.profileImage.edit(customerDTO.profileImage());
+
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
         this.setGender(customerDTO.gender());
-        this.setContactInfo(customerDTO.contacts().stream().map(Contact::new).toList());
+
+        for (int i = 0; i < this.contactInfo.size(); i++) {
+            ContactRequestPutDTO contactDTO = customerDTO.contacts().get(i);
+            this.contactInfo.get(i).edit(contactDTO);
+        }
     }
 }

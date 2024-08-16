@@ -38,4 +38,8 @@ public class Contact {
         return new ContactResponseDTO(this.id, this.cellphone, this.telephone);
     }
 
+    public void edit(ContactRequestPutDTO contactDTO) {
+        this.setCellphone(contactDTO.cellphone());
+        this.setTelephone(contactDTO.telephone());
+    }
 }

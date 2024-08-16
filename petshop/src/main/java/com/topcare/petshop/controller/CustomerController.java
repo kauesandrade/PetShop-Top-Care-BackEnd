@@ -1,14 +1,13 @@
 package com.topcare.petshop.controller;
 
-import com.topcare.petshop.controller.dto.customer.CustomerPasswordRequestPatchDTO;
-import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
-import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
-import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.controller.dto.customer.*;
 import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -39,12 +38,22 @@ public class CustomerController {
         return new ResponseEntity(service.saveCustomerFromDTO(customer), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
     // Tem q ser form-data p poder receber a imagem
-    public ResponseEntity editCustomer(@PathVariable Long id, @ModelAttribute CustomerRequestPutDTO customer) {
+    public ResponseEntity editCustomer(@PathVariable Long id, @RequestPart MultipartFile profileImage, @RequestPart CustomerWoImageRequestPutDTO customer) {
+        CustomerRequestPutDTO customerDTO = new CustomerRequestPutDTO(
+                profileImage,
+                customer.fullname(),
+                customer.email(),
+                customer.cpf(),
+                customer.birth(),
+                customer.gender(),
+                customer.contacts()
+        );
         try {
-            return new ResponseEntity(service.editCustomerFromDTO(id, customer), HttpStatus.OK);
+            return new ResponseEntity(service.editCustomerFromDTO(id, customerDTO), HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }

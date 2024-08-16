@@ -165,8 +165,8 @@ VALUES (null, "Pet", 6),
        (null, "Marca", 9);
 
 INSERT INTO contact (id, cellphone, telephone, customer_id)
-VALUES (1, "47999999999", null, 1),
-       (5, "47888888888", null, 5);
+VALUES (null, "47999999999", null, 1),
+       (null, "47888888888", null, 5);
 
 INSERT INTO customer_address (id, customer_id)
 VALUES (1, 1),
