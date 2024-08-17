@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public interface ProductServiceInt {
 
-    ProductResponseDTO findProductByCode(Long code) throws Exception;
+    ProductResponseDTO getProductByCode(Long code) throws Exception;
     Product createProduct(ProductRequestPostDTO productPostDTO) throws Exception;
     ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
     void deleteProductByCode(Long code) throws Exception;

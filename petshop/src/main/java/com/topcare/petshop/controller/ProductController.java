@@ -1,6 +1,5 @@
 package com.topcare.petshop.controller;
 
-
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.service.product.ProductServiceImpl;
@@ -11,17 +10,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("topcare/product")
+@CrossOrigin("*")
 @AllArgsConstructor
 public class ProductController {
 
    private final ProductServiceImpl productService;
 
-
-   @GetMapping("/{code}")
-   public ResponseEntity findProductByCode(@PathVariable Long code){
+   @CrossOrigin("*")
+   @GetMapping("/{code}")   
+   public ResponseEntity getProductByCode(@PathVariable Long code){
 
        try{
-           return new ResponseEntity<>(productService.findProductByCode(code), HttpStatus.OK);
+           return new ResponseEntity<>(productService.getProductByCode(code), HttpStatus.OK);
        }catch (Exception e){
            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
        }

@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     private  final SearchServiceImpl searchService;
 
     @Override
-    public ProductResponseDTO findProductByCode(Long code) throws Exception {
+    public ProductResponseDTO getProductByCode(Long code) throws Exception {
        existProductByCode(code);
        return repository.findByCode(code).get().toDTO();
     }
