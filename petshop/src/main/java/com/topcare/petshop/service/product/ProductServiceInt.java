@@ -1,12 +1,11 @@
 package com.topcare.petshop.service.product;
 
-import com.topcare.petshop.controller.dto.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
 import com.topcare.petshop.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

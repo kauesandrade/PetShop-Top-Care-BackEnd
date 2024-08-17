@@ -1,8 +1,8 @@
 package com.topcare.petshop.controller.dto.product.response;
 
-import com.topcare.petshop.entity.Brand;
-import com.topcare.petshop.entity.ProductCategory;
-import com.topcare.petshop.entity.ProductReview;
+import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
+import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
+import com.topcare.petshop.controller.dto.review.ProductReviewResponseDTO;
 import com.topcare.petshop.entity.ProductSpecification;
 
 import java.util.List;
@@ -12,10 +12,10 @@ public record ProductResponseDTO(
         String title,
         String description,
         String shortDescription,
-        Brand brand,
+        BrandResponseDTO brand,
         List<ProductSpecification> specifications,
         Double rating,
-        List<ProductCategory> categories,
-        List<ProductReview> reviews,
+        List<CategoryResponseDTO> categories,
+        List<ProductReviewResponseDTO> reviews,
         List<ProductVariantResponseDTO> variants
 ) { }

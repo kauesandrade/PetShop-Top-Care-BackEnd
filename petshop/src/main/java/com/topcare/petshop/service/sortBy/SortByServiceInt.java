@@ -1,6 +1,6 @@
 package com.topcare.petshop.service.sortBy;
 
-import com.topcare.petshop.controller.dto.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
 import com.topcare.petshop.entity.OrderItem;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.Schedule;

@@ -19,8 +19,6 @@ public class ProductCategory {
     private String title;
 
     @ManyToOne
-    @JsonIgnore
-    @ToString.Exclude
     private CategoryGroup categoryGroup;
 
     public ProductCategory(String title) {

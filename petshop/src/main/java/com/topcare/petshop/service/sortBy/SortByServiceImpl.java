@@ -1,19 +1,15 @@
 package com.topcare.petshop.service.sortBy;
 
-import com.topcare.petshop.controller.dto.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
 import com.topcare.petshop.entity.OrderItem;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.Schedule;
 import com.topcare.petshop.repository.ProductRepository;
-import com.topcare.petshop.service.product.ProductServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -26,6 +22,7 @@ public class SortByServiceImpl implements SortByServiceInt {
     public Page<Product> sortProductsBy(List<Product> productList, SearchResquestDTO searchRequestDTO) {
 
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
+
         return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
 
     }

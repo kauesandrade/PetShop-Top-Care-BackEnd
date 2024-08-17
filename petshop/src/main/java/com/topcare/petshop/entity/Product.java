@@ -3,6 +3,7 @@ package com.topcare.petshop.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,33 +38,23 @@ public class Product {
     @Column(nullable = false, length = 100)
     private String shortDescription;
 
-    @ToString.Exclude
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(nullable = false)
     private Brand brand;
 
-    @ToString.Exclude
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 
     private Double rating;
 
-    @ToString.Exclude
-    @JsonIgnore
     @ManyToMany
     private List<ProductCategory> categories;
 
-    @ToString.Exclude
-    @JsonIgnore
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
 
-    @ToString.Exclude
-    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<ProductVariant> variants;
@@ -79,22 +70,32 @@ public class Product {
         setVariants(productVariants);
     }
 
-    public ProductResponseDTO toDTO(){
+    public ProductResponseSearchPageableDTO toSearchPageableDTO(){
+        return new ProductResponseSearchPageableDTO(
+                getCode(),
+                getTitle(),
+                getVariants().get(0).getPrice(),
+                getVariants().get(0).getDiscount(),
+                2,
+                getBrand().toDTO(),
+                getRating(),
+                getCategories().stream().map(ProductCategory::toDTO).toList()
+        );
+    }
 
-        List< ProductVariantResponseDTO > variantsDTO =
-                getVariants().stream().map(variants -> variants.toDTO()).toList();
+    public ProductResponseDTO toDTO(){
 
         return new ProductResponseDTO(
                 getCode(),
                 getTitle(),
                 getDescription(),
                 getShortDescription(),
-                getBrand(),
+                getBrand().toDTO(),
                 getSpecifications(),
                 getRating(),
-                getCategories(),
-                getReviews(),
-                variantsDTO
+                getCategories().stream().map(ProductCategory::toDTO).toList(),
+                getReviews().stream().map(ProductReview::toDTO).toList(),
+                getVariants().stream().map(ProductVariant::toDTO).toList()
         );
     }
 

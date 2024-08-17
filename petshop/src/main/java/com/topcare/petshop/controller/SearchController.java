@@ -1,9 +1,8 @@
 package com.topcare.petshop.controller;
 
-import com.topcare.petshop.controller.dto.SearchResquestDTO;
-import com.topcare.petshop.entity.ProductCategory;
+import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
+import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.service.product.ProductServiceImpl;
-import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,13 +28,8 @@ public class SearchController {
         SearchResquestDTO searchDTO =
                 new SearchResquestDTO(search, sortBy, page, size, productCategoryList);
 
-        return new ResponseEntity(productService.searchProduct(searchDTO), HttpStatus.OK);
+        return new ResponseEntity(productService.searchProduct(searchDTO).map(Product::toSearchPageableDTO), HttpStatus.OK);
 
     }
-
-//    @GetMapping("/test")
-//    public ResponseEntity test(@RequestBody List<Long> productCategoryList) {
-//        productService.getProductByProductCategoryId(productCategoryList);
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
+    
 }

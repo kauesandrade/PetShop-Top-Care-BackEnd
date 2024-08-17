@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,10 +16,17 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @OneToOne
     @JoinColumn(nullable = false)
     private BrandImage image;
+
+    public BrandResponseDTO toDTO() {
+        return new BrandResponseDTO(
+                getId(),
+                getName()
+        );
+    }
 }
