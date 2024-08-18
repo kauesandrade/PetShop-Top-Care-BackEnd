@@ -1,6 +1,6 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.product.response.ProductSpecificationResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductSpecificationResponsePageDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,8 +27,15 @@ public class ProductSpecification {
         setDescription(description);
     }
 
-    public ProductSpecification(ProductSpecificationResponseDTO productSpecificationResponseDTO) {
+    public ProductSpecification(ProductSpecificationResponsePageDTO productSpecificationResponseDTO) {
         setTitle(productSpecificationResponseDTO.title());
         setDescription(productSpecificationResponseDTO.description());
+    }
+
+    public ProductSpecificationResponsePageDTO toDTO() {
+        return new ProductSpecificationResponsePageDTO(
+                getTitle(),
+                getDescription()
+        );
     }
 }

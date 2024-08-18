@@ -4,6 +4,7 @@ import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.controller.dto.customer.CustomerResponseReviewDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -93,4 +94,10 @@ public class Customer extends User {
         );
     }
 
+    public CustomerResponseReviewDTO toReviewDTO() {
+        return new CustomerResponseReviewDTO(
+          this.getFullname(),
+          this.profileImage.getFile()
+        );
+    }
 }

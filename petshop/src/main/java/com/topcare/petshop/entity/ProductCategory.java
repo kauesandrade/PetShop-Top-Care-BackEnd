@@ -1,7 +1,6 @@
 package com.topcare.petshop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,8 +24,9 @@ public class ProductCategory {
         setTitle(title);
     }
 
-    public CategoryResponseDTO toDTO(){
-        return new CategoryResponseDTO(
+    public ProductCategoryResponseDTO toDTO(){
+        return new ProductCategoryResponseDTO(
+                getId(),
                 getTitle()
         );
     }

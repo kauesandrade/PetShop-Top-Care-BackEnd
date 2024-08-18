@@ -32,7 +32,7 @@ public class ProductReview {
 
     public ProductReviewResponseDTO toDTO() {
         return  new ProductReviewResponseDTO(
-                getCustomer().getFullname(),
+                getCustomer().toReviewDTO(),
                 getReview(),
                 getRating(),
                 getCreationDate()

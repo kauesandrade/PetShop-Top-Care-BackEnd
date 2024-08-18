@@ -2,7 +2,7 @@ package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupRequestDTO;
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupResponseDTO;
-import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,7 +46,7 @@ public class CategoryGroup {
     }
 
     public CategoryGroupResponseDTO toDTO(){
-        List<CategoryResponseDTO> categoriesDTO = getCategories().stream().map(
+        List<ProductCategoryResponseDTO> categoriesDTO = getCategories().stream().map(
                 productCategory -> productCategory.toDTO()).toList();
 
         return new CategoryGroupResponseDTO(

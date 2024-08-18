@@ -1,6 +1,7 @@
 package com.topcare.petshop.controller.dto.category;
 
-public record CategoryResponseDTO(
+public record ProductCategoryResponseDTO(
+        Long id,
         String title
 ) {
 }

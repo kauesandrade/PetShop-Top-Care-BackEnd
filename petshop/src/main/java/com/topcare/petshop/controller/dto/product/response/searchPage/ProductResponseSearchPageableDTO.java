@@ -1,7 +1,7 @@
-package com.topcare.petshop.controller.dto.product.response;
+package com.topcare.petshop.controller.dto.product.response.searchPage;
 
 import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
-import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 
 
 import java.util.List;
@@ -14,6 +14,6 @@ public record ProductResponseSearchPageableDTO(
         Integer parcels,
         BrandResponseDTO brand,
         Double rating,
-        List<CategoryResponseDTO> categories
+        List<ProductCategoryResponseDTO> categories
 ) {
 }

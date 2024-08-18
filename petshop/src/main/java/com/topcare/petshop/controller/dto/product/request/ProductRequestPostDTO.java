@@ -1,6 +1,6 @@
 package com.topcare.petshop.controller.dto.product.request;
 
-import com.topcare.petshop.controller.dto.product.response.ProductSpecificationResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductSpecificationResponsePageDTO;
 import com.topcare.petshop.entity.Brand;
 import com.topcare.petshop.entity.ProductCategory;
 
@@ -14,7 +14,7 @@ public record ProductRequestPostDTO(
         String shortDescription,
         Brand brand,
         List<ProductCategory> categories,
-        List<ProductSpecificationResponseDTO> specifications,
+        List<ProductSpecificationResponsePageDTO> specifications,
         List<ProductVariantRequestPostDTO> variants
 
 ) {

@@ -1,21 +1,20 @@
-package com.topcare.petshop.controller.dto.product.response;
+package com.topcare.petshop.controller.dto.product.response.page;
 
 import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
-import com.topcare.petshop.controller.dto.category.CategoryResponseDTO;
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import com.topcare.petshop.controller.dto.review.ProductReviewResponseDTO;
-import com.topcare.petshop.entity.ProductSpecification;
 
 import java.util.List;
 
-public record ProductResponseDTO(
+public record ProductResponsePageDTO(
         Long code,
         String title,
         String description,
         String shortDescription,
         BrandResponseDTO brand,
-        List<ProductSpecification> specifications,
+        List<ProductSpecificationResponsePageDTO> specifications,
         Double rating,
-        List<CategoryResponseDTO> categories,
+        List<ProductCategoryResponseDTO> categories,
         List<ProductReviewResponseDTO> reviews,
-        List<ProductVariantResponseDTO> variants
+        List<ProductVariantResponsePageDTO> variants
 ) { }

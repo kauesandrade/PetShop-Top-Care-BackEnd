@@ -1,8 +1,9 @@
 package com.topcare.petshop.service.product;
 
+import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
 import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
 import com.topcare.petshop.entity.*;
 import com.topcare.petshop.repository.ProductRepository;
 import com.topcare.petshop.repository.ProductVariantRepository;
@@ -14,7 +15,6 @@ import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,17 +28,18 @@ public class ProductServiceImpl implements ProductServiceInt {
     private final BrandServiceImpl brandService;
     private final ProductCategoryServiceImpl productCategoryService;
     private final FilterServiceImpl filterService;
-    private  final SortByServiceImpl orderByService;
+    private  final SortByServiceImpl sortByService;
     private  final SearchServiceImpl searchService;
 
     @Override
-    public ProductResponseDTO getProductByCode(Long code) throws Exception {
+    public ProductResponsePageDTO getProductByCode(Long code) throws Exception {
        existProductByCode(code);
-       return repository.findByCode(code).get().toDTO();
+       return repository.findByCode(code).get().toPageDTO();
     }
 
+
     @Override
-    public Product createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
+    public ProductResponsePageDTO createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
 
         if(repository.existsByCode(productPostDTO.code())){
             throw new Exception("Esse código já está vinculado a um produto");
@@ -54,18 +55,18 @@ public class ProductServiceImpl implements ProductServiceInt {
                 .stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
-        return repository.save(product);
+        return repository.save(product).toPageDTO();
     }
 
     @Override
-    public ProductResponseDTO editProduct(ProductRequestPostDTO productPutDTO, Long code) {
+    public ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code) {
 
         ModelMapper modelMapper = new ModelMapper();
 
         Product product = modelMapper.map(productPutDTO, Product.class);
         product.setCode(code);
 
-        return repository.save(product).toDTO();
+        return repository.save(product).toPageDTO();
     }
 
     @Override
@@ -82,20 +83,39 @@ public class ProductServiceImpl implements ProductServiceInt {
         return true;
     }
 
+    public List<ProductResponseCardDTO> getSimilarProductsByCode(Long code) throws Exception {
+        existProductByCode(code);
+        Product product = repository.findByCode(code).get();
+        List<Product> similarProducts = filterService.filterProducts(product.getCategories().stream().map(ProductCategory::getId).toList());
+
+        if(similarProducts.size() >= 10){
+            similarProducts = similarProducts.stream().filter(product1 -> !product1.getCode().equals(product.getCode())).toList().subList(0, 9);
+        }
+
+        return similarProducts.stream().map(Product::toCardDTO).toList();
+    }
+
     @Override
-    public Page<Product> searchProduct(SearchResquestDTO searchResquestDTO) {
+    public List<ProductResponseCardDTO> getProductsByCategories(List<Long> categories) throws Exception {
+
+        List<Product> products = filterService.filterProducts(categories);
+
+        if (products.size() >= 10) {
+            products = products.subList(0, 9);
+        }
+
+        return products.stream().map(Product::toCardDTO).toList();
+    }
+
+    @Override
+    public Page<ProductResponsePageDTO> searchProduct(SearchResquestDTO searchResquestDTO) {
         Page<Product> productPage;
         List<Product> productList;
 
         productList = filterService.filterProducts(searchResquestDTO.productCategoryList());
         productList = searchService.searchProducts(productList, searchResquestDTO.search());
-        productPage = orderByService.sortProductsBy(productList, searchResquestDTO);
+        productPage = sortByService.sortProductsBy(productList, searchResquestDTO);
 
-        return productPage;
-    }
-
-    @Override
-    public Page<Product> findAllProductByIds(List<Long> productIds, Pageable pageable) {
-        return repository.findAllByIdIn(productIds, pageable);
+        return productPage.map(Product::toPageDTO);
     }
 }

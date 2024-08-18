@@ -1,12 +1,15 @@
 package com.topcare.petshop.controller;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
 import com.topcare.petshop.service.product.ProductServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping("topcare/product")
@@ -27,11 +30,29 @@ public class ProductController {
        }
    }
 
+   @GetMapping("/similar/{code}")
+   public ResponseEntity getSimilarProductsByCode(@PathVariable Long code){
+       try {
+           return new ResponseEntity(productService.getSimilarProductsByCode(code), HttpStatus.OK);
+       }catch (Exception e){
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+       }
+   }
+
+   @PutMapping("/categories")
+   public ResponseEntity getProductsByCategories(@RequestBody List<Long> categories){
+       try {
+           return new ResponseEntity<>(productService.getProductsByCategories(categories), HttpStatus.OK);
+       }catch (Exception e){
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+       }
+   }
+
     @PostMapping
     public ResponseEntity createProduct(@RequestBody ProductRequestPostDTO productDTO) throws Exception {
 
         try{
-            return new ResponseEntity<>(productService.createProduct(productDTO).toDTO(),
+            return new ResponseEntity<>(productService.createProduct(productDTO),
                     HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -40,8 +61,8 @@ public class ProductController {
     }
 
     @PutMapping("/{code}")
-    public ResponseEntity<ProductResponseDTO> editProduct(@PathVariable Long code,
-                                                          @RequestBody ProductRequestPostDTO productDTO){
+    public ResponseEntity<ProductResponsePageDTO> editProduct(@PathVariable Long code,
+                                                              @RequestBody ProductRequestPostDTO productDTO){
 
        return new ResponseEntity<>(productService.editProduct(productDTO, code), HttpStatus.OK);
     }

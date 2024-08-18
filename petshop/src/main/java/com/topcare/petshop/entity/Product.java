@@ -1,15 +1,13 @@
 package com.topcare.petshop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseSearchPageableDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
+import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.List;
 
@@ -83,15 +81,15 @@ public class Product {
         );
     }
 
-    public ProductResponseDTO toDTO(){
+    public ProductResponsePageDTO toPageDTO(){
 
-        return new ProductResponseDTO(
+        return new ProductResponsePageDTO(
                 getCode(),
                 getTitle(),
                 getDescription(),
                 getShortDescription(),
                 getBrand().toDTO(),
-                getSpecifications(),
+                getSpecifications().stream().map(ProductSpecification::toDTO).toList(),
                 getRating(),
                 getCategories().stream().map(ProductCategory::toDTO).toList(),
                 getReviews().stream().map(ProductReview::toDTO).toList(),
@@ -103,4 +101,18 @@ public class Product {
         setEnabled(!getEnabled());
     }
 
+    public ProductResponseCardDTO toCardDTO() {
+        return new ProductResponseCardDTO(
+                getCode(),
+                getVariants().get(0).getVariantCode(),
+                getTitle(),
+                getBrand().toDTO(),
+                getVariants().get(0).getPrice(),
+                getVariants().get(0).getDiscount(),
+                2,
+                getRating(),
+                getVariants().get(0).getImages().get(0)
+
+        );
+    }
 }

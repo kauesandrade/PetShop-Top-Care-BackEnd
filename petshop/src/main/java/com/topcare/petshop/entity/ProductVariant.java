@@ -1,12 +1,10 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -59,16 +57,17 @@ public class ProductVariant {
         }
     }
 
-    public ProductVariantResponseDTO toDTO(){
+    public ProductVariantResponsePageDTO toDTO(){
 
         Boolean isStockAvailable = stock > 0;
         Double discountPrice = price - (price * (discount/100));
 
-        return new ProductVariantResponseDTO(
+        return new ProductVariantResponsePageDTO(
                 getVariantTitle(),
                 getVariantCode(),
                 getPrice(),
                 discountPrice,
+                2,
                 isStockAvailable,
                 getImages()
         );

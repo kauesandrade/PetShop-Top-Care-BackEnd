@@ -17,19 +17,18 @@ public class SearchController {
 
     private final ProductServiceImpl productService;
 
-    @GetMapping("/product")
+    @PutMapping("/product")
     public ResponseEntity searchProduct(@RequestParam(required = false) String search,
                                         @RequestParam(required = false) String sortBy,
                                         @RequestParam(defaultValue = "0") Integer page,
                                         @RequestParam(defaultValue = "10") Integer size,
-                                        @RequestBody(required = false) List<Long> productCategoryList){
+                                        @RequestBody(required = false) List<Long> productCategories){
 
 
         SearchResquestDTO searchDTO =
-                new SearchResquestDTO(search, sortBy, page, size, productCategoryList);
+                new SearchResquestDTO(search, sortBy, page, size, productCategories);
 
-        return new ResponseEntity(productService.searchProduct(searchDTO).map(Product::toSearchPageableDTO), HttpStatus.OK);
-
+        return new ResponseEntity(productService.searchProduct(searchDTO), HttpStatus.OK);
     }
     
 }

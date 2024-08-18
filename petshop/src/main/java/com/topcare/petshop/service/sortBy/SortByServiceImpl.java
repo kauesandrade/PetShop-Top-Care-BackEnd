@@ -22,7 +22,6 @@ public class SortByServiceImpl implements SortByServiceInt {
     public Page<Product> sortProductsBy(List<Product> productList, SearchResquestDTO searchRequestDTO) {
 
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
-
         return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
 
     }
