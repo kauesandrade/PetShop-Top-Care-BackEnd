@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public record ProductReviewGetDTO (
 
-        Customer customer,
+//        Customer customer,
         String review,
         Integer rating,
         LocalDate creationDate
