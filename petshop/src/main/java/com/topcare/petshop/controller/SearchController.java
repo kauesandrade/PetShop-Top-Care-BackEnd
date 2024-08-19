@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("topcare/search")
+@CrossOrigin(origins = "*")
 @AllArgsConstructor
 public class SearchController {
 

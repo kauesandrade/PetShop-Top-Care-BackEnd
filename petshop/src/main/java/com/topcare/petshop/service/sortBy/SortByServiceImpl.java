@@ -51,15 +51,15 @@ public class SortByServiceImpl implements SortByServiceInt {
             case "Popularidade" -> {
                 return Sort.by("rating").ascending();
             }
-            case "Maior Preço" ->{
-                return Sort.by("price").ascending();
-            }
-            case "Menor Preço" ->{
-                return Sort.by("price").descending();
-            }
-            case "Maiores Descontos" ->{
-                return Sort.by("price").descending();
-            }
+//            case "Maior Preço" ->{
+//                return Sort.by("price").ascending();
+//            }
+//            case "Menor Preço" ->{
+//                return Sort.by("price").descending();
+//            }
+//            case "Maiores Descontos" ->{
+//                return Sort.by("price").descending();
+//            }
             case "Nome (A-Z)" ->{
                 return Sort.by("title").ascending();
             }
