@@ -42,4 +42,8 @@ public class CustomerOrder {
     @OneToOne(cascade = CascadeType.ALL)
     private Shipping shipping;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
 }

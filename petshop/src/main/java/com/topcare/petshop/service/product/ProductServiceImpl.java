@@ -1,7 +1,7 @@
 package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
-import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
 import com.topcare.petshop.entity.*;
@@ -108,13 +108,13 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public Page<ProductResponsePageDTO> searchProduct(SearchResquestDTO searchResquestDTO) {
+    public Page<ProductResponsePageDTO> searchProduct(SearchRequestDTO searchRequestDTO,  List<Long> productCategories) {
         Page<Product> productPage;
         List<Product> productList;
 
-        productList = filterService.filterProducts(searchResquestDTO.productCategoryList());
-        productList = searchService.searchProducts(productList, searchResquestDTO.search());
-        productPage = sortByService.sortProductsBy(productList, searchResquestDTO);
+        productList = filterService.filterProducts(productCategories);
+        productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
+        productPage = sortByService.sortProductsBy(productList, searchRequestDTO);
 
         return productPage.map(Product::toPageDTO);
     }

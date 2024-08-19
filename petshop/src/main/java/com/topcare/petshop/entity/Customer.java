@@ -45,8 +45,7 @@ public class Customer extends User {
     @JoinColumn(name = "customer_id")
     private List<Card> cards;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<CustomerOrder> orders;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

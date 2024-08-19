@@ -1,7 +1,7 @@
 package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
-import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
 import org.springframework.data.domain.Page;
@@ -19,7 +19,10 @@ public interface ProductServiceInt {
     ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
     void deleteProductByCode(Long code) throws Exception;
     Boolean existProductByCode(Long code) throws Exception;
-    Page<ProductResponsePageDTO> searchProduct(SearchResquestDTO searchResquestDTO) throws Exception;
+    Page<ProductResponsePageDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) throws Exception;
+
+//    Page<ProductResponsePageDTO> findAllProductByIds(List<Long> productIds, Pageable pageable);
+
 
 }
 

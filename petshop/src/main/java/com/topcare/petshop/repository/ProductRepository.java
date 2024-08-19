@@ -28,7 +28,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Transactional
     @Query(value = "SELECT product_id FROM product_categories WHERE categories_id in :categories GROUP BY product_id HAVING COUNT(DISTINCT categories_id) = :categoriSize;", nativeQuery = true)
     List<Long> findAllByCategoryIds(@Param("categories") List<Long> categories, Integer categoriSize);
-    Page<Product> findAllByIdIn(List<Long> products, Pageable pageable);
+    Page<Product> findAllByIdIn(List<Long> productIds, Pageable pageable);
 }
 
 

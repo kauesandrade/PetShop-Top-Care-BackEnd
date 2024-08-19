@@ -1,10 +1,10 @@
 package com.topcare.petshop.service.sortBy;
-
-import com.topcare.petshop.controller.dto.search.SearchResquestDTO;
+import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.entity.OrderItem;
 import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.Schedule;
 import com.topcare.petshop.repository.ProductRepository;
+import com.topcare.petshop.repository.ServiceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ import java.util.List;
 @AllArgsConstructor
 public class SortByServiceImpl implements SortByServiceInt {
 
-//    private final ProductServiceImpl productService;
     private final ProductRepository productRepository;
+    private final ServiceRepository serviceRepository;
 
     @Override
-    public Page<Product> sortProductsBy(List<Product> productList, SearchResquestDTO searchRequestDTO) {
+    public Page<Product> sortProductsBy(List<Product> productList, SearchRequestDTO searchRequestDTO) {
 
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
         return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
@@ -27,17 +27,20 @@ public class SortByServiceImpl implements SortByServiceInt {
     }
 
     @Override
-    public Page<Schedule> orderSchedulesBy(List<Schedule> scheduleList, String string) {
+    public Page<Schedule> orderSchedulesBy(List<Schedule> scheduleList, SearchRequestDTO searchRequestDTO) {
         return null;
     }
 
     @Override
-    public Page<com.topcare.petshop.entity.Service> sortServicesBy(List<com.topcare.petshop.entity.Service> serviceList, String string) {
-        return null;
+    public Page<com.topcare.petshop.entity.Service> sortServicesBy(List<com.topcare.petshop.entity.Service> serviceList, SearchRequestDTO searchRequestDTO) {
+        Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
+
+        return serviceRepository.findAllByIdIn(serviceList.stream()
+                .map(com.topcare.petshop.entity.Service::getId).toList(), pageable);
     }
 
     @Override
-    public Page<OrderItem> sortOrderItensBy(List<OrderItem> orderItemList, String string) {
+    public Page<OrderItem> sortOrderItensBy(List<OrderItem> orderItemList, SearchRequestDTO searchRequestDTO) {
         return null;
     }
 
@@ -63,8 +66,14 @@ public class SortByServiceImpl implements SortByServiceInt {
             case "Nome (Z-A)" ->{
                 return Sort.by("title").descending();
             }
+            case "Maior Estoque" ->{
+                return Sort.by("").descending();
+            }
+            case "Menor Estoque" ->{
+                return Sort.by("Menor Estoque").ascending();
+            }
             default -> {
-                return Sort.by("rating").ascending();
+                return Sort.by("title").ascending();
             }
         }
     }
