@@ -8,5 +8,5 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record CustomerWoImageRequestPutDTO(MultipartFile profileImage, String fullname, String email, String cpf,
-                                           LocalDate birth, Gender gender, List<ContactRequestPutDTO> contacts) {
+                                           String birth, String gender, List<ContactRequestPutDTO> contacts) {
 }

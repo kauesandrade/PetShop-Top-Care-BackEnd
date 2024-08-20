@@ -2,17 +2,17 @@ INSERT INTO address (id, cep, city, complement, name, neighborhood, number, stat
 VALUES (null, "89253308", "Jaraguá do Sul", null, "Casa", "Jaraguá Esquerdo", 25, 23, "Servidão 45"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "01000000", "São Paulo", "Andar 15", "Sala Comercial", "Centro", 500, 26, "Avenida Paulista");
 
 INSERT INTO image (id, size, name, type, file)

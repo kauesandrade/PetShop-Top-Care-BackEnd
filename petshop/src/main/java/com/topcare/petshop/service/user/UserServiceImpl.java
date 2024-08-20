@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserServiceInt {
 
         User user = optUser.get();
 
-        if (!user.getPassword().equals(dto.password())) {
+        if (!user.checkPasswords(dto.password())) {
             throw new Exception("Dados incorretos");
         }
 

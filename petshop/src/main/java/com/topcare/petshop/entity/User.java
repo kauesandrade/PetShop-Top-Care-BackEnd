@@ -51,4 +51,9 @@ public abstract class User {
                 this.role
         );
     }
+
+    public boolean checkPasswords(String passwordToCheck) {
+        return this.password.equals(passwordToCheck);
+    }
+
 }

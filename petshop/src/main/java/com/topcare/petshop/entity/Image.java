@@ -33,14 +33,14 @@ public abstract class Image {
     private byte[] file;
 
     public Image(ImageRequestDTO imageDTO) throws IOException {
-        this.name = imageDTO.file().getName();
+        this.name = imageDTO.file().getOriginalFilename();
         this.type = imageDTO.file().getContentType();
         this.size = imageDTO.file().getSize();
         this.file = imageDTO.file().getBytes();
     }
 
     public Image(MultipartFile file) throws IOException {
-        this.name = file.getName();
+        this.name = file.getOriginalFilename();
         this.type = file.getContentType();
         this.size = file.getSize();
         this.file = file.getBytes();
@@ -52,7 +52,7 @@ public abstract class Image {
     }
 
     public void editFromFile(MultipartFile file) throws IOException {
-        this.name = file.getName();
+        this.name = file.getOriginalFilename();
         this.type = file.getContentType();
         this.size = file.getSize();
         this.file = file.getBytes();
@@ -62,10 +62,4 @@ public abstract class Image {
         editFromFile(imageDTO.file());
     }
 
-    public void edit(MultipartFile file) throws IOException {
-        this.name = file.getName();
-        this.type = file.getContentType();
-        this.size = file.getSize();
-        this.file = file.getBytes();
-    }
 }

@@ -50,7 +50,7 @@ public abstract class Address {
     private String complement;
 
     public CustomerAddressResponseGetDTO toDTO() {
-        return new CustomerAddressResponseGetDTO(name, cep, state.getState(), city, neighborhood,
+        return new CustomerAddressResponseGetDTO(name, cep, state, city, neighborhood,
                 street, number, complement);
     }
 

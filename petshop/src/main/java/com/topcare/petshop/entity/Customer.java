@@ -75,7 +75,7 @@ public class Customer extends User {
 
         this.setContactInfo(List.of(contact));
         this.setGender(Gender.defineGender(customer.gender()));
-        this.setBirth(LocalDate.parse(customer.birth()));
+        this.setBirth(customer.birth());
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
         // tem q fzr p iniciar com image
@@ -85,6 +85,10 @@ public class Customer extends User {
         this.setPets(List.of());
         this.setFavorites(List.of());
         this.setCart(new Cart());
+    }
+
+    private void setBirth(String birth) {
+        this.birth = LocalDate.parse(birth);
     }
 
     public CustomerResponseDTO toDTO() {
@@ -105,13 +109,13 @@ public class Customer extends User {
     }
 
     public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
-        this.profileImage.edit(customerDTO.profileImage());
+        this.profileImage.editFromFile(customerDTO.profileImage());
 
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
-        this.setGender(customerDTO.gender());
+        this.setGender(Gender.defineGender(customerDTO.gender()));
 
         for (int i = 0; i < this.contactInfo.size(); i++) {
             ContactRequestPutDTO contactDTO = customerDTO.contacts().get(i);
