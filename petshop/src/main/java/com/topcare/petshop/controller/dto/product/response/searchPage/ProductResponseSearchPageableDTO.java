@@ -8,7 +8,7 @@ import com.topcare.petshop.controller.dto.product.response.card.ProductResponseC
 import java.util.List;
 
 public record ProductResponseSearchPageableDTO(
-        ProductResponseCardDTO productResponseCardDTO,
+        ProductResponseCardDTO productCard,
         List<ProductCategoryResponseDTO> categories
 ) {
 }
