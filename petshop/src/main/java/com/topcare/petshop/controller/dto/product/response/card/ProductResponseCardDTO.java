@@ -6,7 +6,7 @@ import com.topcare.petshop.entity.ProductImage;
 
 public record ProductResponseCardDTO(
         Long code,
-        Long varinteCode,
+        Long variantCode,
         String title,
         BrandResponseDTO brand,
         Double price,

@@ -70,13 +70,7 @@ public class Product {
 
     public ProductResponseSearchPageableDTO toSearchPageableDTO(){
         return new ProductResponseSearchPageableDTO(
-                getCode(),
-                getTitle(),
-                getVariants().get(0).getPrice(),
-                getVariants().get(0).getDiscount(),
-                2,
-                getBrand().toDTO(),
-                getRating(),
+                this.toCardDTO(),
                 getCategories().stream().map(ProductCategory::toDTO).toList()
         );
     }
@@ -102,17 +96,22 @@ public class Product {
     }
 
     public ProductResponseCardDTO toCardDTO() {
+        ProductImage productImage = new ProductImage();
+
+        if (!getVariants().getFirst().getImages().isEmpty()){
+            productImage = getVariants().getFirst().getImages().getFirst();
+        }
+
         return new ProductResponseCardDTO(
                 getCode(),
-                getVariants().get(0).getVariantCode(),
+                getVariants().getFirst().getVariantCode(),
                 getTitle(),
                 getBrand().toDTO(),
-                getVariants().get(0).getPrice(),
-                getVariants().get(0).getDiscount(),
+                getVariants().getFirst().getPrice(),
+                getVariants().getFirst().getDiscount(),
                 2,
                 getRating(),
-                getVariants().get(0).getImages().get(0)
-
+                productImage
         );
     }
 }

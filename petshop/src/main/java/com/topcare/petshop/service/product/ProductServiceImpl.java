@@ -1,6 +1,7 @@
 package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
@@ -17,6 +18,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -87,6 +89,7 @@ public class ProductServiceImpl implements ProductServiceInt {
         existProductByCode(code);
         Product product = repository.findByCode(code).get();
         List<Product> similarProducts = filterService.filterProducts(product.getCategories().stream().map(ProductCategory::getId).toList());
+        similarProducts = checkListOfProductsIsEnable(similarProducts);
 
         if(similarProducts.size() >= 10){
             similarProducts = similarProducts.stream().filter(product1 -> !product1.getCode().equals(product.getCode())).toList().subList(0, 9);
@@ -99,6 +102,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     public List<ProductResponseCardDTO> getProductsByCategories(List<Long> categories) throws Exception {
 
         List<Product> products = filterService.filterProducts(categories);
+        products = checkListOfProductsIsEnable(products);
 
         if (products.size() >= 10) {
             products = products.subList(0, 9);
@@ -108,14 +112,21 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public Page<ProductResponsePageDTO> searchProduct(SearchRequestDTO searchRequestDTO,  List<Long> productCategories) {
+    public Page<ProductResponseSearchPageableDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) {
         Page<Product> productPage;
         List<Product> productList;
 
         productList = filterService.filterProducts(productCategories);
+        productList = checkListOfProductsIsEnable(productList);
         productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
         productPage = sortByService.sortProductsBy(productList, searchRequestDTO);
 
-        return productPage.map(Product::toPageDTO);
+        return productPage.map(Product::toSearchPageableDTO);
     }
+
+    @Override
+    public List<Product> checkListOfProductsIsEnable(List<Product> products) {
+        return products.stream().filter(Product::getEnabled).toList();
+    }
+
 }

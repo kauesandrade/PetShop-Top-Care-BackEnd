@@ -20,8 +20,8 @@ public class FilterServiceImpl implements FilterServiceInt{
     @Override
     public List<Product> filterProducts(List<Long> productCategoryList) {
 
-        if(productCategoryList.isEmpty()){
-            return productRepository.findAll();
+        if(productCategoryList.isEmpty()) {
+            return productRepository.findAll().stream().toList();
         }
         return findAllByCategoryIds(productCategoryList);
     }
@@ -32,7 +32,6 @@ public class FilterServiceImpl implements FilterServiceInt{
         for(Long idProduct : productRepository.findAllByCategoryIds(productCategoryList, productCategoryList.size())){
             productList.put(idProduct, productRepository.findById(idProduct).get());
         }
-
         return productList.values().stream().toList();
     }
 }

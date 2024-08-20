@@ -9,6 +9,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -22,7 +24,8 @@ public class SortByServiceImpl implements SortByServiceInt {
     public Page<Product> sortProductsBy(List<Product> productList, SearchRequestDTO searchRequestDTO) {
 
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
-        return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
+        Page<Product> productPage = productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
+        return convertAndSortByProductToPage(searchRequestDTO.sortBy(), productPage, pageable);
 
     }
 
@@ -44,33 +47,50 @@ public class SortByServiceImpl implements SortByServiceInt {
         return null;
     }
 
+    private Page<Product> convertAndSortByProductToPage(String sortByValue, Page<Product> page, Pageable pageable){
 
-    private Sort convertSortBy(String valueInput){
+        List<Product> sortedProducts = new ArrayList<>();
 
-        switch (valueInput){
+        switch (sortByValue){
+            case "Maior Preço" ->{
+                sortedProducts = page.stream()
+                        .sorted(Comparator.comparing(p -> p.getVariants().getFirst().getPrice())).toList().reversed();
+            }
+            case "Menor Preço" ->{
+                sortedProducts = page.stream()
+                        .sorted(Comparator.comparing(p -> p.getVariants().getFirst().getPrice())).toList();
+            }
+            case "Maiores Descontos" ->{
+                sortedProducts = page.stream()
+                        .sorted(Comparator.comparing(p -> p.getVariants().getFirst().getDiscount())).toList().reversed();
+            }
+            case "Maior Estoque" ->{
+                sortedProducts = page.stream()
+                        .sorted(Comparator.comparing(p -> p.getVariants().getFirst().getStock())).toList().reversed();
+            }
+            case "Menor Estoque" ->{
+                sortedProducts = page.stream()
+                        .sorted(Comparator.comparing(p -> p.getVariants().getFirst().getStock())).toList();
+            }
+            default -> {
+                return page;
+            }
+        }
+        return new PageImpl<>(sortedProducts, pageable, page.getTotalElements());
+    }
+
+
+    private Sort convertSortBy(String sortByValue){
+
+        switch (sortByValue){
             case "Popularidade" -> {
                 return Sort.by("rating").ascending();
             }
-//            case "Maior Preço" ->{
-//                return Sort.by("price").ascending();
-//            }
-//            case "Menor Preço" ->{
-//                return Sort.by("price").descending();
-//            }
-//            case "Maiores Descontos" ->{
-//                return Sort.by("price").descending();
-//            }
             case "Nome (A-Z)" ->{
                 return Sort.by("title").ascending();
             }
             case "Nome (Z-A)" ->{
                 return Sort.by("title").descending();
-            }
-            case "Maior Estoque" ->{
-                return Sort.by("").descending();
-            }
-            case "Menor Estoque" ->{
-                return Sort.by("Menor Estoque").ascending();
             }
             default -> {
                 return Sort.by("title").ascending();

@@ -18,6 +18,7 @@ public class ProductCategory {
     private String title;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private CategoryGroup categoryGroup;
 
     public ProductCategory(String title) {
