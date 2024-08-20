@@ -17,22 +17,26 @@ public class ProductReviewServiceImpl implements ProductReviewServiceInt {
 
     @Override
     public List<ProductReviewGetDTO> getProductReview(Long id) {
-        List<ProductReviewGetDTO> reviews = repository.findAllByProduct_Id(id);
+        List<ProductReview> reviews = repository.findAllByProduct_Id(id);
 
-        return reviews;
+        return reviews.stream().map(ProductReview::toDto).toList();
     }
 
     @Override
     public ProductReviewPostDTO createProductReview(ProductReviewPostDTO dto) {
         ProductReview productReview = ProductReview.builder()
-                .customer(dto.customer())
-                .product(dto.product())
+                .customer(dto.customerId())
+                .product(dto.productId())
                 .review(dto.review())
-                .creationDate(dto.creationDate())
                 .rating(dto.rating()).build();
 
         repository.save(productReview);
 
         return dto;
+    }
+
+    @Override
+    public void deleteProductReview(Long id) {
+        repository.deleteById(id);
     }
 }

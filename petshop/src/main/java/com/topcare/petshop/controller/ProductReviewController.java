@@ -43,4 +43,17 @@ public class ProductReviewController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteProductReview(@PathVariable Long id){
+        try {
+            service.deleteProductReview(id);
+            return new ResponseEntity(
+                    HttpStatus.OK
+            );
+        } catch (Exception e){
+            return new ResponseEntity(
+                    e.getMessage(), HttpStatus.BAD_REQUEST
+            );
+        }
+    }
 }

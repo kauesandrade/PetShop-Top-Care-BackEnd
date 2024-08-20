@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface ProductReviewRepository extends JpaRepository<ProductReview, Long> {
 
-    List<ProductReviewGetDTO> findAllByProduct_Id(Long id);
+    List<ProductReview> findAllByProduct_Id(Long id);
 
 }

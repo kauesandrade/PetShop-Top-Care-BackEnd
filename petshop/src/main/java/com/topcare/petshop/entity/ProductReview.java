@@ -1,10 +1,9 @@
 package com.topcare.petshop.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.topcare.petshop.controller.dto.productReview.ProductReviewGetDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
@@ -33,4 +32,13 @@ public class ProductReview {
 
     @ManyToOne
     private Product product;
+
+    public ProductReviewGetDTO toDto(){
+        return new ProductReviewGetDTO(
+                this.customer.toProductReviewDto(),
+                this.review,
+                this.rating,
+                this.creationDate
+        );
+    }
 }

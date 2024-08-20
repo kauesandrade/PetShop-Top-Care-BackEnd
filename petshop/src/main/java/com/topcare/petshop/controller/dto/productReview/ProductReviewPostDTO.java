@@ -7,11 +7,10 @@ import java.time.LocalDate;
 
 public record ProductReviewPostDTO(
 
-        Customer customer,
+        Customer customerId,
         String review,
         Integer rating,
-        LocalDate creationDate,
-        Product product
+        Product productId
 
 ) {
 }

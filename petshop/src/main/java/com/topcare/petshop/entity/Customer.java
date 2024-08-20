@@ -2,6 +2,7 @@ package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
+import com.topcare.petshop.controller.dto.customer.CustomerProductReviewDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
@@ -104,5 +105,11 @@ public class Customer extends User {
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
         this.setGender(customerDTO.gender());
+    }
+
+    public CustomerProductReviewDTO toProductReviewDto(){
+        return new CustomerProductReviewDTO(
+                this.getProfileImage().getFile(),
+                this.getFullname());
     }
 }
