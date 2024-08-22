@@ -1,17 +1,19 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactRequestPutDTO;
+import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.controller.dto.customer.CustomerResponseReviewDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.nio.charset.StandardCharsets;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -22,7 +24,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Customer extends User {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private CustomerImage profileImage;
 
     @Column(nullable = false)
@@ -43,8 +45,7 @@ public class Customer extends User {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<Card> cards;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<CustomerOrder> orders;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -67,12 +68,18 @@ public class Customer extends User {
     public Customer(CustomerRequestPostDTO customer) {
         super(customer.fullname(), customer.email(), customer.password(), customer.cpf(), UserRole.CUSTOMER);
 
-        this.setContactInfo(List.of(new Contact(customer.cellphone(), customer.telephone())));
+        Contact contact = Contact.builder()
+                .cellphone(customer.cellphone())
+                .telephone(customer.telephone())
+                .build();
+
+        this.setContactInfo(List.of(contact));
         this.setGender(Gender.defineGender(customer.gender()));
-        this.setBirth(LocalDate.parse(customer.birth()));
+        this.setBirth(customer.birth());
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
-        this.setProfileImage(new CustomerImage("TesteXD".getBytes(StandardCharsets.UTF_8)));
+        // tem q fzr p iniciar com image
+        this.setProfileImage(new CustomerImage("topcare".getBytes()));
         this.setCards(List.of());
         this.setOrders(List.of());
         this.setPets(List.of());
@@ -80,13 +87,17 @@ public class Customer extends User {
         this.setCart(new Cart());
     }
 
+    private void setBirth(String birth) {
+        this.birth = LocalDate.parse(birth);
+    }
+
     public CustomerResponseDTO toDTO() {
-        List<ContactResponseGetDTO> contacts = this.getContactInfo().stream().map(Contact::toDTO).toList();
+        List<ContactResponseDTO> contacts = this.getContactInfo().stream().map(Contact::toDTO).toList();
         List<CustomerAddressResponseGetDTO> addresses = this.getAddresses().stream().map(Address::toDTO).toList();
 
         return new CustomerResponseDTO(
                 this.getId(),
-                this.getProfileImage().getFile(),
+                this.getProfileImage().toDTO(),
                 this.getFullname(),
                 this.getEmail(),
                 this.getCpf(),
@@ -97,12 +108,25 @@ public class Customer extends User {
         );
     }
 
-    public void edit(CustomerRequestPutDTO customerDTO) {
-        this.setProfileImage(new CustomerImage(customerDTO.profileImage().getBytes(StandardCharsets.UTF_8)));
+    public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
+        this.profileImage.editFromFile(customerDTO.profileImage());
+
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());
         this.setCpf(customerDTO.cpf());
         this.setBirth(customerDTO.birth());
-        this.setGender(customerDTO.gender());
+        this.setGender(Gender.defineGender(customerDTO.gender()));
+
+        for (int i = 0; i < this.contactInfo.size(); i++) {
+            ContactRequestPutDTO contactDTO = customerDTO.contacts().get(i);
+            this.contactInfo.get(i).edit(contactDTO);
+        }
+    }
+
+    public CustomerResponseReviewDTO toReviewDTO() {
+        return new CustomerResponseReviewDTO(
+          this.getFullname(),
+          this.profileImage.getFile()
+        );
     }
 }

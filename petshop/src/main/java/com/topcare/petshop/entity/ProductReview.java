@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.review.ProductReviewResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,4 +29,13 @@ public class ProductReview {
 
     @CreationTimestamp
     private LocalDate creationDate;
+
+    public ProductReviewResponseDTO toDTO() {
+        return  new ProductReviewResponseDTO(
+                getCustomer().toReviewDTO(),
+                getReview(),
+                getRating(),
+                getCreationDate()
+        );
+    }
 }

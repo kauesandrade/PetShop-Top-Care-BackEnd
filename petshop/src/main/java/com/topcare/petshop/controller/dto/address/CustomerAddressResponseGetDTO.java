@@ -1,5 +1,7 @@
 package com.topcare.petshop.controller.dto.address;
 
-    public record CustomerAddressResponseGetDTO(String name, String cep, String state, String city, String neighborhood,
-                                                String street, String number, String complement) {
+import com.topcare.petshop.entity.State;
+
+public record CustomerAddressResponseGetDTO(String name, String cep, State state, String city, String neighborhood,
+                                            String street, String number, String complement) {
 }

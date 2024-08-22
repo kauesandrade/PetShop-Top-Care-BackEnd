@@ -76,12 +76,12 @@ public class CustomerServiceImpl implements CustomerServiceInt {
 
     @Override
     public CustomerResponseDTO changePassword(Long id, CustomerPasswordRequestPatchDTO passwords) throws Exception {
-        Customer customer = repository.findById(id).get();
-        if (!customer.getPassword().equals(passwords.oldPassword())) {
+        Customer customer = this.getCustomer(id);
+        if (!customer.checkPasswords(passwords.oldPassword())) {
             throw new Exception("A senha antiga não confere!");
         }
         customer.setPassword(passwords.newPassword());
-        return repository.save(customer).toDTO();
+        return saveCustomer(customer).toDTO();
     }
 
     @Override

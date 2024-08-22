@@ -8,6 +8,10 @@ import java.util.List;
 @Service
 public interface ProductCategoryServiceInt {
 
-    List<ProductCategory> findAllProductCategory(List<String> categories);
+    List<ProductCategory> getAllProductCategory(List<ProductCategory> categories) throws Exception;
+    List<ProductCategory> getAllProductCategoryByCategoryGroup(Long id);
+    Boolean existProductCategoryById(Long id) throws Exception;
+    ProductCategory getProductCategoryById(Long id) throws Exception;
+    void deleteProductCategoryById(Long id) throws Exception;
 
 }

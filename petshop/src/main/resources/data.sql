@@ -2,52 +2,52 @@ INSERT INTO address (id, cep, city, complement, name, neighborhood, number, stat
 VALUES (null, "89253308", "Jaraguá do Sul", null, "Casa", "Jaraguá Esquerdo", 25, 23, "Servidão 45"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "89253309", "Jaraguá do Sul", "Apto 102", "Apartamento", "Centro", 222, 23, "Rua das Flores"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "88000000", "Florianópolis", "Sala 301", "Escritório", "Centro", 100, 24, "Avenida Beira Mar"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
-       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 27, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
+       (null, "70000000", "Brasília", "Bloco C", "Apartamento", "Asa Sul", 202, 26, "Quadra 312"),
        (null, "01000000", "São Paulo", "Andar 15", "Sala Comercial", "Centro", 500, 26, "Avenida Paulista");
 
-INSERT INTO image (id, file)
-VALUES (null, "image1"),
-       (null, "image2"),
-       (null, "image3"),
-       (null, "image4"),
-       (null, "image5"),
-       (null, "image6"),
-       (null, "image7"),
-       (null, "image8"),
-       (null, "image9"),
-       (null, "image10"),
-       (null, "image11"),
-       (null, "image12"),
-       (null, "image13"),
-       (null, "image14"),
-       (null, "image15"),
-       (null, "image16"),
-       (null, "image17"),
-       (null, "image18"),
-       (null, "image19"),
-       (null, "image20"),
-       (null, "image21"),
-       (null, "image22"),
-       (null, "image23"),
-       (null, "image24"),
-       (null, "image25"),
-       (null, "image26"),
-       (null, "image27"),
-       (null, "image28"),
-       (null, "image29"),
-       (null, "image30"),
-       (null, "image31"),
-       (null, "image32");
+INSERT INTO image (id, size, name, type, file)
+VALUES (null, 200, "imagem massa", "image/jpeg", "image1"),
+       (null, 200, "imagem massa", "image/jpeg", "image2"),
+       (null, 200, "imagem massa", "image/jpeg", "image3"),
+       (null, 200, "imagem massa", "image/jpeg", "image4"),
+       (null, 200, "imagem massa", "image/jpeg", "image5"),
+       (null, 200, "imagem massa", "image/jpeg", "image6"),
+       (null, 200, "imagem massa", "image/jpeg", "image7"),
+       (null, 200, "imagem massa", "image/jpeg", "image8"),
+       (null, 200, "imagem massa", "image/jpeg", "image9"),
+       (null, 200, "imagem massa", "image/jpeg", "image10"),
+       (null, 200, "imagem massa", "image/jpeg", "image11"),
+       (null, 200, "imagem massa", "image/jpeg", "image12"),
+       (null, 200, "imagem massa", "image/jpeg", "image13"),
+       (null, 200, "imagem massa", "image/jpeg", "image14"),
+       (null, 200, "imagem massa", "image/jpeg", "image15"),
+       (null, 200, "imagem massa", "image/jpeg", "image16"),
+       (null, 200, "imagem massa", "image/jpeg", "image17"),
+       (null, 200, "imagem massa", "image/jpeg", "image18"),
+       (null, 200, "imagem massa", "image/jpeg", "image19"),
+       (null, 200, "imagem massa", "image/jpeg", "image20"),
+       (null, 200, "imagem massa", "image/jpeg", "image21"),
+       (null, 200, "imagem massa", "image/jpeg", "image22"),
+       (null, 200, "imagem massa", "image/jpeg", "image23"),
+       (null, 200, "imagem massa", "image/jpeg", "image24"),
+       (null, 200, "imagem massa", "image/jpeg", "image25"),
+       (null, 200, "imagem massa", "image/jpeg", "image26"),
+       (null, 200, "imagem massa", "image/jpeg", "image27"),
+       (null, 200, "imagem massa", "image/jpeg", "image28"),
+       (null, 200, "imagem massa", "image/jpeg", "image29"),
+       (null, 200, "imagem massa", "image/jpeg", "image30"),
+       (null, 200, "imagem massa", "image/jpeg", "image31"),
+       (null, 200, "imagem massa", "image/jpeg", "image32");
 
 INSERT INTO brand_image (id)
 VALUES (1),
@@ -91,21 +91,21 @@ VALUES (21),
        (24),
        (25);
 
-INSERT INTO product (id, code, title, rating, description, short_description, brand_id)
-VALUES (null, 1, "Ração Golden Special", 3, "- Indicada para cães adultos;
+INSERT INTO product (id, code, enabled, title, rating, description, short_description, brand_id)
+VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adultos;
 - Redução do odor das fezes, seleção de ingredientes especiais que auxiliam na redução do odor das fezes;
 - Blend de proteínas, máxima satisfação para o paladar;
 - Maior rendimento, ingredientes de alto aproveitamento;
 - Saúde e vitalidade, alimento de alta qualidade, rico em vitaminas e minerais;
 - Disponível em embalagens de 15kg e 20kg.", "Massa pra caramba!", 1),
-       (null, 2, "Areia Higiênica Pipicat", 4, "- Indicada para gatos;
+       (null, 2, true, "Areia Higiênica Pipicat", 4, "- Indicada para gatos;
 - Controle de odores superior com pipicat odor block;
 - Forma torrões mais firmes;
 - Fácil de limpar;
 - Grãos finos;
 - Sem fragrância;
 - Disponível em embalagem com 4kg, 12kg e 20kg.", "Legal pra caramba!", 2),
-       (null, 3, "Super Secão Tapete Higiênico para Cachorro", 4.5, "- Indicado para cães;
+       (null, 3, true, "Super Secão Tapete Higiênico para Cachorro", 4.5, "- Indicado para cães;
 - Fofinho igual fralda de bebê;
 - Ideal para quem faz trocas menos frequentes do tapete no ambiente, com superabsorção;
 - Alças no pacote que facilitam para levar para qualquer lugar;
@@ -165,8 +165,8 @@ VALUES (null, "Pet", 6),
        (null, "Marca", 9);
 
 INSERT INTO contact (id, cellphone, telephone, customer_id)
-VALUES (1, "47999999999", null, 1),
-       (5, "47888888888", null, 5);
+VALUES (null, "47999999999", null, 1),
+       (null, "47888888888", null, 5);
 
 INSERT INTO customer_address (id, customer_id)
 VALUES (1, 1),
