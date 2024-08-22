@@ -28,7 +28,8 @@ public class ProductCategory {
     public ProductCategoryResponseDTO toDTO(){
         return new ProductCategoryResponseDTO(
                 getId(),
-                getTitle()
+                getTitle(),
+                false
         );
     }
 }

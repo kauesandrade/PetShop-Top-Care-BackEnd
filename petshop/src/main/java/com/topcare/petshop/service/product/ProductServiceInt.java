@@ -15,17 +15,16 @@ import java.util.List;
 public interface ProductServiceInt {
 
     ProductResponsePageDTO getProductByCode(Long code) throws Exception;
+    List<Product> getAllProducts();
     List<ProductResponseCardDTO> getSimilarProductsByCode(Long code) throws Exception;
     List<ProductResponseCardDTO> getProductsByCategories(List<Long> categories) throws Exception;
     ProductResponsePageDTO createProduct(ProductRequestPostDTO productPostDTO) throws Exception;
     ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
     void deleteProductByCode(Long code) throws Exception;
     Boolean existProductByCode(Long code) throws Exception;
-    Page<ProductResponseSearchPageableDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) throws Exception;
-
+    Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) throws Exception;
     List<Product> checkListOfProductsIsEnable(List<Product> products);
 
-//    Page<ProductResponsePageDTO> findAllProductByIds(List<Long> productIds, Pageable pageable);
 
 
 }

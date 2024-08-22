@@ -68,13 +68,6 @@ public class Product {
         setVariants(productVariants);
     }
 
-    public ProductResponseSearchPageableDTO toSearchPageableDTO(){
-        return new ProductResponseSearchPageableDTO(
-                this.toCardDTO(),
-                getCategories().stream().map(ProductCategory::toDTO).toList()
-        );
-    }
-
     public ProductResponsePageDTO toPageDTO(){
 
         return new ProductResponsePageDTO(

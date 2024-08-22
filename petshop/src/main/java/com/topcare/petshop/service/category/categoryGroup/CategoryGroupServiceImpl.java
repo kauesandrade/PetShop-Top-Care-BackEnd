@@ -1,16 +1,21 @@
 package com.topcare.petshop.service.category.categoryGroup;
 
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupFiltersResponseDTO;
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupRequestDTO;
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupResponseDTO;
 import com.topcare.petshop.entity.CategoryGroup;
+import com.topcare.petshop.entity.Product;
 import com.topcare.petshop.entity.ProductCategory;
 import com.topcare.petshop.repository.CategoryGroupRepository;
 import com.topcare.petshop.repository.ProductCategoryRepository;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
+import com.topcare.petshop.service.product.ProductServiceImpl;
+import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +25,8 @@ public class CategoryGroupServiceImpl implements CategoryGroupServiceInt {
 
     private final CategoryGroupRepository repository;
     private final ProductCategoryServiceImpl categoryService;
+    private final SearchServiceImpl searchService;
+    private final ProductServiceImpl productService;
 
     @Override
     public CategoryGroupResponseDTO getCategoryGroupById(Long id) throws Exception {
@@ -79,6 +86,42 @@ public class CategoryGroupServiceImpl implements CategoryGroupServiceInt {
             throw new Exception("O grupo de categorias não foi encontrado!");
         }
         return true;
+    }
+
+    @Override
+    public List<CategoryGroupFiltersResponseDTO> getFilters(String searchValue) {
+
+        List<Product> products =
+                searchService.searchProducts(productService.getAllProducts(), searchValue);
+
+        HashMap<Long, ProductCategory> productCategoryHashMap = new HashMap<>();
+        HashMap<String, List<ProductCategory>> categoriesHashMap = new HashMap<>();
+
+        products.stream().map(Product::getCategories).forEach(productCategoryList ->{
+            productCategoryList.stream().forEach(productCategory -> {
+                productCategoryHashMap.put(productCategory.getId(), productCategory);
+            });
+        });
+
+        productCategoryHashMap.forEach((aLong, productCategory) -> {
+            if (!categoriesHashMap.containsKey(productCategory.getCategoryGroup().getTitle())){
+                List<ProductCategory> newProductCategories = new ArrayList<>();
+                newProductCategories.add(productCategory);
+                categoriesHashMap.put(productCategory.getCategoryGroup().getTitle(), newProductCategories);
+            }else {
+                List<ProductCategory> productCategories = categoriesHashMap.get(productCategory.getCategoryGroup().getTitle());
+                productCategories.add(productCategory);
+                categoriesHashMap.put(productCategory.getCategoryGroup().getTitle(), productCategories);
+            }
+        });
+
+        List<CategoryGroupFiltersResponseDTO> filtes = new ArrayList<>();
+
+        categoriesHashMap.forEach((string, productCategoryList) -> {
+            filtes.add(new CategoryGroupFiltersResponseDTO(string, productCategoryList.stream().map(ProductCategory::toDTO).toList()));
+        });
+
+        return filtes;
     }
 
     private void deleteCategory(List<ProductCategory> newListCategory, List<ProductCategory> oldListCategory){

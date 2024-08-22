@@ -79,7 +79,6 @@ public class SortByServiceImpl implements SortByServiceInt {
         return new PageImpl<>(sortedProducts, pageable, page.getTotalElements());
     }
 
-
     private Sort convertSortBy(String sortByValue){
 
         switch (sortByValue){
