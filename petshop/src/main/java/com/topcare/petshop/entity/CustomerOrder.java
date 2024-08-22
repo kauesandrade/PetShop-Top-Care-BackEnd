@@ -8,7 +8,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * Representa um pedido realizado por um cliente.
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,5 +47,5 @@ public class CustomerOrder {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-
 }
+

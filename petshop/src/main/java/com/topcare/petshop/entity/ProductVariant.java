@@ -8,7 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+/**
+ * Representa uma variante de um produto, que pode ter diferentes características e preços.
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,55 +21,84 @@ public class ProductVariant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Código único da variante.
+     */
     @Column(nullable = false)
     private Long variantCode;
 
+    /**
+     * Título da variante.
+     */
     @Column(nullable = false)
     private String variantTitle;
 
+    /**
+     * Imagens associadas à variante do produto.
+     */
     @OneToMany
     @JoinColumn(name = "product_variant_id", nullable = false)
     private List<ProductImage> images;
 
+    /**
+     * Preço da variante.
+     */
     @Column(nullable = false)
     private Double price;
 
+    /**
+     * Desconto aplicado à variante.
+     */
     @Column(nullable = false)
     private Double discount;
 
+    /**
+     * Quantidade em estoque da variante.
+     */
     @Column(nullable = false)
     private Integer stock;
 
+    /**
+     * Indica se a variante está disponível para venda.
+     */
     @Column(nullable = false)
     private Boolean available;
 
-
+    /**
+     * Constrói uma ProductVariant a partir de um DTO de variante de produto.
+     *
+     * @param productVariant DTO de variante do produto.
+     */
     public ProductVariant(ProductVariantRequestPostDTO productVariant) {
         setVariantCode(productVariant.variantCode());
         setVariantTitle(productVariant.variantTitle());
         setPrice(productVariant.price());
-//        setImages(productVariant.images());
         setDiscount(productVariant.discount());
         setStock(productVariant.amountStock());
 
-        if(stock > 0){
-            setAvailable(true);
-        }else {
-            setAvailable(false);
-        }
+        /** Define a disponibilidade com base no estoque.*/
+        setAvailable(stock > 0);
     }
 
-    public ProductVariantResponsePageDTO toDTO(){
+    /**
+     * Converte a variante do produto para um DTO de página.
+     *
+     * @return DTO da variante de produto.
+     */
+    public ProductVariantResponsePageDTO toDTO() {
 
+        /** Verifica se o estoque está disponível.*/
         Boolean isStockAvailable = stock > 0;
-        Double discountPrice = price - (price * (discount/100));
+
+        /** Calcula o preço com desconto.*/
+        Double discountPrice = price - (price * (discount / 100));
 
         return new ProductVariantResponsePageDTO(
                 getVariantTitle(),
                 getVariantCode(),
                 getPrice(),
                 discountPrice,
-                2,
+                2, /** Pode ser um valor fixo ou calculado de outra forma.*/
                 isStockAvailable,
                 getImages()
         );

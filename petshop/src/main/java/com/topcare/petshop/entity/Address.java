@@ -4,6 +4,10 @@ import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Entidade base para endereços.
+ * Define os atributos comuns de um endereço e suas operações básicas.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -49,9 +53,13 @@ public abstract class Address {
     @NonNull
     private String complement;
 
+    /**
+     * Converte a entidade para um DTO (Data Transfer Object).
+     *
+     * @return DTO com os dados do endereço.
+     */
     public CustomerAddressResponseGetDTO toDTO() {
         return new CustomerAddressResponseGetDTO(name, cep, state, city, neighborhood,
                 street, number, complement);
     }
-
 }
