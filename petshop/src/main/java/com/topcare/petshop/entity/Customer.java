@@ -6,6 +6,7 @@ import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerResponseDTO;
+import com.topcare.petshop.controller.dto.customer.CustomerResponseReviewDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -44,8 +45,7 @@ public class Customer extends User {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<Card> cards;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "customer")
     private List<CustomerOrder> orders;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -121,5 +121,12 @@ public class Customer extends User {
             ContactRequestPutDTO contactDTO = customerDTO.contacts().get(i);
             this.contactInfo.get(i).edit(contactDTO);
         }
+    }
+
+    public CustomerResponseReviewDTO toReviewDTO() {
+        return new CustomerResponseReviewDTO(
+          this.getFullname(),
+          this.profileImage.getFile()
+        );
     }
 }

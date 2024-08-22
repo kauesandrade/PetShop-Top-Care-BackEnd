@@ -1,5 +1,4 @@
 package com.topcare.petshop.entity;
-
 import com.topcare.petshop.controller.dto.brand.BrandRequestDTO;
 import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
 import jakarta.persistence.*;
@@ -19,7 +18,7 @@ public class Brand {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -31,12 +30,14 @@ public class Brand {
         this.image = new BrandImage(brand.image());
     }
 
-    public BrandResponseDTO toDTO() {
-        return new BrandResponseDTO(this.name, this.image.toDTO());
-    }
-
     public void edit(BrandRequestDTO brand) throws IOException {
         this.name = brand.name();
         this.image.editFromFile(brand.image());
+    }
+    public BrandResponseDTO toDTO() {
+        return new BrandResponseDTO(
+                getId(),
+                getName()
+        );
     }
 }

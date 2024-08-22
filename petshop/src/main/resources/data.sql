@@ -91,21 +91,21 @@ VALUES (21),
        (24),
        (25);
 
-INSERT INTO product (id, code, title, rating, description, short_description, brand_id)
-VALUES (null, 1, "Ração Golden Special", 3, "- Indicada para cães adultos;
+INSERT INTO product (id, code, enabled, title, rating, description, short_description, brand_id)
+VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adultos;
 - Redução do odor das fezes, seleção de ingredientes especiais que auxiliam na redução do odor das fezes;
 - Blend de proteínas, máxima satisfação para o paladar;
 - Maior rendimento, ingredientes de alto aproveitamento;
 - Saúde e vitalidade, alimento de alta qualidade, rico em vitaminas e minerais;
 - Disponível em embalagens de 15kg e 20kg.", "Massa pra caramba!", 1),
-       (null, 2, "Areia Higiênica Pipicat", 4, "- Indicada para gatos;
+       (null, 2, true, "Areia Higiênica Pipicat", 4, "- Indicada para gatos;
 - Controle de odores superior com pipicat odor block;
 - Forma torrões mais firmes;
 - Fácil de limpar;
 - Grãos finos;
 - Sem fragrância;
 - Disponível em embalagem com 4kg, 12kg e 20kg.", "Legal pra caramba!", 2),
-       (null, 3, "Super Secão Tapete Higiênico para Cachorro", 4.5, "- Indicado para cães;
+       (null, 3, true, "Super Secão Tapete Higiênico para Cachorro", 4.5, "- Indicado para cães;
 - Fofinho igual fralda de bebê;
 - Ideal para quem faz trocas menos frequentes do tapete no ambiente, com superabsorção;
 - Alças no pacote que facilitam para levar para qualquer lugar;

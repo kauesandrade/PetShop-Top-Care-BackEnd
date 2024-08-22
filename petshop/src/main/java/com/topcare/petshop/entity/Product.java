@@ -1,8 +1,9 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductResponseDTO;
-import com.topcare.petshop.controller.dto.product.response.ProductVariantResponseDTO;
+import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
+import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,9 @@ public class Product {
     @Column(nullable = false)
     private Long code;
 
+    @Column(nullable = false)
+    private Boolean enabled = true;
+
     @Column(nullable = false, length = 150)
     private String title;
 
@@ -36,7 +40,7 @@ public class Product {
     @JoinColumn(nullable = false)
     private Brand brand;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 
@@ -64,23 +68,50 @@ public class Product {
         setVariants(productVariants);
     }
 
-    public ProductResponseDTO toDTO(){
+    public ProductResponseSearchPageableDTO toSearchPageableDTO(){
+        return new ProductResponseSearchPageableDTO(
+                this.toCardDTO(),
+                getCategories().stream().map(ProductCategory::toDTO).toList()
+        );
+    }
 
-        List< ProductVariantResponseDTO > variantsDTO =
-                getVariants().stream().map(variants -> variants.toDTO()).toList();
+    public ProductResponsePageDTO toPageDTO(){
 
-        return new ProductResponseDTO(
+        return new ProductResponsePageDTO(
                 getCode(),
                 getTitle(),
                 getDescription(),
                 getShortDescription(),
-                getBrand(),
-                getSpecifications(),
+                getBrand().toDTO(),
+                getSpecifications().stream().map(ProductSpecification::toDTO).toList(),
                 getRating(),
-                getCategories(),
-                getReviews(),
-                variantsDTO
+                getCategories().stream().map(ProductCategory::toDTO).toList(),
+                getReviews().stream().map(ProductReview::toDTO).toList(),
+                getVariants().stream().map(ProductVariant::toDTO).toList()
         );
     }
 
+    public void changeEnableProduct(){
+        setEnabled(!getEnabled());
+    }
+
+    public ProductResponseCardDTO toCardDTO() {
+        ProductImage productImage = new ProductImage();
+
+        if (!getVariants().getFirst().getImages().isEmpty()){
+            productImage = getVariants().getFirst().getImages().getFirst();
+        }
+
+        return new ProductResponseCardDTO(
+                getCode(),
+                getVariants().getFirst().getVariantCode(),
+                getTitle(),
+                getBrand().toDTO(),
+                getVariants().getFirst().getPrice(),
+                getVariants().getFirst().getDiscount(),
+                2,
+                getRating(),
+                productImage
+        );
+    }
 }
