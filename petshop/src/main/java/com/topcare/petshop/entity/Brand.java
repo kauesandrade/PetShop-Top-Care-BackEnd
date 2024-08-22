@@ -1,9 +1,13 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.brand.BrandRequestDTO;
+import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.IOException;
 
 @Entity
 @Data
@@ -18,7 +22,21 @@ public class Brand {
     @Column(nullable = false)
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(nullable = false)
     private BrandImage image;
+
+    public Brand(BrandRequestDTO brand) throws IOException {
+        this.name = brand.name();
+        this.image = new BrandImage(brand.image());
+    }
+
+    public BrandResponseDTO toDTO() {
+        return new BrandResponseDTO(this.name, this.image.toDTO());
+    }
+
+    public void edit(BrandRequestDTO brand) throws IOException {
+        this.name = brand.name();
+        this.image.editFromFile(brand.image());
+    }
 }
