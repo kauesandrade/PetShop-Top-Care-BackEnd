@@ -37,7 +37,7 @@ public class Card {
     public Card(CardRequestDTO dto) {
         this.name = dto.name();
         this.lastDigits = dto.lastDigits();
-        this.expirationDate = dto.expirationDate();
+        this.expirationDate = LocalDate.parse(dto.expirationDate());
         this.mainCard = dto.mainCard();
         this.customer = new Customer(dto.userId());
     }
@@ -49,7 +49,7 @@ public class Card {
     public void edit(CardRequestDTO dto) {
         this.name = dto.name();
         this.lastDigits = dto.lastDigits();
-        this.expirationDate = dto.expirationDate();
+        this.expirationDate = LocalDate.parse(dto.expirationDate());
         this.mainCard = dto.mainCard();
         this.customer = new Customer(dto.userId());
     }

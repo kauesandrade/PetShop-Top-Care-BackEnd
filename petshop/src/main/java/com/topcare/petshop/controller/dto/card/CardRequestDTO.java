@@ -6,7 +6,7 @@ public record CardRequestDTO(
 
         String name,
         String lastDigits,
-        LocalDate expirationDate,
+        String expirationDate,
         Boolean mainCard,
         Long userId
 

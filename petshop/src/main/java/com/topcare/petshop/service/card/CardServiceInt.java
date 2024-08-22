@@ -13,6 +13,8 @@ public interface CardServiceInt {
     CardResponseDTO getCardToDTO(Long id) throws Exception;
     Card getCard(Long id) throws Exception;
     List<CardResponseDTO> getAllCards();
+    List<Card> getCardsOfUser(Long userId);
+    List<CardResponseDTO> getCardsOfUserToDTO(Long userId);
     CardResponseDTO registerCard(CardRequestDTO dto) throws Exception;
     CardResponseDTO editCard(Long id, CardRequestDTO dto) throws Exception;
     void deleteCard(Long id) throws Exception;

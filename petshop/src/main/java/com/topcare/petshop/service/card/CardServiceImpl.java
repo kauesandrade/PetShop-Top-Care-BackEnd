@@ -25,7 +25,6 @@ public class CardServiceImpl implements CardServiceInt {
         Optional<Card> optCard = repository.findById(id);
 
         if (optCard.isEmpty()) {
-
             throw new Exception("Cartão não encontrado");
         }
 
@@ -45,6 +44,16 @@ public class CardServiceImpl implements CardServiceInt {
     @Override
     public List<CardResponseDTO> getAllCards() {
         return repository.findAll().stream().map(Card::toDTO).toList();
+    }
+
+    @Override
+    public List<Card> getCardsOfUser(Long userId) {
+        return repository.findByCustomer_Id(userId);
+    }
+
+    @Override
+    public List<CardResponseDTO> getCardsOfUserToDTO(Long userId) {
+        return getCardsOfUser(userId).stream().map(Card::toDTO).toList();
     }
 
     @Override
@@ -102,8 +111,9 @@ public class CardServiceImpl implements CardServiceInt {
         repository.deleteById(id);
         Optional<Card> newMainCard = repository.findFirstByCustomer_Id(card.getCustomer().getId());
         if(newMainCard.isPresent()){
-            newMainCard.get().setMainCard(true);
-            repository.save(newMainCard.get());
+            Card mainCard = newMainCard.get();
+            mainCard.setMainCard(true);
+            repository.save(mainCard);
         }
     }
 }

@@ -8,5 +8,4 @@ public record CardResponseDTO(
         String lastDigits,
         LocalDate expirationDate,
         Boolean mainCard
-) {
-}
+) {}

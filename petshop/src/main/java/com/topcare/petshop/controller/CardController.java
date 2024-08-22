@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
+@CrossOrigin("*")
 @RequestMapping("/topcare/card")
 public class CardController {
 
@@ -40,6 +41,19 @@ public class CardController {
         }
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity getCardsByUser(@PathVariable Long userId){
+        try {
+            return new ResponseEntity<>(
+                    service.getCardsOfUserToDTO(userId), HttpStatus.OK
+            );
+        } catch (Exception e){
+            return new ResponseEntity<>(
+                    e.getMessage(), HttpStatus.NOT_FOUND
+            );
+        }
+    }
+
     @PostMapping
     public ResponseEntity registerCard(@RequestBody CardRequestDTO dto){
         try {
@@ -53,7 +67,7 @@ public class CardController {
         }
     }
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity editCard(@PathVariable Long id, @RequestBody CardRequestDTO dto){
         try {
             return new ResponseEntity(
