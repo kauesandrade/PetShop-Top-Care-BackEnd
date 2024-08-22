@@ -1,6 +1,8 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.address.CustomerAddressResponseGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactRequestPutDTO;
+import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerProductReviewDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPostDTO;
 import com.topcare.petshop.controller.dto.customer.CustomerRequestPutDTO;

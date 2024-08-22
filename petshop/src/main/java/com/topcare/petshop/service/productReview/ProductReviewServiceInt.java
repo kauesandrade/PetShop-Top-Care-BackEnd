@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public interface ProductReviewServiceInt {
 
-    List<ProductReviewGetDTO> getProductReview(Long id);
     ProductReviewPostDTO createProductReview(ProductReviewPostDTO dto);
     void deleteProductReview(Long id);
 

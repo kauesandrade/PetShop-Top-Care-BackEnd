@@ -13,22 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("topcare/productReview")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class ProductReviewController {
 
     private ProductReviewServiceImpl service;
-
-        @GetMapping("/{id}")
-        public ResponseEntity<List<ProductReviewGetDTO>> getProductReview(@PathVariable Long id) {
-            try {
-                return new ResponseEntity(
-                        service.getProductReview(id), HttpStatus.OK
-                );
-            } catch (Exception e){
-                return new ResponseEntity(
-                        e.getMessage(), HttpStatus.BAD_REQUEST
-                );
-            }
-    }
 
     @PostMapping
     public ResponseEntity createProductReview(@RequestBody ProductReviewPostDTO dto){

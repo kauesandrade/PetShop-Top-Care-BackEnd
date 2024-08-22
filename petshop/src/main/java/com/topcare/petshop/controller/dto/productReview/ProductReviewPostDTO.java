@@ -9,8 +9,7 @@ public record ProductReviewPostDTO(
 
         Customer customerId,
         String review,
-        Integer rating,
-        Product productId
+        Integer rating
 
 ) {
 }

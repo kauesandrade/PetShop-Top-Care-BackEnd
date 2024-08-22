@@ -45,7 +45,7 @@ public class Product {
     @ManyToMany
     private List<ProductCategory> categories;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany
     private List<ProductReview> reviews;
 
     @OneToMany(cascade = CascadeType.ALL)

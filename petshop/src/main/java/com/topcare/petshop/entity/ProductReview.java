@@ -30,9 +30,6 @@ public class ProductReview {
     @CreationTimestamp
     private LocalDate creationDate;
 
-    @ManyToOne
-    private Product product;
-
     public ProductReviewGetDTO toDto(){
         return new ProductReviewGetDTO(
                 this.customer.toProductReviewDto(),

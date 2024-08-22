@@ -16,17 +16,9 @@ public class ProductReviewServiceImpl implements ProductReviewServiceInt {
     private ProductReviewRepository repository;
 
     @Override
-    public List<ProductReviewGetDTO> getProductReview(Long id) {
-        List<ProductReview> reviews = repository.findAllByProduct_Id(id);
-
-        return reviews.stream().map(ProductReview::toDto).toList();
-    }
-
-    @Override
     public ProductReviewPostDTO createProductReview(ProductReviewPostDTO dto) {
         ProductReview productReview = ProductReview.builder()
                 .customer(dto.customerId())
-                .product(dto.productId())
                 .review(dto.review())
                 .rating(dto.rating()).build();
 

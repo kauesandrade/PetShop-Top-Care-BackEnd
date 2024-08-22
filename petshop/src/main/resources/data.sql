@@ -228,9 +228,9 @@ VALUES (1, 1),
        (2, 3),
        (3, 1);
 
-INSERT INTO product_review (id, product_id, customer_id, creation_date, rating, review)
-VALUES (null, 1, 1, "2024-07-29", 4.5, "Muito bom esse produto!"),
-       (null, 3, 5, "2024-07-29", 5, "Muito legal esse produto!");
+INSERT INTO product_review (id, creation_date, customer_id, rating, review)
+VALUES (null, "2024-07-29", 1, 4, "Muito bom esse produto!"),
+       (null, "2024-07-29", 5, 5, "Muito legal esse produto!");
 
 INSERT INTO product_specification (id, product_id, title, description)
 VALUES (null, 1, "Idade", "Filhotes/Adultos"),
