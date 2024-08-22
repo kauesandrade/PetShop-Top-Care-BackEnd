@@ -1,5 +1,7 @@
 package com.topcare.petshop.service.product;
 
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
+import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupFiltersResponseDTO;
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
 import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
@@ -10,12 +12,15 @@ import com.topcare.petshop.repository.ProductRepository;
 import com.topcare.petshop.repository.ProductVariantRepository;
 import com.topcare.petshop.service.brand.BrandServiceImpl;
 import com.topcare.petshop.service.category.ProductCategoryServiceImpl;
+import com.topcare.petshop.service.category.categoryGroup.CategoryGroupServiceImpl;
 import com.topcare.petshop.service.filter.FilterServiceImpl;
 import com.topcare.petshop.service.sortBy.SortByServiceImpl;
 import com.topcare.petshop.service.search.SearchServiceImpl;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,12 +31,11 @@ import java.util.List;
 public class ProductServiceImpl implements ProductServiceInt {
 
     private final ProductRepository repository;
-    private final ProductVariantRepository productVariantRepository;
     private final BrandServiceImpl brandService;
     private final ProductCategoryServiceImpl productCategoryService;
     private final FilterServiceImpl filterService;
-    private  final SortByServiceImpl sortByService;
-    private  final SearchServiceImpl searchService;
+    private final SortByServiceImpl sortByService;
+    private final SearchServiceImpl searchService;
 
     @Override
     public ProductResponsePageDTO getProductByCode(Long code) throws Exception {
@@ -39,6 +43,10 @@ public class ProductServiceImpl implements ProductServiceInt {
        return repository.findByCode(code).get().toPageDTO();
     }
 
+    @Override
+    public List<Product> getAllProducts() {
+        return repository.findAll();
+    }
 
     @Override
     public ProductResponsePageDTO createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
@@ -112,7 +120,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
-    public Page<ProductResponseSearchPageableDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) {
+    public Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) {
         Page<Product> productPage;
         List<Product> productList;
 
@@ -121,7 +129,7 @@ public class ProductServiceImpl implements ProductServiceInt {
         productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
         productPage = sortByService.sortProductsBy(productList, searchRequestDTO);
 
-        return productPage.map(Product::toSearchPageableDTO);
+        return productPage.map(Product::toCardDTO);
     }
 
     @Override

@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("topcare/category")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class CategoryGroupController {
 
     CategoryGroupServiceImpl categoryGroupService;
@@ -62,8 +63,11 @@ public class CategoryGroupController {
            return new ResponseEntity<>(e.getMessage(),
                    HttpStatus.NOT_FOUND);
        }
+    }
 
-
+    @GetMapping("/filters")
+    public ResponseEntity getFilters(@RequestParam String searchValue){
+        return new ResponseEntity<>(categoryGroupService.getFilters(searchValue), HttpStatus.OK);
     }
 
 }
