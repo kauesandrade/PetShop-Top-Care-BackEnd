@@ -11,7 +11,7 @@ import lombok.*;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class User {
+public abstract class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +38,10 @@ public class User {
     @NonNull
     private UserRole role;
 
+    public User(Long id) {
+        this.id = id;
+    }
+
     public UserResponseDTO toDto(){
         return new UserResponseDTO(
                 this.fullname,
@@ -47,4 +51,9 @@ public class User {
                 this.role
         );
     }
+
+    public boolean checkPasswords(String passwordToCheck) {
+        return this.password.equals(passwordToCheck);
+    }
+
 }

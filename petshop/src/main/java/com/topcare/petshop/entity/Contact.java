@@ -1,6 +1,8 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.contact.ContactResponseGetDTO;
+import com.topcare.petshop.controller.dto.contact.ContactRequestPostDTO;
+import com.topcare.petshop.controller.dto.contact.ContactRequestPutDTO;
+import com.topcare.petshop.controller.dto.contact.ContactResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +10,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
+@Builder
 public class Contact {
 
     @Id
@@ -16,15 +18,28 @@ public class Contact {
     private Long id;
 
     @Column(nullable = false, length = 11)
-    @NonNull
     private String cellphone;
 
     @Column(length = 11)
-    @NonNull
     private String telephone;
 
-    public ContactResponseGetDTO toDTO() {
-        return new ContactResponseGetDTO(this.cellphone, this.telephone);
+    public Contact(ContactRequestPostDTO contactDTO) {
+        this.setCellphone(contactDTO.cellphone());
+        this.setTelephone(contactDTO.telephone());
     }
 
+    public Contact(ContactRequestPutDTO contactDTO) {
+        this.setId(contactDTO.id());
+        this.setCellphone(contactDTO.cellphone());
+        this.setTelephone(contactDTO.telephone());
+    }
+
+    public ContactResponseDTO toDTO() {
+        return new ContactResponseDTO(this.id, this.cellphone, this.telephone);
+    }
+
+    public void edit(ContactRequestPutDTO contactDTO) {
+        this.setCellphone(contactDTO.cellphone());
+        this.setTelephone(contactDTO.telephone());
+    }
 }

@@ -1,14 +1,13 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class ProductCategory {
 
     @Id
@@ -18,4 +17,19 @@ public class ProductCategory {
     @Column(nullable = false)
     private String title;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private CategoryGroup categoryGroup;
+
+    public ProductCategory(String title) {
+        setTitle(title);
+    }
+
+    public ProductCategoryResponseDTO toDTO(){
+        return new ProductCategoryResponseDTO(
+                getId(),
+                getTitle(),
+                false
+        );
+    }
 }

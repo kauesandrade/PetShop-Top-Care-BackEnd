@@ -9,7 +9,7 @@ public record ProductVariantRequestPostDTO(
         Long variantCode,
         Double price,
         Integer amountStock,
-        Double discount,
-        List<ProductImage> images
+        Double discount
+//        List<ProductImage> images
         ) {
 }

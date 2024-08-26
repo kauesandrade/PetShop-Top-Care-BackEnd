@@ -10,7 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Address {
+public abstract class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,7 +50,7 @@ public class Address {
     private String complement;
 
     public CustomerAddressResponseGetDTO toDTO() {
-        return new CustomerAddressResponseGetDTO(name, cep, state.getState(), city, neighborhood,
+        return new CustomerAddressResponseGetDTO(name, cep, state, city, neighborhood,
                 street, number, complement);
     }
 
