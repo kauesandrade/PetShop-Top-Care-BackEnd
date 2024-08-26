@@ -32,13 +32,6 @@ public class UserServiceImpl implements UserServiceInt {
             throw new Exception("Dados incorretos");
         }
 
-//        Ver como retorna 2 tipos de usuario diferente
-//        if (user.getRole().equals(UserRole.CUSTOMER)) {
-//            Customer customer = customerService.getCustomer(user.getId());
-//            System.out.println(customer.toDTO());
-//        } else {
-//                Employee employee = employeeRepository.findById(user.getId()).get();
-//            }
         return user.toDto();
     }
 
