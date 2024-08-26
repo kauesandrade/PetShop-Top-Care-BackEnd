@@ -32,6 +32,13 @@ public class UserController {
         }
     }
 
+    @GetMapping("/forgotPassword/code")
+    public ResponseEntity getCode(){
+        return new ResponseEntity<>(
+               service.getCode(), HttpStatus.OK
+        );
+    }
+
     @PostMapping("/forgotPassword")
     public ResponseEntity verifyEmail(@RequestBody UserEmailRequestDTO dto) {
         try {

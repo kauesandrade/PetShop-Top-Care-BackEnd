@@ -2,10 +2,7 @@ package com.topcare.petshop.service.user;
 
 import com.topcare.petshop.controller.dto.user.*;
 import com.topcare.petshop.repository.UserRepository;
-import com.topcare.petshop.entity.Customer;
 import com.topcare.petshop.entity.User;
-import com.topcare.petshop.entity.UserRole;
-import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,15 +33,14 @@ public class UserServiceImpl implements UserServiceInt {
     }
 
     @Override
-    public ForgotPasswordResponseDTO verifyEmail(UserEmailRequestDTO dto) throws Exception {
+    public UserResponseDTO verifyEmail(UserEmailRequestDTO dto) throws Exception {
         Optional<User> optUser = repository.findByEmail(dto.email());
 
         if (optUser.isEmpty()){
             throw new Exception("Usuário inexistente");
         }
 
-        Random rand = new Random();
-        return new ForgotPasswordResponseDTO(optUser.get().getId(), rand.nextLong(999999 - 100000));
+        return optUser.get().toDto();
 
     }
 
@@ -59,5 +55,11 @@ public class UserServiceImpl implements UserServiceInt {
         User user = optUser.get();
         user.setPassword(dto.newPassword());
         repository.save(user);
+    }
+
+    @Override
+    public ForgotPasswordCodeResponseDTO getCode() {
+        Random rand = new Random();
+        return new ForgotPasswordCodeResponseDTO(rand.nextLong(999999 - 100000));
     }
 }
