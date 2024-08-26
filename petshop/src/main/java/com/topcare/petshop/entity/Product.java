@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
 /**
  * Representa um produto no sistema.
@@ -146,13 +147,15 @@ public class Product {
             productImage = getVariants().getFirst().getImages().getFirst();
         }
 
+        Double discount = getVariants().getFirst().getPrice() - getVariants().getFirst().getDiscount();
+
         return new ProductResponseCardDTO(
                 getCode(),
                 getVariants().getFirst().getVariantCode(),
                 getTitle(),
                 getBrand().toDTO(),
                 getVariants().getFirst().getPrice(),
-                getVariants().getFirst().getDiscount(),
+                discount,
                 2,
                 getRating(),
                 productImage
