@@ -9,8 +9,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Representa um produto no sistema.
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,43 +24,85 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    /**
+     * Código único do produto.
+     */
     @Column(nullable = false)
     private Long code;
 
+    /**
+     * Indica se o produto está habilitado para venda.
+     */
     @Column(nullable = false)
     private Boolean enabled = true;
 
+    /**
+     * Título do produto.
+     */
     @Column(nullable = false, length = 150)
     private String title;
 
+    /**
+     * Descrição completa do produto.
+     */
     @Column(nullable = false, length = 800)
     private String description;
 
+    /**
+     * Descrição curta do produto.
+     */
     @Column(nullable = false, length = 100)
     private String shortDescription;
 
+    /**
+     * Marca do produto.
+     */
     @ManyToOne
     @JoinColumn(nullable = false)
     private Brand brand;
 
+    /**
+     * Especificações do produto.
+     */
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", nullable = false)
     private List<ProductSpecification> specifications;
 
+    /**
+     * Avaliação média do produto.
+     */
     private Double rating;
 
+    /**
+     * Categorias do produto.
+     */
     @ManyToMany
     private List<ProductCategory> categories;
 
+    /**
+     * Avaliações do produto.
+     */
     @OneToMany
     @JoinColumn(name = "product_id")
     private List<ProductReview> reviews;
 
+    /**
+     * Variedades do produto.
+     */
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<ProductVariant> variants;
 
-    public Product(ProductRequestPostDTO productPostDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications,  List<ProductVariant> productVariants) {
+    /**
+     * Constrói um produto a partir dos dados do DTO e de outras entidades.
+     *
+     * @param productPostDTO Dados do produto.
+     * @param brand Marca do produto.
+     * @param productCategories Categorias do produto.
+     * @param productSpecifications Especificações do produto.
+     * @param productVariants Variedades do produto.
+     */
+    public Product(ProductRequestPostDTO productPostDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications, List<ProductVariant> productVariants) {
         setCode(productPostDTO.code());
         setTitle(productPostDTO.title());
         setDescription(productPostDTO.description());
@@ -68,15 +113,7 @@ public class Product {
         setVariants(productVariants);
     }
 
-    public ProductResponseSearchPageableDTO toSearchPageableDTO(){
-        return new ProductResponseSearchPageableDTO(
-                this.toCardDTO(),
-                getCategories().stream().map(ProductCategory::toDTO).toList()
-        );
-    }
-
     public ProductResponsePageDTO toPageDTO(){
-
         return new ProductResponsePageDTO(
                 getCode(),
                 getTitle(),
@@ -91,10 +128,18 @@ public class Product {
         );
     }
 
+    /**
+     * Alterna o status de habilitação do produto.
+     */
     public void changeEnableProduct(){
         setEnabled(!getEnabled());
     }
 
+    /**
+     * Converte o produto para um DTO de cardápio.
+     *
+     * @return DTO de cardápio.
+     */
     public ProductResponseCardDTO toCardDTO() {
         ProductImage productImage = new ProductImage();
 
@@ -102,13 +147,15 @@ public class Product {
             productImage = getVariants().getFirst().getImages().getFirst();
         }
 
+        Double discount = getVariants().getFirst().getPrice() - getVariants().getFirst().getDiscount();
+
         return new ProductResponseCardDTO(
                 getCode(),
                 getVariants().getFirst().getVariantCode(),
                 getTitle(),
                 getBrand().toDTO(),
                 getVariants().getFirst().getPrice(),
-                getVariants().getFirst().getDiscount(),
+                discount,
                 2,
                 getRating(),
                 productImage

@@ -7,14 +7,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Controlador para gerenciamento de cartões.
+ */
 @RestController
 @AllArgsConstructor
 @CrossOrigin("*")
 @RequestMapping("/topcare/card")
 public class CardController {
 
-    private CardServiceImpl service;
+    private final CardServiceImpl service;
 
+    /**
+     * Obtém um cartão pelo ID.
+     *
+     * @param id ID do cartão.
+     * @return Cartão correspondente ou mensagem de erro.
+     */
     @GetMapping("/{id}")
     public ResponseEntity getCard(@PathVariable Long id){
         try {
@@ -28,6 +37,11 @@ public class CardController {
         }
     }
 
+    /**
+     * Obtém todos os cartões.
+     *
+     * @return Lista de todos os cartões ou mensagem de erro.
+     */
     @GetMapping
     public ResponseEntity getAllCards(){
         try {
@@ -41,6 +55,12 @@ public class CardController {
         }
     }
 
+    /**
+     * Obtém todos os cartões de um usuário específico.
+     *
+     * @param userId ID do usuário cujos cartões serão obtidos.
+     * @return ResponseEntity contendo a lista de cartões do usuário ou uma mensagem de erro.
+     */
     @GetMapping("/user/{userId}")
     public ResponseEntity getCardsByUser(@PathVariable Long userId){
         try {
@@ -54,6 +74,12 @@ public class CardController {
         }
     }
 
+    /**
+     * Registra um novo cartão.
+     *
+     * @param dto Dados do cartão a ser registrado.
+     * @return Cartão registrado ou mensagem de erro.
+     */
     @PostMapping
     public ResponseEntity registerCard(@RequestBody CardRequestDTO dto){
         try {
@@ -67,6 +93,13 @@ public class CardController {
         }
     }
 
+    /**
+     * Edita um cartão existente.
+     *
+     * @param id ID do cartão a ser editado.
+     * @param dto Dados atualizados do cartão.
+     * @return Cartão editado ou mensagem de erro.
+     */
     @PutMapping("/{id}")
     public ResponseEntity editCard(@PathVariable Long id, @RequestBody CardRequestDTO dto){
         try {
@@ -80,6 +113,12 @@ public class CardController {
         }
     }
 
+    /**
+     * Deleta um cartão pelo ID.
+     *
+     * @param id ID do cartão a ser deletado.
+     * @return Status OK ou mensagem de erro.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCard(@PathVariable Long id){
         try {

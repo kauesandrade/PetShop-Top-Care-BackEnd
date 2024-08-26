@@ -12,14 +12,24 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-
+/**
+ * Implementa os serviços relacionados à entidade {@link Card}.
+ * Fornece métodos para manipulação de cartões, incluindo criação, leitura, atualização e exclusão.
+ */
 @Service
 @AllArgsConstructor
 public class CardServiceImpl implements CardServiceInt {
 
-    private CardRepository repository;
-    private CustomerServiceImpl customerService;
+    private final CardRepository repository;
+    private final CustomerServiceImpl customerService;
 
+    /**
+     * Retorna um DTO do cartão com o ID fornecido.
+     *
+     * @param id ID do cartão.
+     * @return DTO do cartão.
+     * @throws Exception Se o cartão não for encontrado.
+     */
     @Override
     public CardResponseDTO getCardToDTO(Long id) throws Exception {
         Optional<Card> optCard = repository.findById(id);
@@ -31,6 +41,13 @@ public class CardServiceImpl implements CardServiceInt {
         return optCard.get().toDTO();
     }
 
+    /**
+     * Retorna o cartão com o ID fornecido.
+     *
+     * @param id ID do cartão.
+     * @return Cartão encontrado.
+     * @throws Exception Se o cartão não for encontrado.
+     */
     @Override
     public Card getCard(Long id) throws Exception {
         Optional<Card> optCard = repository.findById(id);
@@ -41,11 +58,25 @@ public class CardServiceImpl implements CardServiceInt {
         return optCard.get();
     }
 
+    /**
+     * Retorna uma lista de todos os cartões convertidos para DTOs.
+     *
+     * @return Lista de DTOs de cartões.
+     */
     @Override
     public List<CardResponseDTO> getAllCards() {
         return repository.findAll().stream().map(Card::toDTO).toList();
     }
 
+    /**
+     * Registra um novo cartão com base no DTO fornecido.
+     * Define o cartão como principal se não houver cartões ou se o DTO indicar isso.
+     * Atualiza o cartão principal existente, se necessário.
+     *
+     * @param dto DTO do cartão a ser registrado.
+     * @return DTO do cartão registrado.
+     * @throws Exception Se o cliente não for encontrado ou ocorrer um erro.
+     */
     @Override
     public List<Card> getCardsOfUser(Long userId) {
         return repository.findByCustomer_Id(userId);
@@ -79,6 +110,15 @@ public class CardServiceImpl implements CardServiceInt {
         return newCard.toDTO();
     }
 
+    /**
+     * Edita um cartão existente com base no ID e no DTO fornecidos.
+     * Atualiza o cartão principal, se necessário.
+     *
+     * @param id ID do cartão a ser editado.
+     * @param dto DTO com as novas informações.
+     * @return DTO do cartão editado.
+     * @throws Exception Se o cartão não for encontrado ou ocorrer um erro.
+     */
     @Override
     public CardResponseDTO editCard(Long id, CardRequestDTO dto) throws Exception {
         Card card = getCard(id);
@@ -101,6 +141,13 @@ public class CardServiceImpl implements CardServiceInt {
         return card.toDTO();
     }
 
+    /**
+     * Exclui um cartão pelo ID.
+     * Atualiza o cartão principal do cliente se necessário.
+     *
+     * @param id ID do cartão a ser excluído.
+     * @throws Exception Se o cartão não for encontrado ou ocorrer um erro.
+     */
     @Override
     public void deleteCard(Long id) throws Exception {
         Optional<Card> optCard = repository.findById(id);

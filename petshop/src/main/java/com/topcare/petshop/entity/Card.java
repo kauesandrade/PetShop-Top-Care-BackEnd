@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+/**
+ * Entidade para cartões de pagamento.
+ * Armazena informações de cartões associados a um cliente.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -34,6 +38,11 @@ public class Card {
     @ManyToOne
     private Customer customer;
 
+    /**
+     * Construtor que inicializa a entidade com base em um DTO de solicitação de cartão.
+     *
+     * @param dto DTO com os dados do cartão.
+     */
     public Card(CardRequestDTO dto) {
         this.name = dto.name();
         this.lastDigits = dto.lastDigits();
@@ -42,10 +51,20 @@ public class Card {
         this.customer = new Customer(dto.userId());
     }
 
+    /**
+     * Converte a entidade para um DTO (Data Transfer Object).
+     *
+     * @return DTO com os dados do cartão.
+     */
     public CardResponseDTO toDTO() {
         return new CardResponseDTO(this.id, this.name, this.lastDigits, this.expirationDate, this.mainCard);
     }
 
+    /**
+     * Atualiza os dados do cartão com base em um DTO de solicitação de cartão.
+     *
+     * @param dto DTO com os dados atualizados do cartão.
+     */
     public void edit(CardRequestDTO dto) {
         this.name = dto.name();
         this.lastDigits = dto.lastDigits();
