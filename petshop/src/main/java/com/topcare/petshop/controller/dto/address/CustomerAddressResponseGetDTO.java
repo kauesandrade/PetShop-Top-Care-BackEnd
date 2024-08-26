@@ -2,6 +2,19 @@ package com.topcare.petshop.controller.dto.address;
 
 import com.topcare.petshop.entity.State;
 
+/**
+ * DTO (Data Transfer Object) utilizado para retornar os dados de um endereço
+ * ao buscar informações de um cliente no sistema de pet shop.
+ *
+ * @param name O nome do cliente.
+ * @param cep O CEP (Código de Endereçamento Postal) do endereço do cliente.
+ * @param state O estado (UF) do endereço do cliente.
+ * @param city A cidade do endereço do cliente.
+ * @param neighborhood O bairro do endereço do cliente.
+ * @param street A rua do endereço do cliente.
+ * @param number O número do imóvel no endereço do cliente.
+ * @param complement Complemento do endereço (ex: apartamento, bloco).
+ */
 public record CustomerAddressResponseGetDTO(String name, String cep, State state, String city, String neighborhood,
                                             String street, String number, String complement) {
 }

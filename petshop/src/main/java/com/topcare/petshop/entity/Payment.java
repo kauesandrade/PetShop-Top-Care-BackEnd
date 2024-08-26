@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
+/**
+ * Representa o pagamento associado a um pedido.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -34,5 +36,4 @@ public class Payment {
 
     @Enumerated
     private PaymentStatus status;
-
 }

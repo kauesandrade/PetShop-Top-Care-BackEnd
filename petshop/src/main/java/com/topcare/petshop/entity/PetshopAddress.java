@@ -8,7 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
+/**
+ * Representa o endereço de um petshop.
+ * Herda de {@link Address}.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data

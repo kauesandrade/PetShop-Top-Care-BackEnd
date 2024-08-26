@@ -1,9 +1,17 @@
 package com.topcare.petshop.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 
+/**
+ * Enum State representa os estados brasileiros.
+ *
+ * Cada enum é um estado com seu nome completo.
+ *
+ * Anotações:
+ * - @AllArgsConstructor: Gera um construtor com todos os atributos da enumeração.
+ * - @Getter: Gera automaticamente os métodos getters para acessar os valores da enumeração.
+ */
 @AllArgsConstructor
 @Getter
 public enum State {
@@ -36,5 +44,6 @@ public enum State {
     SE("Sergipe"),
     TO("Tocantins");
 
-    private String state;
+    private final String state; /** Nome completo do estado*/
+
 }
