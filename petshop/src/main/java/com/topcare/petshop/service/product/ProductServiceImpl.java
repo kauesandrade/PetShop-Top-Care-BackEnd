@@ -140,7 +140,7 @@ public class ProductServiceImpl implements ProductServiceInt {
         similarProducts = checkListOfProductsIsEnable(similarProducts);
 
         if (similarProducts.size() >= 10) {
-            similarProducts = similarProducts.stream().filter(product1 -> !product1.getCode().equals(product.getCode())).toList().subList(0, 9);
+            similarProducts = similarProducts.stream().filter(product1 -> (!product1.getCode().equals(product.getCode()) && (!product1.getCode().equals(code)))).toList().subList(0, 9);
         }
 
         return similarProducts.stream().map(Product::toCardDTO).toList();
