@@ -51,7 +51,7 @@ public abstract class User {
     private String cpf; /** CPF do usuário, deve ser único no sistema*/
 
     @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Enumerated
     @NonNull
     private UserRole role; /** Papel do usuário no sistema (Ex: ADMIN, CUSTOMER)*/
 
