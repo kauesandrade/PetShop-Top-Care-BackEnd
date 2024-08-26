@@ -7,6 +7,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * A classe Service representa um serviço oferecido por um petshop.
+ * Cada serviço possui um código único, uma imagem, título, descrição, categoria,
+ * lista de tipos de pets que podem ser atendidos e uma lista de variantes do serviço.
+ *
+ * Anotações:
+ * - @Entity: Define que a classe será mapeada para uma tabela no banco de dados.
+ * - @Data: Gera automaticamente getters, setters, equals, hashCode e toString.
+ * - @AllArgsConstructor e @NoArgsConstructor: Gera os construtores com e sem argumentos.
+ * - @Id e @GeneratedValue: Define o identificador único da entidade com geração automática de ID.
+ */
 @Entity
 @Data
 @AllArgsConstructor

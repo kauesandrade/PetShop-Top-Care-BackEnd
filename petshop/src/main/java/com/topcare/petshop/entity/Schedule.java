@@ -5,10 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * A classe Schedule representa o agendamento de um serviço para um pet em um petshop.
+ * Cada agendamento possui um pet, um cliente, um petshop, um pagamento, uma data/hora
+ * e uma lista de serviços relacionados.
+ *
+ * Anotações:
+ * - @Entity: Define que a classe será mapeada para uma tabela no banco de dados.
+ * - @Data: Gera automaticamente getters, setters, equals, hashCode e toString.
+ * - @AllArgsConstructor e @NoArgsConstructor: Gera os construtores com e sem argumentos.
+ * - @Id e @GeneratedValue: Define o identificador único da entidade com geração automática de ID.
+ */
 @Entity
 @Data
 @AllArgsConstructor

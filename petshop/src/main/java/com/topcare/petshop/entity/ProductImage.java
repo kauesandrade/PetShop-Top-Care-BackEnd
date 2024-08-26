@@ -11,13 +11,24 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.io.IOException;
-
+/**
+ * Representa uma imagem associada a um produto.
+ * Herda de {@link Image}.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
 @NoArgsConstructor
-public class ProductImage extends Image{
+public class ProductImage extends Image {
+
+    /**
+     * Constrói uma ProductImage a partir de um DTO de imagem.
+     *
+     * @param imageDTO DTO de imagem.
+     * @throws IOException Se ocorrer um erro ao processar o arquivo da imagem.
+     */
     public ProductImage(ImageRequestDTO imageDTO) throws IOException {
         super(imageDTO);
     }
 }
+

@@ -5,6 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Entidade para itens no carrinho de compras.
+ * Armazena detalhes sobre cada item no carrinho.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -21,5 +25,4 @@ public class CartItem {
 
     @Column(nullable = false)
     private Integer amount;
-
 }

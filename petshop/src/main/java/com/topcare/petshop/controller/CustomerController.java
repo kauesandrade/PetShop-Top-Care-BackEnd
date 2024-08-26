@@ -11,6 +11,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+/**
+ * Controlador para gerenciamento de clientes.
+ */
 @RestController
 @RequestMapping("/topcare/customer")
 @CrossOrigin("*")
@@ -19,11 +22,22 @@ public class CustomerController {
 
     private final CustomerServiceImpl service;
 
+    /**
+     * Obtém todos os clientes.
+     *
+     * @return Lista de todos os clientes.
+     */
     @GetMapping
     public ResponseEntity<List<CustomerResponseDTO>> getAllCustomers() {
         return new ResponseEntity(service.getCustomersToDTO(), HttpStatus.OK);
     }
 
+    /**
+     * Obtém um cliente pelo ID.
+     *
+     * @param id ID do cliente.
+     * @return Cliente correspondente ou mensagem de erro.
+     */
     @GetMapping("/{id}")
     public ResponseEntity getCustomerById(@PathVariable Long id) {
         try {
@@ -33,13 +47,26 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Cria um novo cliente.
+     *
+     * @param customer Dados do cliente a ser criado.
+     * @return Cliente criado.
+     */
     @PostMapping
     public ResponseEntity<CustomerResponseDTO> createCustomer(@RequestBody CustomerRequestPostDTO customer) {
         return new ResponseEntity(service.saveCustomerFromDTO(customer), HttpStatus.CREATED);
     }
 
+    /**
+     * Edita um cliente existente.
+     *
+     * @param id ID do cliente a ser editado.
+     * @param profileImage Imagem de perfil do cliente.
+     * @param customer Dados atualizados do cliente.
+     * @return Cliente editado ou mensagem de erro.
+     */
     @PutMapping(value = "/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    // Tem q ser form-data p poder receber a imagem
     public ResponseEntity editCustomer(@PathVariable Long id, @RequestPart MultipartFile profileImage, @RequestPart CustomerWoImageRequestPutDTO customer) {
         CustomerRequestPutDTO customerDTO = new CustomerRequestPutDTO(
                 profileImage,
@@ -58,6 +85,13 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Altera a senha de um cliente.
+     *
+     * @param id ID do cliente.
+     * @param passwords Dados da nova senha.
+     * @return Status OK ou mensagem de erro.
+     */
     @PatchMapping("/{id}")
     public ResponseEntity changePassword(@PathVariable Long id, @RequestBody CustomerPasswordRequestPatchDTO passwords) {
         try {
@@ -67,6 +101,12 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Deleta um cliente pelo ID.
+     *
+     * @param id ID do cliente a ser deletado.
+     * @return Status OK ou mensagem de erro.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity deleteCustomer(@PathVariable Long id) {
         try {
@@ -76,6 +116,4 @@ public class CustomerController {
             return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
-
 }
-

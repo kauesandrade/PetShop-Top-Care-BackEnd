@@ -10,6 +10,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Representa um grupo de categorias de produtos.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -24,14 +27,17 @@ public class CategoryGroup {
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoryGroup")
-//    @JoinColumn(name = "category_group_id", nullable = false)
     private List<ProductCategory> categories;
 
     @OneToOne
     @JoinColumn(nullable = false)
     private CategoryImage image;
 
-
+    /**
+     * Configura as categorias associadas ao grupo e ajusta a referência bidirecional.
+     *
+     * @param categories Lista de categorias a serem associadas.
+     */
     public void setCategories(List<ProductCategory> categories) {
         this.categories = categories;
         categories.forEach(category -> {
@@ -39,15 +45,27 @@ public class CategoryGroup {
         });
     }
 
+    /**
+     * Constrói um CategoryGroup a partir de um DTO de solicitação e uma lista de categorias de produtos.
+     *
+     * @param categoryGroupDTO DTO de solicitação do grupo de categorias.
+     * @param productCategories Lista de categorias de produtos associadas.
+     */
     public CategoryGroup(CategoryGroupRequestDTO categoryGroupDTO, List<ProductCategory> productCategories) {
         setTitle(categoryGroupDTO.title());
         setCategories(productCategories);
         setImage(categoryGroupDTO.image());
     }
 
-    public CategoryGroupResponseDTO toDTO(){
-        List<ProductCategoryResponseDTO> categoriesDTO = getCategories().stream().map(
-                productCategory -> productCategory.toDTO()).toList();
+    /**
+     * Converte o CategoryGroup para um DTO de resposta.
+     *
+     * @return DTO de resposta do grupo de categorias.
+     */
+    public CategoryGroupResponseDTO toDTO() {
+        List<ProductCategoryResponseDTO> categoriesDTO = getCategories().stream()
+                .map(ProductCategory::toDTO)
+                .toList();
 
         return new CategoryGroupResponseDTO(
                 getId(),
@@ -57,9 +75,14 @@ public class CategoryGroup {
         );
     }
 
+    /**
+     * Atualiza o CategoryGroup com base em um DTO de solicitação e uma lista de categorias de produtos.
+     *
+     * @param categoryGroupDTO DTO de solicitação do grupo de categorias.
+     * @param productCategories Lista de categorias de produtos associadas.
+     */
     public void edit(CategoryGroupRequestDTO categoryGroupDTO, List<ProductCategory> productCategories) {
         setTitle(categoryGroupDTO.title());
         setCategories(productCategories);
-//        setImage(categoryGroupDTO.image());
     }
 }
