@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -78,8 +79,7 @@ public class Customer extends User {
         this.setBirth(customer.birth());
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
-        // tem q fzr p iniciar com image
-        this.setProfileImage(new CustomerImage("topcare".getBytes()));
+        this.setProfileImage(CustomerImage.defaultImage());
         this.setCards(List.of());
         this.setOrders(List.of());
         this.setPets(List.of());

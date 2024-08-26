@@ -61,5 +61,4 @@ public abstract class Image {
     public void editFromDTO(ImageRequestDTO imageDTO) throws IOException {
         editFromFile(imageDTO.file());
     }
-
 }

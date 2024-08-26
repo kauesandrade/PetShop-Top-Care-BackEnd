@@ -1,6 +1,8 @@
 package com.topcare.petshop.controller;
 
 import com.topcare.petshop.controller.dto.customer.*;
+import com.topcare.petshop.entity.CustomerImage;
+import com.topcare.petshop.entity.Image;
 import com.topcare.petshop.service.customer.CustomerServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
