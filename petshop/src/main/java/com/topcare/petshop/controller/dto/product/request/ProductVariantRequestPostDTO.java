@@ -28,6 +28,6 @@ public record ProductVariantRequestPostDTO(
         Double price,
         Integer amountStock,
         Double discount
-        // List<ProductImage> images
+//         List<ProductImage> images
 ) {
 }

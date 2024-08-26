@@ -108,7 +108,9 @@ public class ProductServiceImpl implements ProductServiceInt {
     @Override
     public void deleteProductByCode(Long code) throws Exception {
         existProductByCode(code);
-        repository.findByCode(code).get().changeEnableProduct();
+        Product product = repository.findByCode(code).get();
+        product.changeEnableProduct();
+        repository.save(product);
     }
 
     /**

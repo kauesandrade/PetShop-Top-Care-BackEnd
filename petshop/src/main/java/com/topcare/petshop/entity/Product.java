@@ -132,7 +132,7 @@ public class Product {
      * Alterna o status de habilitação do produto.
      */
     public void changeEnableProduct(){
-        setEnabled(!getEnabled());
+        setEnabled(!this.enabled);
     }
 
     /**
