@@ -17,8 +17,6 @@ import java.util.Random;
 public class UserServiceImpl implements UserServiceInt {
 
     private final UserRepository repository;
-//    private final CustomerServiceImpl customerService;
-//    private final EmployeeServiceImpl employeeService;
 
     @Override
     public UserResponseDTO doLogin(UserRequestPostDTO dto) throws Exception {
