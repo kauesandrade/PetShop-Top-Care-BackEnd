@@ -137,10 +137,10 @@ public class ProductServiceImpl implements ProductServiceInt {
         existProductByCode(code);
         Product product = repository.findByCode(code).get();
         List<Product> similarProducts = filterService.filterProducts(product.getCategories().stream().map(ProductCategory::getId).toList());
-        similarProducts = checkListOfProductsIsEnable(similarProducts);
+        similarProducts = checkListOfProductsIsEnable(similarProducts).stream().filter(product1 -> !product1.getCode().equals(product.getCode()) ).toList();
 
         if (similarProducts.size() >= 10) {
-            similarProducts = similarProducts.stream().filter(product1 -> (!product1.getCode().equals(product.getCode()) && (!product1.getCode().equals(code)))).toList().subList(0, 9);
+            similarProducts = similarProducts.subList(0, 9);
         }
 
         return similarProducts.stream().map(Product::toCardDTO).toList();
