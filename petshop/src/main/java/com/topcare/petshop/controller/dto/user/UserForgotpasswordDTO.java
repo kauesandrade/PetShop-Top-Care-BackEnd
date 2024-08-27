@@ -1,13 +1,14 @@
 package com.topcare.petshop.controller.dto.user;
 
-import com.topcare.petshop.entity.*;
+import com.topcare.petshop.entity.UserRole;
 
-public record UserResponseDTO(
+public record UserForgotpasswordDTO(
+
+        Long id,
         String fullName,
         String email,
         String password,
-        String cpf,
-        UserRole role
+        String cpf
 
 ) {
 }

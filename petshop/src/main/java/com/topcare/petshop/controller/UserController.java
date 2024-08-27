@@ -2,7 +2,6 @@ package com.topcare.petshop.controller;
 
 import com.topcare.petshop.controller.dto.user.NewPasswordRequestDTO;
 import com.topcare.petshop.controller.dto.user.UserEmailRequestDTO;
-import com.topcare.petshop.controller.dto.user.UserResponseDTO;
 import com.topcare.petshop.controller.dto.user.UserRequestPostDTO;
 import com.topcare.petshop.service.user.UserServiceImpl;
 import lombok.AllArgsConstructor;

@@ -33,14 +33,14 @@ public class UserServiceImpl implements UserServiceInt {
     }
 
     @Override
-    public UserResponseDTO verifyEmail(UserEmailRequestDTO dto) throws Exception {
+    public UserForgotpasswordDTO verifyEmail(UserEmailRequestDTO dto) throws Exception {
         Optional<User> optUser = repository.findByEmail(dto.email());
 
         if (optUser.isEmpty()){
             throw new Exception("Usuário inexistente");
         }
 
-        return optUser.get().toDto();
+        return optUser.get().toForgotPasswordDto();
 
     }
 
