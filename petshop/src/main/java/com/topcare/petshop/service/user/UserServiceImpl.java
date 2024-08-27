@@ -60,6 +60,6 @@ public class UserServiceImpl implements UserServiceInt {
     @Override
     public ForgotPasswordCodeResponseDTO getCode() {
         Random rand = new Random();
-        return new ForgotPasswordCodeResponseDTO(rand.nextLong(999999 - 100000));
+        return new ForgotPasswordCodeResponseDTO(100000 + rand.nextLong(900000));
     }
 }
