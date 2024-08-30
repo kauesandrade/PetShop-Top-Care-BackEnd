@@ -3,7 +3,8 @@ package com.topcare.petshop.controller.dto.user;
 import com.topcare.petshop.entity.*;
 
 public record UserResponseDTO(
-        String fullName,
+        Long id,
+        String fullname,
         String email,
         String password,
         String cpf,

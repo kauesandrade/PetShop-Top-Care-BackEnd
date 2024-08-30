@@ -1,6 +1,8 @@
 package com.topcare.petshop.controller.dto.product.response.card;
 
 import com.topcare.petshop.controller.dto.brand.BrandResponseDTO;
+import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
+import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
 import com.topcare.petshop.entity.Image;
 import com.topcare.petshop.entity.ProductImage;
 
@@ -13,6 +15,6 @@ public record ProductResponseCardDTO(
         Double discountPrice,
         Integer parcels,
         Double rating,
-        ProductImage image
+        ImageResponseDTO image
 ) {
 }

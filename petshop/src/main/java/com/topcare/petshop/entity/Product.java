@@ -104,7 +104,7 @@ public class Product {
                 getVariants().getFirst().getDiscount(),
                 2,
                 getRating(),
-                productImage
+                productImage.toDTO()
         );
     }
 }
