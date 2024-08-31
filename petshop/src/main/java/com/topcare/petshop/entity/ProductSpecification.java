@@ -58,6 +58,7 @@ public class ProductSpecification {
      */
     public ProductSpecificationResponsePageDTO toDTO() {
         return new ProductSpecificationResponsePageDTO(
+                getId(),
                 getTitle(),
                 getDescription()
         );

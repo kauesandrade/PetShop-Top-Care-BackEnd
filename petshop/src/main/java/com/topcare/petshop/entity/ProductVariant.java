@@ -2,6 +2,7 @@ package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPostDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageEditDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -77,7 +78,7 @@ public class ProductVariant {
         setStock(productVariant.amountStock());
 
         /** Define a disponibilidade com base no estoque.*/
-        setAvailable(stock > 0);
+        setAvailable(productVariant.amountStock() > 0);
     }
 
     /**
@@ -100,6 +101,20 @@ public class ProductVariant {
                 discountPrice,
                 2, /** Pode ser um valor fixo ou calculado de outra forma.*/
                 isStockAvailable,
+                getImages()
+        );
+    }
+
+    public ProductVariantResponsePageEditDTO toEditDTO() {
+
+
+        return new ProductVariantResponsePageEditDTO(
+                getId(),
+                getVariantTitle(),
+                getVariantCode(),
+                getPrice(),
+                getDiscount(),
+                getStock(),
                 getImages()
         );
     }

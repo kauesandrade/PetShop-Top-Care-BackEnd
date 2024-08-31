@@ -1,14 +1,17 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageEditDTO;
 import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 /**
@@ -111,6 +114,8 @@ public class Product {
         setSpecifications(productSpecifications);
         setCategories(productCategories);
         setVariants(productVariants);
+        setRating(0.0);
+        setReviews(new ArrayList<>());
     }
 
     public ProductResponsePageDTO toPageDTO(){
@@ -128,6 +133,20 @@ public class Product {
         );
     }
 
+    public ProductResponsePageEditDTO toPageEditDTO(){
+        return new ProductResponsePageEditDTO(
+                getCode(),
+                getTitle(),
+                getDescription(),
+                getShortDescription(),
+                getBrand().toDTO(),
+                getSpecifications().stream().map(ProductSpecification::toDTO).toList(),
+                getRating(),
+                getCategories().stream().map(ProductCategory::toDTO).toList(),
+                getVariants().stream().map(ProductVariant::toEditDTO).toList()
+        );
+    }
+
     /**
      * Alterna o status de habilitação do produto.
      */
@@ -142,23 +161,39 @@ public class Product {
      */
     public ProductResponseCardDTO toCardDTO() {
         ProductImage productImage = new ProductImage();
+        Long variantCode = 0L;
+        Double price = 0.0;
+        Double discount = 0.0;
 
-        if (!getVariants().getFirst().getImages().isEmpty()){
-            productImage = getVariants().getFirst().getImages().getFirst();
+        if (!getVariants().isEmpty()){
+            if (!getVariants().getFirst().getImages().isEmpty()){
+                productImage = getVariants().getFirst().getImages().getFirst();
+            }
+            variantCode = getVariants().getFirst().getVariantCode();
+            price = getVariants().getFirst().getPrice();
+            discount = getVariants().getFirst().getPrice() - getVariants().getFirst().getDiscount();
         }
-
-        Double discount = getVariants().getFirst().getPrice() - getVariants().getFirst().getDiscount();
 
         return new ProductResponseCardDTO(
                 getCode(),
-                getVariants().getFirst().getVariantCode(),
+                variantCode,
                 getTitle(),
                 getBrand().toDTO(),
-                getVariants().getFirst().getPrice(),
+                price,
                 discount,
                 2,
                 getRating(),
                 productImage
         );
+    }
+
+    public void editProduct(ProductRequestPutDTO productPutDTO, Brand brand, List<ProductCategory> productCategories, List<ProductSpecification> productSpecifications, List<ProductVariant> productVariants){
+        setTitle(productPutDTO.title());
+        setDescription(productPutDTO.description());
+        setShortDescription(productPutDTO.shortDescription());
+        setBrand(brand);
+        setSpecifications(productSpecifications);
+        setCategories(productCategories);
+        setVariants(productVariants);
     }
 }

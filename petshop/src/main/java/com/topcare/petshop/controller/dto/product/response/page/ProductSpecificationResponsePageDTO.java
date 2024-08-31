@@ -12,6 +12,8 @@ package com.topcare.petshop.controller.dto.product.response.page;
  * - @param description: Descrição detalhada da especificação.
  */
 public record ProductSpecificationResponsePageDTO(
+
+        Long id,
         String title,
         String description
 ) {

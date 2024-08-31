@@ -1,6 +1,7 @@
 package com.topcare.petshop.controller;
 
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageDTO;
 import com.topcare.petshop.service.product.ProductServiceImpl;
 import lombok.AllArgsConstructor;
@@ -31,6 +32,15 @@ public class ProductController {
     public ResponseEntity getProductByCode(@PathVariable Long code) {
         try {
             return new ResponseEntity<>(productService.getProductByCode(code), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/edit/{code}")
+    public ResponseEntity getProductByCodeToEdit(@PathVariable Long code) {
+        try {
+            return new ResponseEntity<>(productService.getProductByCodeToEdit(code), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
@@ -90,7 +100,7 @@ public class ProductController {
      * @return Produto editado ou mensagem de erro.
      */
     @PutMapping("/{code}")
-    public ResponseEntity<ProductResponsePageDTO> editProduct(@PathVariable Long code, @RequestBody ProductRequestPostDTO productDTO) {
+    public ResponseEntity<ProductResponsePageDTO> editProduct(@PathVariable Long code, @RequestBody ProductRequestPutDTO productDTO) throws Exception {
         return new ResponseEntity<>(productService.editProduct(productDTO, code), HttpStatus.OK);
     }
 

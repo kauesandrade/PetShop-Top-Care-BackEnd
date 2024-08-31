@@ -2,7 +2,9 @@ package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupFiltersResponseDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageEditDTO;
 import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
@@ -54,6 +56,12 @@ public class ProductServiceImpl implements ProductServiceInt {
     }
 
     @Override
+    public ProductResponsePageEditDTO getProductByCodeToEdit(Long code) throws Exception {
+        existProductByCode(code);
+        return repository.findByCode(code).get().toPageEditDTO();
+    }
+
+    @Override
     public List<Product> getAllProducts() {
         return repository.findAll();
     }
@@ -67,19 +75,27 @@ public class ProductServiceImpl implements ProductServiceInt {
      */
     @Override
     public ProductResponsePageDTO createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
+
         if (repository.existsByCode(productPostDTO.code())) {
             throw new Exception("Esse código já está vinculado a um produto");
         }
 
-        Brand brand = brandService.findBrandByName(productPostDTO.brand().getName());
+        Brand brand = brandService.findBrandById(productPostDTO.idBrand());
+
         List<ProductCategory> productCategories =
-                productCategoryService.getAllProductCategory(productPostDTO.categories());
+                productCategoryService.getAllProductCategory(productPostDTO.idsCategories());
+
         List<ProductSpecification> productSpecifications =
                 productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
+
         List<ProductVariant> productVariants = productPostDTO.variants()
                 .stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
+
+
+        System.out.println(product.getCode());
+
         return repository.save(product).toPageDTO();
     }
 
@@ -91,10 +107,24 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @return DTO do produto editado.
      */
     @Override
-    public ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code) {
-        ModelMapper modelMapper = new ModelMapper();
-        Product product = modelMapper.map(productPutDTO, Product.class);
-        product.setCode(code);
+    public ProductResponsePageDTO editProduct(ProductRequestPutDTO productPutDTO, Long code) throws Exception {
+
+        existProductByCode(code);
+        Product product = repository.findByCode(code).get();
+
+        Brand brand = brandService.findBrandById(productPutDTO.idBrand());
+
+        List<ProductCategory> productCategories =
+                productCategoryService.getAllProductCategory(productPutDTO.idsCategories());
+
+        List<ProductSpecification> productSpecifications =
+                productPutDTO.specifications().stream().map(ProductSpecification::new).toList();
+
+        List<ProductVariant> productVariants = productPutDTO.variants()
+                .stream().map(ProductVariant::new).toList();
+
+        product.editProduct(productPutDTO, brand, productCategories, productSpecifications, productVariants);
+
         return repository.save(product).toPageDTO();
     }
 
