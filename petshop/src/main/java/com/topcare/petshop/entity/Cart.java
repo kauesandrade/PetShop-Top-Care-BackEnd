@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Entidade para carrinhos de compras.
+ * Armazena itens no carrinho e o tipo de envio associado.
+ */
 @Entity
 @Data
 @AllArgsConstructor
@@ -23,5 +27,4 @@ public class Cart {
 
     @ManyToOne
     private ShippingType shippingType;
-
 }

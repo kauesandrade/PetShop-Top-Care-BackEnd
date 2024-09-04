@@ -2,7 +2,9 @@ package com.topcare.petshop.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+/**
+ * Enumeração que define as cores possíveis para um pet.
+ */
 @AllArgsConstructor
 @Getter
 public enum PetColor {
@@ -17,5 +19,5 @@ public enum PetColor {
     PINK("pet-pink"),
     PURPLE("pet-purple");
 
-    private String color;
+    private final String color;
 }

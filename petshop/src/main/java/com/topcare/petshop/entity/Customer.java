@@ -12,11 +12,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Representa um cliente do sistema, incluindo informações pessoais e dados associados.
+ */
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
@@ -64,7 +68,11 @@ public class Customer extends User {
     public Customer(Long id) {
         super(id);
     }
-
+    /**
+     * Constrói um Customer a partir de um DTO de solicitação para criação.
+     *
+     * @param customer DTO de solicitação para criação de cliente.
+     */
     public Customer(CustomerRequestPostDTO customer) {
         super(customer.fullname(), customer.email(), customer.password(), customer.cpf(), UserRole.CUSTOMER);
 
@@ -78,8 +86,7 @@ public class Customer extends User {
         this.setBirth(customer.birth());
         this.setAddresses(List.of(new CustomerAddress(customer.address())));
 
-        // tem q fzr p iniciar com image
-        this.setProfileImage(new CustomerImage("topcare".getBytes()));
+        this.setProfileImage(CustomerImage.defaultImage());
         this.setCards(List.of());
         this.setOrders(List.of());
         this.setPets(List.of());
@@ -90,7 +97,11 @@ public class Customer extends User {
     private void setBirth(String birth) {
         this.birth = LocalDate.parse(birth);
     }
-
+    /**
+     * Converte o Customer para um DTO de resposta.
+     *
+     * @return DTO de resposta do cliente.
+     */
     public CustomerResponseDTO toDTO() {
         List<ContactResponseDTO> contacts = this.getContactInfo().stream().map(Contact::toDTO).toList();
         List<CustomerAddressResponseGetDTO> addresses = this.getAddresses().stream().map(Address::toDTO).toList();
@@ -107,6 +118,13 @@ public class Customer extends User {
                 addresses
         );
     }
+    /**
+     * Atualiza o Customer com base em um DTO de solicitação para atualização.
+     *
+     * @param customerDTO DTO de solicitação para atualização de cliente.
+     * @throws IOException Se ocorrer um erro ao processar a imagem de perfil.
+     */
+
 
     public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
         this.profileImage.editFromFile(customerDTO.profileImage());
@@ -123,6 +141,11 @@ public class Customer extends User {
         }
     }
 
+    /**
+     * Converte o Customer para um DTO de resposta para revisão.
+     *
+     * @return DTO de resposta para revisão do cliente.
+     */
     public CustomerResponseReviewDTO toReviewDTO() {
         return new CustomerResponseReviewDTO(
           this.getFullname(),

@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+/**
+ * Representa um item de pedido, que contém um produto e a quantidade solicitada.
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
