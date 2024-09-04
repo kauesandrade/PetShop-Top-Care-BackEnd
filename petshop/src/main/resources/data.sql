@@ -195,9 +195,9 @@ VALUES (null, 1, 1, "2024-07-30", 1, "2024-07-29", 1, 1),
 INSERT INTO petshop_address (id)
 VALUES (3), (4);
 
-INSERT INTO petshop (id, name, telephone, image_id, address_id)
-VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3),
-       (null, "Topcare Figueira", "47222222222", 22, 4);
+INSERT INTO petshop (id, name, telephone, image_id, address_id, opening_hours)
+VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3, "Seg a sex 7:00 - 22:00\r\nSab e dom 9:00 - 20:00"),
+       (null, "Topcare Figueira", "47222222222", 22, 4, "Seg a sex 7:00 - 22:00\r\nSab e dom 9:00 - 20:00");
 
 INSERT INTO employee (id, petshop_id)
 VALUES (2, 1),

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
 /**
  * Representa um petshop.
  */
@@ -46,8 +47,11 @@ public class Petshop {
     @Column(nullable = false, length = 11)
     private String telephone;
 
-   /**
-    * Possível adição futura de horário de funcionamento:
-    * private OpeningHours openingHours;
-    */
+    /**
+     * Horário de funcionamento do petshop.
+     */
+    private String openingHours;
+
+    @ManyToMany
+    private List<ServiceVariant> serviceVariant;
 }
