@@ -27,13 +27,7 @@ public class UserServiceImpl implements UserServiceInt {
      */
     @Override
     public UserResponseDTO doLogin(UserRequestPostDTO dto) throws Exception {
-        Optional<User> optUser = repository.findByEmail(dto.email());
-
-        if (optUser.isEmpty()) {
-            throw new Exception("Dados incorretos");
-        }
-
-        User user = optUser.get();
+        User user = getUserByEmail(dto.email());
 
         if (!user.checkPasswords(dto.password())) {
             throw new Exception("Dados incorretos");
@@ -57,7 +51,7 @@ public class UserServiceImpl implements UserServiceInt {
             throw new Exception("Usuário inexistente");
         }
 
-        return optUser.get().toDto();
+        return optUser.get().toForgotPasswordDto();
     }
 
     /**
@@ -69,15 +63,31 @@ public class UserServiceImpl implements UserServiceInt {
      */
     @Override
     public void changePassword(Long id, NewPasswordRequestDTO dto) throws Exception {
+        User user = getUserById(id);
+        user.setPassword(dto.newPassword());
+        repository.save(user);
+    }
+
+    @Override
+    public User getUserById(Long id) throws Exception {
         Optional<User> optUser = repository.findById(id);
 
         if (optUser.isEmpty()) {
             throw new Exception("Usuário inexistente");
         }
 
-        User user = optUser.get();
-        user.setPassword(dto.newPassword());
-        repository.save(user);
+        return optUser.get();
+    }
+
+    @Override
+    public User getUserByEmail(String email) throws Exception {
+        Optional<User> optUser = repository.findByEmail(email);
+
+        if (optUser.isEmpty()) {
+            throw new Exception("Usuário inexistente");
+        }
+
+        return optUser.get();
     }
 
     @Override

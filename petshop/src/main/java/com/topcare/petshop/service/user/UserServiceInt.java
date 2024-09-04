@@ -1,6 +1,7 @@
 package com.topcare.petshop.service.user;
 
 import com.topcare.petshop.controller.dto.user.*;
+import com.topcare.petshop.entity.User;
 import org.springframework.stereotype.Service;
 /**
  * Interface para serviços relacionados ao usuário.
@@ -35,6 +36,10 @@ public interface UserServiceInt {
      * @throws Exception Se o usuário não existir.
      */
     void changePassword(Long id, NewPasswordRequestDTO dto) throws Exception;
+
+    User getUserById(Long id) throws Exception;
+
+    User getUserByEmail(String email) throws Exception;
 
     ForgotPasswordCodeResponseDTO getCode();
 }

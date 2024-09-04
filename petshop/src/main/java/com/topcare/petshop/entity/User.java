@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.user.UserForgotPasswordDTO;
 import com.topcare.petshop.controller.dto.user.UserResponseDTO;
 import jakarta.persistence.*;
 import lombok.*;
@@ -76,6 +77,16 @@ public abstract class User {
                 this.password,
                 this.cpf,
                 this.role
+        );
+    }
+
+    public UserForgotPasswordDTO toForgotPasswordDto(){
+        return new UserForgotPasswordDTO(
+                this.id,
+                this.fullname,
+                this.email,
+                this.password,
+                this.cpf
         );
     }
 
