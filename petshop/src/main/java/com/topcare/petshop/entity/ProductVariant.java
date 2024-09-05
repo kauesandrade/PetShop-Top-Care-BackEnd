@@ -1,6 +1,7 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageEditDTO;
 import jakarta.persistence.*;
@@ -8,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Representa uma variante de um produto, que pode ter diferentes características e preços.
@@ -75,10 +77,22 @@ public class ProductVariant {
         setVariantTitle(productVariant.variantTitle());
         setPrice(productVariant.price());
         setDiscount(productVariant.discount());
-        setStock(productVariant.amountStock());
+        setStock(productVariant.stock());
+        setImages(new ArrayList<>());
 
         /** Define a disponibilidade com base no estoque.*/
-        setAvailable(productVariant.amountStock() > 0);
+        setAvailable(productVariant.stock() > 0);
+    }
+
+    public ProductVariant(ProductVariantRequestPutDTO productVariant){
+        setId(productVariant.variantId());
+        setVariantCode(productVariant.variantCode());
+        setVariantTitle(productVariant.variantTitle());
+        setPrice(productVariant.price());
+        setDiscount(productVariant.discount());
+        setStock(productVariant.stock());
+        setAvailable(productVariant.stock() > 0);
+        setImages(new ArrayList<>());
     }
 
     /**
@@ -106,7 +120,6 @@ public class ProductVariant {
     }
 
     public ProductVariantResponsePageEditDTO toEditDTO() {
-
 
         return new ProductVariantResponsePageEditDTO(
                 getId(),

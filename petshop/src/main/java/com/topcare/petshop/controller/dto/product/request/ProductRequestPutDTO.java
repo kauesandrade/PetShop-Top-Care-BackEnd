@@ -24,6 +24,6 @@ public record ProductRequestPutDTO(
         Long idBrand,
         List<Long> idsCategories,
         List<ProductSpecificationResponsePageDTO> specifications,
-        List<ProductVariantRequestPostDTO> variants
+        List<ProductVariantRequestPutDTO> variants
 ) {
 }

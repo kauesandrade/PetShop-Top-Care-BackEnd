@@ -80,6 +80,8 @@ public class ProductServiceImpl implements ProductServiceInt {
             throw new Exception("Esse código já está vinculado a um produto");
         }
 
+        System.out.println(productPostDTO);
+
         Brand brand = brandService.findBrandById(productPostDTO.idBrand());
 
         List<ProductCategory> productCategories =
@@ -92,9 +94,6 @@ public class ProductServiceImpl implements ProductServiceInt {
                 .stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
-
-
-        System.out.println(product.getCode());
 
         return repository.save(product).toPageDTO();
     }
