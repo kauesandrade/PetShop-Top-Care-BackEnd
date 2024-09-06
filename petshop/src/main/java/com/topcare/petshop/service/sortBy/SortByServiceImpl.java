@@ -8,9 +8,6 @@ import com.topcare.petshop.repository.ServiceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 /**
  * Implementa serviços de ordenação para várias entidades.
@@ -33,8 +30,7 @@ public class SortByServiceImpl implements SortByServiceInt {
     @Override
     public Page<Product> sortProductsBy(List<Product> productList, SearchRequestDTO searchRequestDTO) {
         Pageable pageable = PageRequest.of(searchRequestDTO.page(), searchRequestDTO.size(), convertSortBy(searchRequestDTO.sortBy()));
-        Page<Product> productPage = productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
-        return productPage;
+        return productRepository.findAllByIdIn(productList.stream().map(Product::getId).toList(), pageable);
     }
 
     /**
