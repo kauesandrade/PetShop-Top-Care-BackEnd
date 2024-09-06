@@ -1,4 +1,19 @@
 package com.topcare.petshop.controller.dto.petshop;
 
-public record PetshopResponseAllDTO() {
+import com.topcare.petshop.entity.PetshopAddress;
+import com.topcare.petshop.entity.PetshopImage;
+import com.topcare.petshop.entity.ServiceVariant;
+
+import java.util.List;
+
+public record PetshopResponseAllDTO(
+
+        PetshopImage image,
+        String name,
+        PetshopAddress petshopAddress,
+        String telephone,
+        String openingHours,
+        List<ServiceVariant> serviceVariants
+
+) {
 }

@@ -1,11 +1,11 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.petshop.PetshopResponseByIdDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -53,5 +53,18 @@ public class Petshop {
     private String openingHours;
 
     @ManyToMany
-    private List<ServiceVariant> serviceVariant;
+    private List<ServiceVariant> offeredServices;
+
+    public PetshopResponseByIdDTO byIdToDTO() {
+        return new PetshopResponseByIdDTO(
+                this.image,
+                this.name,
+                this.address,
+                this.telephone,
+                this.openingHours,
+                this.offeredServices
+        );
+    }
+
+    public Petshop
 }

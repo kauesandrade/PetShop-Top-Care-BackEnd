@@ -58,7 +58,7 @@ public class PetshopController {
     public ResponseEntity editPetshop(@PathVariable Long id, @RequestBody PetshopRequestDTO dto) {
         try {
             return new ResponseEntity<>(
-                    petshopService.createPetshop(id, dto), HttpStatus.OK
+                    petshopService.editPetshop(id, dto), HttpStatus.OK
             );
         } catch (Exception e) {
             return new ResponseEntity(
