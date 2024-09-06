@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.petshop.PetshopResponseAllDTO;
 import com.topcare.petshop.controller.dto.petshop.PetshopResponseByIdDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -66,5 +67,14 @@ public class Petshop {
         );
     }
 
-    public Petshop
+    public PetshopResponseAllDTO allToDTO() {
+        return new PetshopResponseAllDTO(
+                this.image,
+                this.name,
+                this.address,
+                this.telephone,
+                this.openingHours,
+                this.offeredServices
+        );
+    }
 }
