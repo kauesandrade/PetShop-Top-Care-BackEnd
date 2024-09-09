@@ -1,11 +1,14 @@
 package com.topcare.petshop.controller;
 
+import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
 import com.topcare.petshop.controller.dto.petshop.PetshopRequestDTO;
 import com.topcare.petshop.service.petshop.PetshopServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @AllArgsConstructor
@@ -41,11 +44,11 @@ public class PetshopController {
         }
     }
 
-    @PostMapping
-    public ResponseEntity createPetshop(@RequestBody PetshopRequestDTO dto) {
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity createPetshop(@RequestPart MultipartFile image, @RequestPart PetshopRequestDTO dto) {
         try {
             return new ResponseEntity<>(
-                    petshopService.createPetshop(dto), HttpStatus.OK
+                    petshopService.createPetshop(new ImageRequestDTO(image), dto), HttpStatus.OK
             );
         } catch (Exception e) {
             return new ResponseEntity(

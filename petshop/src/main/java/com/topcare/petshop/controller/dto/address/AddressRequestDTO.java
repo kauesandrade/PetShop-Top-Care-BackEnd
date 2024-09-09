@@ -13,6 +13,6 @@ package com.topcare.petshop.controller.dto.address;
  * @param number O número do imóvel no endereço do cliente.
  * @param complement Complemento do endereço (ex: apartamento, bloco).
  */
-public record CustomerAddressRequestDTO(String name, String cep, String state, String city, String neighborhood,
-                                        String street, String number, String complement) {
+public record AddressRequestDTO(String name, String cep, String state, String city, String neighborhood,
+                                String street, String number, String complement) {
 }

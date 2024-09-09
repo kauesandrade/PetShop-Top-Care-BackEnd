@@ -1,5 +1,6 @@
 package com.topcare.petshop.entity;
 
+import com.topcare.petshop.controller.dto.address.AddressRequestDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,4 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class PetshopAddress extends Address {
+    public PetshopAddress(AddressRequestDTO address) {
+        super(address.name(), address.cep(), State.valueOf(address.state()), address.city(), address.neighborhood(), address.street(), address.number(), address.complement());
+    }
 }

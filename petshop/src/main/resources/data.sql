@@ -196,8 +196,8 @@ INSERT INTO petshop_address (id)
 VALUES (3), (4);
 
 INSERT INTO petshop (id, name, telephone, image_id, address_id, opening_hours)
-VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3, "Seg a sex 7:00 - 22:00\r\nSab e dom 9:00 - 20:00"),
-       (null, "Topcare Figueira", "47222222222", 22, 4, "Seg a sex 7:00 - 22:00\r\nSab e dom 9:00 - 20:00");
+VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3, CONCAT_WS(CHAR(10 using utf8), "Seg a sex 7:00 - 22:00", "Sab e dom 9:00 - 20:00")),
+       (null, "Topcare Figueira", "47222222222", 22, 4, CONCAT_WS(CHAR(10 using utf8), "Seg a sex 7:00 - 22:00", "Sab e dom 9:00 - 20:00"));
 
 INSERT INTO employee (id, petshop_id)
 VALUES (2, 1),
@@ -294,3 +294,9 @@ VALUES (1, 1),
        (2, 10),
        (2, 11),
        (2, 12);
+
+INSERT INTO petshop_offered_services (offered_services_id, petshop_id)
+VALUES (1, 1),
+       (2, 1),
+       (3, 2),
+       (2, 2);

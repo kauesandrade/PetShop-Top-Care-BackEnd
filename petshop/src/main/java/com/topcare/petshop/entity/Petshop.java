@@ -29,7 +29,7 @@ public class Petshop {
     /**
      * Imagem do petshop.
      */
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private PetshopImage image;
 
@@ -76,7 +76,7 @@ public class Petshop {
                 this.image.toDTO(),
                 this.name,
                 this.address,
-                this.telephone,
+                "50Km",
                 this.openingHours,
                 this.offeredServices
         );

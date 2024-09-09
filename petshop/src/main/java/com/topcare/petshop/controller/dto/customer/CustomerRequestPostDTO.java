@@ -1,6 +1,6 @@
 package com.topcare.petshop.controller.dto.customer;
 
-import com.topcare.petshop.controller.dto.address.CustomerAddressRequestDTO;
+import com.topcare.petshop.controller.dto.address.AddressRequestDTO;
 
 /**
  * DTO para enviar os dados de um novo cliente ao criar um cliente no sistema de pet shop.
@@ -29,5 +29,5 @@ import com.topcare.petshop.controller.dto.address.CustomerAddressRequestDTO;
  */
 public record CustomerRequestPostDTO(String fullname, String email, String cellphone, String telephone,
                                      String cpf, String gender, String birth, String password,
-                                     CustomerAddressRequestDTO address) {
+                                     AddressRequestDTO address) {
 }

@@ -1,6 +1,6 @@
 package com.topcare.petshop.entity;
 
-import com.topcare.petshop.controller.dto.address.CustomerAddressRequestDTO;
+import com.topcare.petshop.controller.dto.address.AddressRequestDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,7 +19,7 @@ public class CustomerAddress extends Address {
      *
      * @param address DTO de solicitação de endereço.
      */
-    public CustomerAddress(CustomerAddressRequestDTO address) {
+    public CustomerAddress(AddressRequestDTO address) {
         super(address.name(), address.cep(), State.valueOf(address.state()), address.city(),
                 address.neighborhood(), address.street(), address.number(), address.complement());
     }
