@@ -59,6 +59,7 @@ public class Brand {
      */
     public BrandResponseDTO toDTO() {
         return new BrandResponseDTO(
+                getId(),
                 getName(),
                 getImage().toDTO()
         );

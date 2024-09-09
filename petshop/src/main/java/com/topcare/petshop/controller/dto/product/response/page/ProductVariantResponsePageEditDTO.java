@@ -10,7 +10,7 @@ public record ProductVariantResponsePageEditDTO(
         String variantTitle,
         Long variantCode,
         Double price,
-        Double discountPrice,
+        Double discount,
         Integer stock,
         List<ProductImage> images
 ) {

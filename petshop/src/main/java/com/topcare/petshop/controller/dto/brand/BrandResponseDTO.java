@@ -15,6 +15,8 @@ import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
  * - @param image: Os dados da imagem da marca (do tipo ImageResponseDTO).
  */
 public record BrandResponseDTO(
+        Long id,
         String name,
-        ImageResponseDTO image) {
+        ImageResponseDTO image
+) {
 }
