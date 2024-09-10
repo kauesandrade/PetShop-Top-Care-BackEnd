@@ -8,7 +8,7 @@ public record ImageResponsePutDTO(
         String name,
         String type,
         Long size,
-        String url,
-        MultipartFile file
+        String url
+//        MultipartFile file
 ) {
 }

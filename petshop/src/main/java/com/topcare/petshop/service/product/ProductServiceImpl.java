@@ -122,9 +122,17 @@ public class ProductServiceImpl implements ProductServiceInt {
         List<ProductVariant> productVariants = productPutDTO.variants()
                 .stream().map(ProductVariant::new).toList();
 
+        System.out.println(productPutDTO);
+        System.out.println(brand.getName());
+        System.out.println(productCategories.getFirst().getTitle());
+        System.out.println(productSpecifications.getFirst().getTitle());
+        System.out.println(productVariants.getFirst().getVariantTitle());
+
         product.editProduct(productPutDTO, brand, productCategories, productSpecifications, productVariants);
 
-        return repository.save(product).toPageDTO();
+        System.out.println(product.getTitle());
+        repository.save(product).toPageDTO();
+        return product.toPageDTO();
     }
 
     /**
