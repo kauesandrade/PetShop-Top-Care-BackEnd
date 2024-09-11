@@ -192,8 +192,8 @@ public class Product {
         setDescription(productPutDTO.description());
         setShortDescription(productPutDTO.shortDescription());
         setBrand(brand);
-//        setSpecifications(productSpecifications);
+        setSpecifications(productSpecifications);
         setCategories(productCategories);
-        setVariants(productVariants);
+//        setVariants(productVariants);
     }
 }

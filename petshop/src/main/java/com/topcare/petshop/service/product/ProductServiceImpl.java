@@ -125,7 +125,7 @@ public class ProductServiceImpl implements ProductServiceInt {
         System.out.println(productPutDTO);
         System.out.println(brand.getName());
         System.out.println(productCategories.getFirst().getTitle());
-        System.out.println(productSpecifications.getFirst().getTitle());
+        productSpecifications.forEach(productSpecification -> System.out.println(productSpecification.getId()));
         System.out.println(productVariants.getFirst().getVariantTitle());
 
         product.editProduct(productPutDTO, brand, productCategories, productSpecifications, productVariants);
