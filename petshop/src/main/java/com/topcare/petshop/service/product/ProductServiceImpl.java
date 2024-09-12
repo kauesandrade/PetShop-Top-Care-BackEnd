@@ -55,7 +55,7 @@ public class ProductServiceImpl implements ProductServiceInt {
     public ProductResponsePageDTO getProductByCode(Long code) throws Exception {
         existProductByCode(code);
         Product product = repository.findByCode(code).get();
-        if(product.isEnable()){
+        if(product.isEnableVariant()){
             return product.toPageDTO();
         }
         throw new Exception("Produto não encontrado!");
@@ -218,6 +218,8 @@ public class ProductServiceImpl implements ProductServiceInt {
 
         productList = filterService.filterProducts(productCategories);
         if (isEnabled){
+            productList = checkListOfProductsAndVariantIsEnable(productList);
+        }else {
             productList = checkListOfProductsIsEnable(productList);
         }
         productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
@@ -233,7 +235,12 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @return Lista de produtos habilitados.
      */
     @Override
+    public List<Product> checkListOfProductsAndVariantIsEnable(List<Product> products) {
+        return products.stream().filter(Product::isEnableVariant).toList();
+    }
+
+    @Override
     public List<Product> checkListOfProductsIsEnable(List<Product> products) {
-        return products.stream().filter(Product::isEnable).toList();
+        return products.stream().filter(Product::getEnabled).toList();
     }
 }

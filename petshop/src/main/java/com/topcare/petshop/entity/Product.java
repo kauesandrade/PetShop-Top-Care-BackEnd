@@ -198,7 +198,7 @@ public class Product {
         setVariants(productVariants);
     }
 
-    public boolean isEnable() {
+    public boolean isEnableVariant() {
         return getEnabled() && !getVariants().isEmpty();
     }
 

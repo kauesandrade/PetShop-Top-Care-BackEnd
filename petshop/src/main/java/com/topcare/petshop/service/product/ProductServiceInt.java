@@ -102,5 +102,6 @@ public interface ProductServiceInt {
      * @return Lista de produtos habilitados.
      */
     List<Product> checkListOfProductsIsEnable(List<Product> products);
+    List<Product> checkListOfProductsAndVariantIsEnable(List<Product> products);
 }
 
