@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 /**
  * Representa um produto no sistema.
@@ -68,7 +69,7 @@ public class Product {
      * Especificações do produto.
      */
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id")
     private List<ProductSpecification> specifications;
 
     /**
@@ -194,6 +195,32 @@ public class Product {
         setBrand(brand);
         setSpecifications(productSpecifications);
         setCategories(productCategories);
-//        setVariants(productVariants);
+        setVariants(productVariants);
     }
+
+    public boolean isEnable() {
+        return getEnabled() && !getVariants().isEmpty();
+    }
+
+//    private List<ProductVariant> updateVariants(List<ProductVariant> newProductVariants){
+//        List<ProductVariant> updateProductVariants = new ArrayList<>();
+//        HashMap<Long, ProductVariant> productVariantHashMap = new HashMap<>();
+//
+//        getVariants().forEach(productVariant -> {
+//            productVariantHashMap.put(productVariant.getId(), productVariant);
+//        });
+//
+//        newProductVariants.forEach(productVariant -> {
+//            productVariantHashMap.remove(productVariant.getId());
+//            updateProductVariants.add(productVariant);
+//        });
+//
+//        productVariantHashMap.forEach((aLong, productVariant) -> {
+//            productVariant.setAvailable(false);
+//            updateProductVariants.add(productVariant);
+//        });
+//
+//        return updateProductVariants;
+//    }
+
 }

@@ -72,6 +72,7 @@ public class ProductVariant {
      *
      * @param productVariant DTO de variante do produto.
      */
+
     public ProductVariant(ProductVariantRequestPostDTO productVariant) {
         setVariantCode(productVariant.variantCode());
         setVariantTitle(productVariant.variantTitle());

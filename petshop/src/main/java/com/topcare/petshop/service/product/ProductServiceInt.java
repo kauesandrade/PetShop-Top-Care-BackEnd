@@ -93,7 +93,7 @@ public interface ProductServiceInt {
      * @param productCategories Lista de IDs de categorias para filtragem.
      * @return Página de DTOs dos produtos encontrados.
      */
-    Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) throws Exception;
+    Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories, boolean isEnabled) throws Exception;
 
     /**
      * Filtra uma lista de produtos para incluir apenas aqueles que estão habilitados.

@@ -27,6 +27,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 /**
  * Implementa os serviços relacionados à entidade {@link Product}.
  * Fornece métodos para manipulação de produtos, incluindo criação, edição, exclusão e pesquisa.
@@ -52,7 +54,11 @@ public class ProductServiceImpl implements ProductServiceInt {
     @Override
     public ProductResponsePageDTO getProductByCode(Long code) throws Exception {
         existProductByCode(code);
-        return repository.findByCode(code).get().toPageDTO();
+        Product product = repository.findByCode(code).get();
+        if(product.isEnable()){
+            return product.toPageDTO();
+        }
+        throw new Exception("Produto não encontrado!");
     }
 
     @Override
@@ -111,26 +117,20 @@ public class ProductServiceImpl implements ProductServiceInt {
         existProductByCode(code);
         Product product = repository.findByCode(code).get();
 
-        Brand brand = brandService.findBrandById(productPutDTO.idBrand());
+        Brand brand =
+                brandService.findBrandById(productPutDTO.idBrand());
 
         List<ProductCategory> productCategories =
                 productCategoryService.getAllProductCategory(productPutDTO.idsCategories());
 
         List<ProductSpecification> productSpecifications =
-                productPutDTO.specifications().stream().map(ProductSpecification::new).toList();
+                new ArrayList<>(productPutDTO.specifications().stream().map(ProductSpecification::new).toList());
 
-        List<ProductVariant> productVariants = productPutDTO.variants()
-                .stream().map(ProductVariant::new).toList();
-
-        System.out.println(productPutDTO);
-        System.out.println(brand.getName());
-        System.out.println(productCategories.getFirst().getTitle());
-        productSpecifications.forEach(productSpecification -> System.out.println(productSpecification.getId()));
-        System.out.println(productVariants.getFirst().getVariantTitle());
+        List<ProductVariant> productVariants =
+                new ArrayList<>(productPutDTO.variants().stream().map(ProductVariant::new).toList());
 
         product.editProduct(productPutDTO, brand, productCategories, productSpecifications, productVariants);
 
-        System.out.println(product.getTitle());
         repository.save(product).toPageDTO();
         return product.toPageDTO();
     }
@@ -212,12 +212,14 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @return Página de DTOs dos produtos encontrados.
      */
     @Override
-    public Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) {
+    public Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories, boolean isEnabled) {
         Page<Product> productPage;
         List<Product> productList;
 
         productList = filterService.filterProducts(productCategories);
-        productList = checkListOfProductsIsEnable(productList);
+        if (isEnabled){
+            productList = checkListOfProductsIsEnable(productList);
+        }
         productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
         productPage = sortByService.sortProductsBy(productList, searchRequestDTO);
 
@@ -232,6 +234,6 @@ public class ProductServiceImpl implements ProductServiceInt {
      */
     @Override
     public List<Product> checkListOfProductsIsEnable(List<Product> products) {
-        return products.stream().filter(Product::getEnabled).toList();
+        return products.stream().filter(Product::isEnable).toList();
     }
 }

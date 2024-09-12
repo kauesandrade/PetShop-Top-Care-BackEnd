@@ -47,6 +47,7 @@ public class ProductSpecification {
      * @param productSpecificationResponseDTO DTO de especificação do produto.
      */
     public ProductSpecification(ProductSpecificationResponsePageDTO productSpecificationResponseDTO) {
+        setId(productSpecificationResponseDTO.id());
         setTitle(productSpecificationResponseDTO.title());
         setDescription(productSpecificationResponseDTO.description());
     }

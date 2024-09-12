@@ -37,15 +37,6 @@ public class ProductController {
         }
     }
 
-    @GetMapping("/edit/{code}")
-    public ResponseEntity getProductByCodeToEdit(@PathVariable Long code) {
-        try {
-            return new ResponseEntity<>(productService.getProductByCodeToEdit(code), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
-        }
-    }
-
     /**
      * Obtém produtos similares ao produto especificado pelo código.
      *
@@ -83,7 +74,7 @@ public class ProductController {
      * @return Produto criado ou mensagem de erro.
      * @throws Exception Se ocorrer um erro durante a criação.
      */
-    @PostMapping
+    @PostMapping("/dashboard")
     public ResponseEntity createProduct(@RequestBody ProductRequestPostDTO productDTO) throws Exception {
         try {
             return new ResponseEntity<>(productService.createProduct(productDTO), HttpStatus.CREATED);
@@ -92,25 +83,21 @@ public class ProductController {
         }
     }
 
-    /**
-     * Edita um produto existente.
-     *
-     * @param code Código do produto a ser editado.
-     * @param productDTO Dados atualizados do produto.
-     * @return Produto editado ou mensagem de erro.
-     */
-    @PutMapping("/{code}")
+    @GetMapping("/dashboard/{code}")
+    public ResponseEntity getProductByCodeToEdit(@PathVariable Long code) {
+        try {
+            return new ResponseEntity<>(productService.getProductByCodeToEdit(code), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/dashboard/{code}")
     public ResponseEntity<ProductResponsePageDTO> editProduct(@PathVariable Long code, @RequestBody ProductRequestPutDTO productDTO) throws Exception {
         return new ResponseEntity<>(productService.editProduct(productDTO, code), HttpStatus.OK);
     }
 
-    /**
-     * Deleta um produto pelo código.
-     *
-     * @param code Código do produto a ser deletado.
-     * @return Status OK ou mensagem de erro.
-     */
-    @DeleteMapping("/{code}")
+    @DeleteMapping("/dashboard/{code}")
     public ResponseEntity deleteProduct(@PathVariable Long code) {
         try {
             productService.deleteProductByCode(code);
