@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/topcare/user")
+@CrossOrigin("*")
 public class UserController {
 
     private final UserServiceImpl service;
