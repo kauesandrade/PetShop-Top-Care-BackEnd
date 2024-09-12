@@ -42,9 +42,12 @@ public class Petshop {
     /**
      * Endereço do petshop.
      */
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private PetshopAddress address;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "petshop")
+    private List<Schedule> schedules;
 
     /**
      * Telefone do petshop.
@@ -59,6 +62,9 @@ public class Petshop {
 
     @ManyToMany
     private List<ServiceVariant> offeredServices;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "petshop")
+    private List<Employee> employees;
 
     public PetshopAllAtributesDTO toDTO() {
         return new PetshopAllAtributesDTO(

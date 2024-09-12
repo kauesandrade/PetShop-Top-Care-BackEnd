@@ -18,7 +18,7 @@ public class PetshopController {
 
     private PetshopServiceImpl petshopService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/getPetshop/{id}")
     public ResponseEntity getPetshopById(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(
@@ -31,7 +31,7 @@ public class PetshopController {
         }
     }
 
-    @GetMapping
+    @GetMapping("/getAllPetshops")
     public ResponseEntity getAllPetshops() {
         try {
             return new ResponseEntity<>(
@@ -44,7 +44,7 @@ public class PetshopController {
         }
     }
 
-    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, path = "/createPetshop")
     public ResponseEntity createPetshop(@RequestPart MultipartFile image, @RequestPart PetshopRequestDTO dto) {
         try {
             return new ResponseEntity<>(
@@ -57,11 +57,11 @@ public class PetshopController {
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity editPetshop(@PathVariable Long id, @RequestBody PetshopRequestDTO dto) {
+    @PutMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE}, path = "/editPetshop/{id}")
+    public ResponseEntity editPetshop(@PathVariable Long id, @RequestPart PetshopRequestDTO dto, @RequestPart MultipartFile image) {
         try {
             return new ResponseEntity<>(
-                    petshopService.editPetshop(id, dto), HttpStatus.OK
+                    petshopService.editPetshop(new ImageRequestDTO(image), id, dto), HttpStatus.OK
             );
         } catch (Exception e) {
             return new ResponseEntity(
@@ -70,7 +70,7 @@ public class PetshopController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletePetshop/{id}")
     public void deletePetshop(@PathVariable Long id) {
         petshopService.deletePetshop(id);
     }

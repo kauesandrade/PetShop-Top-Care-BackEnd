@@ -182,6 +182,8 @@ VALUES (null),
 
 INSERT INTO payment (id, sub_total, shipping_fee, total, method_id, parcels, status)
 VALUES (null, 149.90, 24.99, 174.89, 1, 1, 0),
+       (null, 45.90, 14.99, 60.89, 2, 2, 0),
+       (null, 149.90, 24.99, 174.89, 1, 1, 0),
        (null, 45.90, 14.99, 60.89, 2, 2, 0);
 
 INSERT INTO shipping (id, shipping_code, shipping_by, shipping_type_id)
@@ -240,8 +242,8 @@ VALUES (null, 1, "Idade", "Filhotes/Adultos"),
        (null, 3, "Apresentação", "Disponível em embalagem de 1.5kg, 3kg e 4kg");
 
 INSERT INTO schedule (id, pet_id, customer_id, petshop_id, payment_id, date_time)
-VALUES (null, 1, 1, 1, 1, "2024-08-15 13:30:00"),
-       (null, 2, 5, 2, 2, "2024-08-17 13:30:00");
+VALUES (null, 1, 1, 1, 3, "2024-08-15 13:30:00"),
+       (null, 2, 5, 2, 4, "2024-08-17 13:30:00");
 
 INSERT INTO service_category (id, title)
 VALUES (null, "Higiene"),

@@ -14,10 +14,8 @@ public interface PetshopServiceInt {
 
     public PetshopResponseByIdDTO getPetshopById(Long id);
     public List<PetshopResponseAllDTO> getAllPetshops();
-
     PetshopRequestDTO createPetshop(ImageRequestDTO image, PetshopRequestDTO dto) throws IOException;
-
-    public PetshopRequestDTO editPetshop(Long id, PetshopRequestDTO dto) throws IOException;
+    public PetshopRequestDTO editPetshop(ImageRequestDTO image, Long id, PetshopRequestDTO dto) throws IOException;
     public void deletePetshop(Long id);
 
 }

@@ -2,6 +2,7 @@ package com.topcare.petshop.controller.dto.petshop;
 
 import com.topcare.petshop.controller.dto.address.AddressRequestDTO;
 import com.topcare.petshop.controller.dto.image.ImageRequestDTO;
+import com.topcare.petshop.entity.PetshopAddress;
 import com.topcare.petshop.entity.ServiceVariant;
 
 import java.util.List;

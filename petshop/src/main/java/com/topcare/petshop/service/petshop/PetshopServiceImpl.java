@@ -38,9 +38,9 @@ public class PetshopServiceImpl implements PetshopServiceInt{
     }
 
     @Override
-    public PetshopRequestDTO editPetshop(Long id, PetshopRequestDTO dto) throws IOException {
+    public PetshopRequestDTO editPetshop(ImageRequestDTO image, Long id, PetshopRequestDTO dto) throws IOException {
         Petshop petshop = petshopRepository.findById(id).get();
-//        petshopRepository.save(insertValuesToNewPetshop(dto, petshop));
+        petshopRepository.save(insertValuesToNewPetshop(image, dto, petshop));
         return dto;
     }
 
