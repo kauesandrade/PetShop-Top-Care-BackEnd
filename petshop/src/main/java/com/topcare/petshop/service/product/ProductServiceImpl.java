@@ -2,7 +2,9 @@ package com.topcare.petshop.service.product;
 
 import com.topcare.petshop.controller.dto.category.ProductCategoryResponseDTO;
 import com.topcare.petshop.controller.dto.category.cateogoryGroup.CategoryGroupFiltersResponseDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageEditDTO;
 import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
@@ -25,6 +27,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 /**
  * Implementa os serviços relacionados à entidade {@link Product}.
  * Fornece métodos para manipulação de produtos, incluindo criação, edição, exclusão e pesquisa.
@@ -50,7 +54,17 @@ public class ProductServiceImpl implements ProductServiceInt {
     @Override
     public ProductResponsePageDTO getProductByCode(Long code) throws Exception {
         existProductByCode(code);
-        return repository.findByCode(code).get().toPageDTO();
+        Product product = repository.findByCode(code).get();
+        if(product.isEnableVariant()){
+            return product.toPageDTO();
+        }
+        throw new Exception("Produto não encontrado!");
+    }
+
+    @Override
+    public ProductResponsePageEditDTO getProductByCodeToEdit(Long code) throws Exception {
+        existProductByCode(code);
+        return repository.findByCode(code).get().toPageEditDTO();
     }
 
     @Override
@@ -67,19 +81,26 @@ public class ProductServiceImpl implements ProductServiceInt {
      */
     @Override
     public ProductResponsePageDTO createProduct(ProductRequestPostDTO productPostDTO) throws Exception {
+
         if (repository.existsByCode(productPostDTO.code())) {
             throw new Exception("Esse código já está vinculado a um produto");
         }
 
-        Brand brand = brandService.findBrandByName(productPostDTO.brand().getName());
+        System.out.println(productPostDTO);
+
+        Brand brand = brandService.findBrandById(productPostDTO.idBrand());
+
         List<ProductCategory> productCategories =
-                productCategoryService.getAllProductCategory(productPostDTO.categories());
+                productCategoryService.getAllProductCategory(productPostDTO.idsCategories());
+
         List<ProductSpecification> productSpecifications =
                 productPostDTO.specifications().stream().map(ProductSpecification::new).toList();
+
         List<ProductVariant> productVariants = productPostDTO.variants()
                 .stream().map(ProductVariant::new).toList();
 
         Product product = new Product(productPostDTO, brand, productCategories, productSpecifications, productVariants);
+
         return repository.save(product).toPageDTO();
     }
 
@@ -91,11 +112,27 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @return DTO do produto editado.
      */
     @Override
-    public ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code) {
-        ModelMapper modelMapper = new ModelMapper();
-        Product product = modelMapper.map(productPutDTO, Product.class);
-        product.setCode(code);
-        return repository.save(product).toPageDTO();
+    public ProductResponsePageDTO editProduct(ProductRequestPutDTO productPutDTO, Long code) throws Exception {
+
+        existProductByCode(code);
+        Product product = repository.findByCode(code).get();
+
+        Brand brand =
+                brandService.findBrandById(productPutDTO.idBrand());
+
+        List<ProductCategory> productCategories =
+                productCategoryService.getAllProductCategory(productPutDTO.idsCategories());
+
+        List<ProductSpecification> productSpecifications =
+                new ArrayList<>(productPutDTO.specifications().stream().map(ProductSpecification::new).toList());
+
+        List<ProductVariant> productVariants =
+                new ArrayList<>(productPutDTO.variants().stream().map(ProductVariant::new).toList());
+
+        product.editProduct(productPutDTO, brand, productCategories, productSpecifications, productVariants);
+
+        repository.save(product).toPageDTO();
+        return product.toPageDTO();
     }
 
     /**
@@ -108,7 +145,9 @@ public class ProductServiceImpl implements ProductServiceInt {
     @Override
     public void deleteProductByCode(Long code) throws Exception {
         existProductByCode(code);
-        repository.findByCode(code).get().changeEnableProduct();
+        Product product = repository.findByCode(code).get();
+        product.changeEnableProduct();
+        repository.save(product);
     }
 
     /**
@@ -173,12 +212,16 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @return Página de DTOs dos produtos encontrados.
      */
     @Override
-    public Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) {
+    public Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories, boolean isEnabled) {
         Page<Product> productPage;
         List<Product> productList;
 
         productList = filterService.filterProducts(productCategories);
-        productList = checkListOfProductsIsEnable(productList);
+        if (isEnabled){
+            productList = checkListOfProductsAndVariantIsEnable(productList);
+        }else {
+            productList = checkListOfProductsIsEnable(productList);
+        }
         productList = searchService.searchProducts(productList, searchRequestDTO.searchValue());
         productPage = sortByService.sortProductsBy(productList, searchRequestDTO);
 
@@ -191,6 +234,11 @@ public class ProductServiceImpl implements ProductServiceInt {
      * @param products Lista de produtos.
      * @return Lista de produtos habilitados.
      */
+    @Override
+    public List<Product> checkListOfProductsAndVariantIsEnable(List<Product> products) {
+        return products.stream().filter(Product::isEnableVariant).toList();
+    }
+
     @Override
     public List<Product> checkListOfProductsIsEnable(List<Product> products) {
         return products.stream().filter(Product::getEnabled).toList();

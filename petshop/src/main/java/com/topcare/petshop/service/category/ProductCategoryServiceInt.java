@@ -18,7 +18,7 @@ public interface ProductCategoryServiceInt {
      * @return Lista de categorias de produtos encontradas.
      * @throws Exception Se alguma das categorias de produtos não for encontrada.
      */
-    List<ProductCategory> getAllProductCategory(List<ProductCategory> categories) throws Exception;
+    List<ProductCategory> getAllProductCategory(List<Long> categories) throws Exception;
 
     /**
      * Retorna todas as categorias de produtos associadas a um grupo de categorias específico.

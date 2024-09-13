@@ -31,14 +31,13 @@ import java.util.List;
  */
 public record ProductRequestPostDTO(
 
-        String title,
         Long code,
+        String title,
         String description,
         String shortDescription,
-        Brand brand,
-        List<ProductCategory> categories,
+        Long idBrand,
+        List<Long> idsCategories,
         List<ProductSpecificationResponsePageDTO> specifications,
         List<ProductVariantRequestPostDTO> variants
-
 ) {
 }

@@ -1,5 +1,11 @@
 package com.topcare.petshop.controller.dto.product.request;
 
+import com.topcare.petshop.controller.dto.product.response.page.ProductSpecificationResponsePageDTO;
+import com.topcare.petshop.entity.Brand;
+import com.topcare.petshop.entity.ProductCategory;
+
+import java.util.List;
+
 /**
  * DTO para enviar os dados de atualização de um produto no sistema de pet shop.
  *
@@ -12,7 +18,12 @@ package com.topcare.petshop.controller.dto.product.request;
  * - @param productRequestPostDTO: Dados atualizados do produto.
  */
 public record ProductRequestPutDTO(
-        Long productCode,
-        ProductRequestPostDTO productRequestPostDTO
+        String title,
+        String description,
+        String shortDescription,
+        Long idBrand,
+        List<Long> idsCategories,
+        List<ProductSpecificationResponsePageDTO> specifications,
+        List<ProductVariantRequestPutDTO> variants
 ) {
 }

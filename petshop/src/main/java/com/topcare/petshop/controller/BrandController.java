@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("topcare/brand")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class BrandController {
 
     private final BrandServiceImpl service;

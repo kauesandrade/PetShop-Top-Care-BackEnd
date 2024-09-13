@@ -40,7 +40,17 @@ public class SearchController {
                                         @RequestParam(defaultValue = "10") Integer size,
                                         @RequestBody(required = false) List<Long> productCategories) throws Exception {
         SearchRequestDTO searchDTO = new SearchRequestDTO(searchValue, sortBy, page, size);
-        return new ResponseEntity<>(productService.searchProduct(searchDTO, productCategories), HttpStatus.OK);
+        return new ResponseEntity<>(productService.searchProduct(searchDTO, productCategories, true), HttpStatus.OK);
+    }
+
+    @PutMapping("/dashboard/product")
+    public ResponseEntity searchProductDashboard(@RequestParam(required = false) String searchValue,
+                                        @RequestParam(required = false) String sortBy,
+                                        @RequestParam(defaultValue = "0") Integer page,
+                                        @RequestParam(defaultValue = "10") Integer size,
+                                        @RequestBody(required = false) List<Long> productCategories) throws Exception {
+        SearchRequestDTO searchDTO = new SearchRequestDTO(searchValue, sortBy, page, size);
+        return new ResponseEntity<>(productService.searchProduct(searchDTO, productCategories, false), HttpStatus.OK);
     }
 
     /**
