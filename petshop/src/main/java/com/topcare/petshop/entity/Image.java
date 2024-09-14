@@ -67,7 +67,13 @@ public abstract class Image {
      * @return DTO de resposta da imagem.
      */
     public ImageResponseDTO toDTO() {
-        String url = "data:" + this.type + ";base64," + Base64.getEncoder().encodeToString(this.file);
+
+        String url = "";
+
+        if (this.file != null){
+            url = "data:" + this.type + ";base64," + Base64.getEncoder().encodeToString(this.file);
+        }
+
         return new ImageResponseDTO(this.name, this.type, this.size, url);
     }
 

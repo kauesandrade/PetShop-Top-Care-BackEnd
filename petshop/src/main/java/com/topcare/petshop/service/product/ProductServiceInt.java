@@ -1,6 +1,8 @@
 package com.topcare.petshop.service.product;
 
+import com.topcare.petshop.controller.dto.product.request.ProductRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.card.ProductResponseCardDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductResponsePageEditDTO;
 import com.topcare.petshop.controller.dto.product.response.searchPage.ProductResponseSearchPageableDTO;
 import com.topcare.petshop.controller.dto.search.SearchRequestDTO;
 import com.topcare.petshop.controller.dto.product.request.ProductRequestPostDTO;
@@ -25,6 +27,8 @@ public interface ProductServiceInt {
      * @throws Exception Se o produto não for encontrado ou não estiver habilitado.
      */
     ProductResponsePageDTO getProductByCode(Long code) throws Exception;
+
+    ProductResponsePageEditDTO getProductByCodeToEdit(Long code) throws Exception;
 
     List<Product> getAllProducts();
 
@@ -62,7 +66,7 @@ public interface ProductServiceInt {
      * @param code Código do produto a ser editado.
      * @return DTO do produto editado.
      */
-    ProductResponsePageDTO editProduct(ProductRequestPostDTO productPutDTO, Long code);
+    ProductResponsePageDTO editProduct(ProductRequestPutDTO productPutDTO, Long code) throws Exception;
 
     /**
      * Exclui um produto com base no código fornecido.
@@ -89,7 +93,7 @@ public interface ProductServiceInt {
      * @param productCategories Lista de IDs de categorias para filtragem.
      * @return Página de DTOs dos produtos encontrados.
      */
-    Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories) throws Exception;
+    Page<ProductResponseCardDTO> searchProduct(SearchRequestDTO searchRequestDTO, List<Long> productCategories, boolean isEnabled) throws Exception;
 
     /**
      * Filtra uma lista de produtos para incluir apenas aqueles que estão habilitados.
@@ -98,5 +102,6 @@ public interface ProductServiceInt {
      * @return Lista de produtos habilitados.
      */
     List<Product> checkListOfProductsIsEnable(List<Product> products);
+    List<Product> checkListOfProductsAndVariantIsEnable(List<Product> products);
 }
 

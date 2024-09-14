@@ -54,14 +54,14 @@ public class ProductCategoryServiceImpl implements ProductCategoryServiceInt {
      * @throws Exception Se alguma das categorias de produtos não for encontrada.
      */
     @Override
-    public List<ProductCategory> getAllProductCategory(List<ProductCategory> categories) throws Exception {
+    public List<ProductCategory> getAllProductCategory(List<Long> categories) throws Exception {
         List<ProductCategory> productCategories = new ArrayList<>();
 
-        for (ProductCategory productCategory : categories) {
-            if (!existProductCategoryById(productCategory.getId())) {
+        for (Long productCategory : categories) {
+            if (!existProductCategoryById(productCategory)) {
                 throw new Exception("A categoria não foi encontrada!");
             }
-            productCategories.add(repository.findById(productCategory.getId()).get());
+            productCategories.add(repository.findById(productCategory).get());
         }
 
         return productCategories;

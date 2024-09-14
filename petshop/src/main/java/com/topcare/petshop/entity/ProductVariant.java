@@ -1,12 +1,15 @@
 package com.topcare.petshop.entity;
 
 import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPostDTO;
+import com.topcare.petshop.controller.dto.product.request.ProductVariantRequestPutDTO;
 import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageDTO;
+import com.topcare.petshop.controller.dto.product.response.page.ProductVariantResponsePageEditDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 /**
  * Representa uma variante de um produto, que pode ter diferentes características e preços.
@@ -69,15 +72,28 @@ public class ProductVariant {
      *
      * @param productVariant DTO de variante do produto.
      */
+
     public ProductVariant(ProductVariantRequestPostDTO productVariant) {
         setVariantCode(productVariant.variantCode());
         setVariantTitle(productVariant.variantTitle());
         setPrice(productVariant.price());
         setDiscount(productVariant.discount());
-        setStock(productVariant.amountStock());
+        setStock(productVariant.stock());
+        setImages(new ArrayList<>());
 
         /** Define a disponibilidade com base no estoque.*/
-        setAvailable(stock > 0);
+        setAvailable(productVariant.stock() > 0);
+    }
+
+    public ProductVariant(ProductVariantRequestPutDTO productVariant){
+        setId(productVariant.variantId());
+        setVariantCode(productVariant.variantCode());
+        setVariantTitle(productVariant.variantTitle());
+        setPrice(productVariant.price());
+        setDiscount(productVariant.discount());
+        setStock(productVariant.stock());
+        setAvailable(productVariant.stock() > 0);
+        setImages(new ArrayList<>());
     }
 
     /**
@@ -100,6 +116,19 @@ public class ProductVariant {
                 discountPrice,
                 2, /** Pode ser um valor fixo ou calculado de outra forma.*/
                 isStockAvailable,
+                getImages()
+        );
+    }
+
+    public ProductVariantResponsePageEditDTO toEditDTO() {
+
+        return new ProductVariantResponsePageEditDTO(
+                getId(),
+                getVariantTitle(),
+                getVariantCode(),
+                getPrice(),
+                getDiscount(),
+                getStock(),
                 getImages()
         );
     }
