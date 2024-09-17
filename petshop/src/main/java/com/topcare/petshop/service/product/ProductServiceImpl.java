@@ -217,6 +217,7 @@ public class ProductServiceImpl implements ProductServiceInt {
         List<Product> productList;
 
         productList = filterService.filterProducts(productCategories);
+
         if (isEnabled){
             productList = checkListOfProductsAndVariantIsEnable(productList);
         }else {
