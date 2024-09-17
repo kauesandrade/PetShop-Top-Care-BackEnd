@@ -56,6 +56,54 @@ VALUES (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Doc
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+
+
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png"));
 
 INSERT INTO brand_image (id)
@@ -78,36 +126,36 @@ VALUES (6),
        (8),
        (9),
        (10),
+       (11),
+       (12),
+       (13),
+       (14),
+       (15),
+       (16),
+       (17),
+       (18),
+       (19);
+
+INSERT INTO customer_image (id)
+VALUES (20),
+       (21),
+       (22),
+       (23),
+       (24);
+
+INSERT INTO pet_image (id)
+VALUES (25),
        (26),
        (27),
        (28),
-       (29),
-       (30),
+       (29);
+
+INSERT INTO petshop_image (id)
+VALUES (30),
        (31),
        (32),
        (33),
        (34);
-
-INSERT INTO customer_image (id)
-VALUES (11),
-       (12),
-       (13),
-       (14),
-       (15);
-
-INSERT INTO pet_image (id)
-VALUES (16),
-       (17),
-       (18),
-       (19),
-       (20);
-
-INSERT INTO petshop_image (id)
-VALUES (21),
-       (22),
-       (23),
-       (24),
-       (25);
 
 INSERT INTO product (id, code, enabled, title, rating, description, short_description, brand_id)
 VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adultos;
@@ -132,69 +180,69 @@ VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adult
 - Fitas adesivas em todas as extremidades do tapete, que podem ser coladas no piso ou na parede, caso seu pet levante a pata para fazer xixi;
 - Mantém a sua casa sempre limpa, sem patas molhadas pelo chão;
 - Disponível em embalagem com 7 unidades, 14 unidades e 30 unidades.", "Show pra caramba!", 3),
-        (null, 4, true, "Ração Whiskas Adulto", 4, "- Indicada para gatos adultos;
+       (null, 4, true, "Ração Whiskas Adulto", 4, "- Indicada para gatos adultos;
 - Ajuda na saúde do trato urinário;
 - Contém ômega 6 para uma pelagem brilhante;
 - Disponível em embalagens de 10,1kg.", "Saúde e bem-estar para seu gato.", 3),
-        (null, 5, true, "Areia Sanitária Pipicat", 4, "- Areia sanitária para gatos;
+       (null, 5, true, "Areia Sanitária Pipicat", 4, "- Areia sanitária para gatos;
 - Alta absorção e controle de odores;
 - Disponível em embalagens de 4kg e 12kg.", "Controle de odores garantido.", 3),
-        (null, 6, true, "Shampoo Pet Clean", 5, "- Indicado para cães e gatos;
+       (null, 6, true, "Shampoo Pet Clean", 5, "- Indicado para cães e gatos;
 - Limpeza profunda e fragrância suave;
 - Hipoalergênico e pH balanceado;
 - Disponível em frascos de 500ml.", "Cuidado completo para pele e pelos.", 4),
-        (null, 7, true, "Tapete Higiênico Dog's Care", 5, "- Tapete higiênico descartável;
+       (null, 7, true, "Tapete Higiênico Dog's Care", 5, "- Tapete higiênico descartável;
 - Alta absorção e barreiras laterais antivazamento;
 - Contém atrativo canino para facilitar o uso;
 - Disponível em pacotes de 30 unidades.", "Praticidade e limpeza para seu pet.", 5),
-        (null, 8, true, "Brinquedo Mordedor Ossinho", 4, "- Indicado para cães de pequeno e médio porte;
+       (null, 8, true, "Brinquedo Mordedor Ossinho", 4, "- Indicado para cães de pequeno e médio porte;
 - Material resistente e atóxico;
 - Ajuda a manter os dentes limpos e saudáveis.", "Diversão e saúde bucal para seu cão.", 5),
-        (null, 9, true, "Ração Purina Pro Plan", 5, "- Ração premium indicada para cães adultos;
+       (null, 9, true, "Ração Purina Pro Plan", 5, "- Ração premium indicada para cães adultos;
 - Fórmula com proteínas de alta qualidade;
 - Ajuda a manter a saúde intestinal;
 - Disponível em embalagens de 15kg.", "Nutrição avançada para seu cão.", 1),
-        (null, 10, true, "Antipulgas Frontline", 4, "- Antipulgas para cães e gatos;
+       (null, 10, true, "Antipulgas Frontline", 4, "- Antipulgas para cães e gatos;
 - Eficácia comprovada por até 30 dias;
 - Disponível em pipetas de 0,67ml.", "Proteção contra pulgas e carrapatos.", 3),
-        (null, 11, true, "Coleira Antipulgas Seresto", 5, "- Proteção contra pulgas e carrapatos por até 8 meses;
+       (null, 11, true, "Coleira Antipulgas Seresto", 5, "- Proteção contra pulgas e carrapatos por até 8 meses;
 - À prova d'água;
 - Disponível para cães e gatos.", "Proteção de longa duração.", 2),
-        (null, 12, true, "Ração N&D Ancestral", 5, "- Indicada para cães adultos de raças grandes;
+       (null, 12, true, "Ração N&D Ancestral", 5, "- Indicada para cães adultos de raças grandes;
 - Sem adição de transgênicos;
 - Disponível em embalagens de 12kg e 18kg.", "Alimento natural para raças grandes.", 1),
-        (null, 13, true, "Vermífugo Drontal", 4, "- Vermífugo de amplo espectro;
+       (null, 13, true, "Vermífugo Drontal", 4, "- Vermífugo de amplo espectro;
 - Indicado para cães e gatos;
 - Disponível em comprimidos mastigáveis.", "Saúde e proteção contra vermes.", 3),
-        (null, 14, true, "Ração Hills Science Diet", 5, "- Ração premium para cães com sensibilidade digestiva;
+       (null, 14, true, "Ração Hills Science Diet", 5, "- Ração premium para cães com sensibilidade digestiva;
 - Formulado com fibras prebióticas;
 - Disponível em embalagens de 12kg.", "Saúde digestiva para seu cão.", 1),
-        (null, 15, true, "Casinha para Cachorros", 4, "- Casinha de plástico resistente;
+       (null, 15, true, "Casinha para Cachorros", 4, "- Casinha de plástico resistente;
 - Indicada para cães de médio porte;
 - Fácil de limpar e montar.", "Conforto e proteção para seu pet.", 2),
-        (null, 16, true, "Ração Pedigree Júnior", 4, "- Ração completa para filhotes;
+       (null, 16, true, "Ração Pedigree Júnior", 4, "- Ração completa para filhotes;
 - Contém DHA para o desenvolvimento cerebral;
 - Disponível em embalagens de 10kg.", "Nutrição ideal para filhotes.", 2),
-        (null, 17, true, "Pote de Ração Automático", 5, "- Dispenser automático de ração;
+       (null, 17, true, "Pote de Ração Automático", 5, "- Dispenser automático de ração;
 - Capacidade para até 5kg de ração;
 - Design moderno e prático.", "Alimentação programada para seu pet.", 5),
-        (null, 18, true, "Arranhador para Gatos", 4, "- Brinquedo arranhador para gatos;
+       (null, 18, true, "Arranhador para Gatos", 4, "- Brinquedo arranhador para gatos;
 - Feito com material resistente e reciclável;
 - Ajuda a manter as unhas saudáveis.", "Diversão e bem-estar para seu gato.", 4),
-        (null, 19, true, "Ração Gran Plus", 4, "- Ração premium para gatos castrados;
+       (null, 19, true, "Ração Gran Plus", 4, "- Ração premium para gatos castrados;
 - Ajuda no controle de peso;
 - Disponível em embalagens de 10,1kg.", "Nutrição ideal para gatos castrados.", 3),
-        (null, 20, true, "Coleira Guia Conforto", 5, "- Coleira com guia integrada;
+       (null, 20, true, "Coleira Guia Conforto", 5, "- Coleira com guia integrada;
 - Material resistente e ajustável;
 - Disponível em diversas cores.", "Passeios confortáveis e seguros.", 4),
-        (null, 21, true, "Petisco Biscoitos para Cães", 4, "- Petisco sabor carne;
+       (null, 21, true, "Petisco Biscoitos para Cães", 4, "- Petisco sabor carne;
 - Ajuda a manter os dentes saudáveis;
 - Disponível em pacotes de 500g.", "Sabor e diversão para seu cão.", 2),
-        (null, 22, true, "Ração Premier Fórmula", 4, "- Ração premium indicada para cães adultos;
+       (null, 22, true, "Ração Premier Fórmula", 4, "- Ração premium indicada para cães adultos;
 - Rico em nutrientes que favorecem a pele e pelagem;
 - Livre de corantes e aromatizantes artificiais;
 - Disponível em embalagens de 12kg e 20kg.", "Nutrição completa e balanceada.", 1),
-        (null, 23, true, "Ração Royal Canin Mini Indoor", 5, "- Indicada para cães de raças pequenas;
+       (null, 23, true, "Ração Royal Canin Mini Indoor", 5, "- Indicada para cães de raças pequenas;
 - Promove uma digestão saudável;
 - Reduz o odor das fezes;
 - Disponível em embalagens de 7,5kg.", "Ração especial para cães de pequeno porte.", 2);
@@ -248,15 +296,60 @@ VALUES (null, 11, "15kg", 1, 0, 149.99, 100, 1),
        (null, 232, "10kg", 1, 0, 149.99, 150, 23);-- Ração Royal Canin Mini Indoor
 
 INSERT INTO product_image (id, product_variant_id)
-VALUES (26, 1),
-       (27, 2);
+VALUES (35, 1),
+       (36, 2),
+       (37, 3),
+       (38, 4),
+       (39, 5),
+       (40, 6),
+       (41, 7),
+       (42, 8),
+       (43, 9),
+       (44, 10),
+       (45, 11),
+       (46, 12),
+       (47, 13),
+       (48, 14),
+       (49, 15),
+       (50, 16),
+       (51, 17),
+       (52, 18),
+       (53, 19),
+       (54, 20),
+       (55, 21),
+       (56, 22),
+       (57, 23),
+       (58, 24),
+       (59, 25),
+       (60, 26),
+       (61, 27),
+       (62, 28),
+       (63, 29),
+       (64, 30),
+       (65, 31),
+       (66, 32),
+       (67, 33),
+       (68, 34),
+       (69, 35),
+       (70, 36),
+       (71, 37),
+       (72, 38),
+       (73, 39),
+       (74, 40),
+       (75, 41),
+       (76, 42),
+       (77, 43),
+       (78, 44),
+       (79, 45),
+       (80, 46);
+
 
 INSERT INTO service_image (id)
-VALUES (28),
-       (29),
-       (30),
-       (31),
-       (32);
+VALUES (81),
+       (82),
+       (83),
+       (84),
+       (85);
 
 INSERT INTO user (id, cpf, email, fullname, password, role)
 VALUES (null, "23514396000", "usuario@gmail.com", "Usuário da Silva", "usuario123", 3),
@@ -278,8 +371,8 @@ VALUES (null, 3, 1, 1),
        (null, 1, 1, 2);
 
 INSERT INTO customer (id, birth, gender, cart_id, profile_image_id)
-VALUES (1, "2000-06-15", 0, 1, 11),
-       (5, "2000-06-15", 1, 2, 12);
+VALUES (1, "2000-06-15", 0, 1, 20),
+       (5, "2000-06-15", 1, 2, 21);
 
 INSERT INTO card (id, name, last_digits, expiration_date, main_card, customer_id)
 VALUES (null, "Usuário da Silva", "1234", "2034-07-01", 1, 1),
@@ -291,15 +384,15 @@ VALUES (null, "Pet", 6), --1
        (null, "Idade", 8),--3
        (null, "Marca", 9),--4
        (null, "Acessórios", 10),--5
-       (null, "Alimentação", 26),--6
-       (null, "Cuidados e Higiene", 27),--7
-       (null, "Brinquedos", 28),--8
-       (null, "Medicamentos", 29),--9
-       (null, "Habitat", 30),--10
-       (null, "Roupas", 31),--11
-       (null, "Camas e Conforto", 32),--12
-       (null, "Transporte", 33),--13
-       (null, "Exercícios", 34);--14
+       (null, "Alimentação", 11),--6
+       (null, "Cuidados e Higiene", 12),--7
+       (null, "Brinquedos", 13),--8
+       (null, "Medicamentos", 14),--9
+       (null, "Habitat", 15),--10
+       (null, "Roupas", 16),--11
+       (null, "Camas e Conforto", 17),--12
+       (null, "Transporte", 18),--13
+       (null, "Exercícios", 19);--14
 
 
 INSERT INTO contact (id, cellphone, telephone, customer_id)
@@ -334,8 +427,8 @@ INSERT INTO petshop_address (id)
 VALUES (3), (4);
 
 INSERT INTO petshop (id, name, telephone, image_id, address_id)
-VALUES (null, "Topcare Vila Nova", "47111111111", 21, 3),
-       (null, "Topcare Figueira", "47222222222", 22, 4);
+VALUES (null, "Topcare Vila Nova", "47111111111", 30, 3),
+       (null, "Topcare Figueira", "47222222222", 34, 4);
 
 INSERT INTO employee (id, petshop_id)
 VALUES (2, 1),
@@ -351,8 +444,8 @@ VALUES (null, "Roedor"),
        (null, "Ave");
 
 INSERT INTO pet (id, id_color, image_id, name, type_id, race, size, microchip, gender, color, birth, rga, weight, customer_id)
-VALUES (null, 0, 16, "Topolino da Silva", 1, "Rato de esgoto", "Colossal", null, 0, "Cinza", null, null, 25.8, 1),
-       (null, 0, 17, "Cleyton", 2, "Galinha de macumba", "Médio", null, 1, "Branca", null, null, 2.2, 5);
+VALUES (null, 0, 25, "Topolino da Silva", 1, "Rato de esgoto", "Colossal", null, 0, "Cinza", null, null, 25.8, 1),
+       (null, 0, 26, "Cleyton", 2, "Galinha de macumba", "Médio", null, 1, "Branca", null, null, 2.2, 5);
 
 INSERT INTO product_category (id, title, category_group_id)
 VALUES (null, "Gato", 1),--1
@@ -391,7 +484,11 @@ VALUES (null, "Gato", 1),--1
        (null, "Dispositivos de Lançamento", 14);--34
 
 INSERT INTO product_categories (categories_id, product_id)
-VALUES  (8, 1),  -- Ração Golden Special
+VALUES  (1, 1),
+        (2, 2),
+        (2, 3),
+        (3, 1),
+        (8, 1),  -- Ração Golden Special
         (8, 2),  -- Areia Higiênica Pipicat
         (11, 3), -- Super Secão Tapete Higiênico para Cachorro
         (8, 4),  -- Ração Whiskas Adulto
@@ -435,9 +532,9 @@ VALUES (null, "Higiene"),
        (null, "Saúde");
 
 INSERT INTO service (id, code, category_id, image_id, title, description)
-VALUES (null, 1, 1, 28, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheirosinho"),
-       (null, 2, 2, 29, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
-       (null, 3, 2, 30, "Vacinação", "Chô doença, vai embora!");
+VALUES (null, 1, 1, 81, "Banho e Tosa", "Deixe seu pequeno ou grandinho bem cheirosinho"),
+       (null, 2, 2, 82, "Veterinária", "Seu pet com a saúde em dia alegra todos da família"),
+       (null, 3, 2, 83, "Vacinação", "Chô doença, vai embora!");
 
 INSERT INTO service_variant (id, service_id, variant_code, variant_title, estimated_time, price)
 VALUES (null, 1, 11, "Banho higiênico", "00:30:00", 59.90),

@@ -43,7 +43,6 @@ public class FilterServiceImpl implements FilterServiceInt {
      */
     private List<Product> findAllByCategoryIds(List<Long> productCategoryList) {
         HashMap<Long, Product> productList = new HashMap<>();
-        System.out.println(productCategoryList);
         for (Long idProduct : productRepository.findAllByCategoryIds(productCategoryList, productCategoryList.size())) {
             productList.put(idProduct, productRepository.findById(idProduct).get());
         }

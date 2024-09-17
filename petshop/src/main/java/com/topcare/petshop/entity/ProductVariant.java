@@ -116,7 +116,7 @@ public class ProductVariant {
                 discountPrice,
                 2, /** Pode ser um valor fixo ou calculado de outra forma.*/
                 isStockAvailable,
-                getImages()
+                getImages().stream().map(Image::toDTO).toList()
         );
     }
 

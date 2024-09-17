@@ -1,5 +1,6 @@
 package com.topcare.petshop.controller.dto.product.response.page;
 
+import com.topcare.petshop.controller.dto.image.ImageResponseDTO;
 import com.topcare.petshop.entity.ProductImage;
 
 import java.util.List;
@@ -32,6 +33,6 @@ public record ProductVariantResponsePageDTO(
         Double discountPrice,
         Integer parcels,
         Boolean stock,
-        List<ProductImage> images
+        List<ImageResponseDTO> images
 ) {
 }
