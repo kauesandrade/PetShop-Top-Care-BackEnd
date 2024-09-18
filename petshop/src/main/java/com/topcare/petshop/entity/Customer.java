@@ -127,7 +127,9 @@ public class Customer extends User {
 
 
     public void edit(CustomerRequestPutDTO customerDTO) throws IOException {
-        this.profileImage.editFromFile(customerDTO.profileImage());
+        if (customerDTO.profileImage() != null) {
+            this.profileImage.editFromFile(customerDTO.profileImage());
+        }
 
         this.setFullname(customerDTO.fullname());
         this.setEmail(customerDTO.email());

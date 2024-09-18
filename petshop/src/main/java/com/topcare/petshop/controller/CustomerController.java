@@ -69,7 +69,7 @@ public class CustomerController {
      * @return Cliente editado ou mensagem de erro.
      */
     @PutMapping(value = "/{id}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity editCustomer(@PathVariable Long id, @RequestPart MultipartFile profileImage, @RequestPart CustomerWoImageRequestPutDTO customer) {
+    public ResponseEntity editCustomer(@PathVariable Long id, MultipartFile profileImage, @RequestPart CustomerWoImageRequestPutDTO customer) {
         CustomerRequestPutDTO customerDTO = new CustomerRequestPutDTO(
                 profileImage,
                 customer.fullname(),
