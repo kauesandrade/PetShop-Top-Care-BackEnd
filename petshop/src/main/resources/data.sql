@@ -50,54 +50,56 @@ VALUES (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Doc
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
+
+       --product
+       (null, 187, "produto1.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p1.png")),
+       (null, 187, "produto2.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p2.png")),
+       (null, 187, "produto3.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p3.png")),
+       (null, 187, "produto4.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p4.png")),
+       (null, 187, "produto5.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p5.png")),
+       (null, 187, "produto5.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p5.png")),
+       (null, 187, "produto6.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p6.png")),
+       (null, 187, "produto7.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p7.png")),
+       (null, 187, "produto8.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p8.png")),
+       (null, 187, "produto9.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p9.png")),
+       (null, 187, "produto10.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p10.png")),
+       (null, 187, "produto11.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p11.png")),
+       (null, 187, "produto12.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p12.png")),
+       (null, 187, "produto12.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p12.png")),
+       (null, 187, "produto13.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p13.png")),
+       (null, 187, "produto14.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p14.png")),
+       (null, 187, "produto15.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p15.png")),
+       (null, 187, "produto16.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p16.png")),
+       (null, 187, "produto17.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p17.png")),
+       (null, 187, "produto18.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p18.png")),
+       (null, 187, "produto19.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p19.png")),
+       (null, 187, "produto20.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p20.png")),
+       (null, 187, "produto21.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p21.png")),
+       (null, 187, "produto22.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p22.png")),
+       (null, 187, "produto22.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p22.png")),
+       (null, 187, "produto23.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p23.png")),
+       (null, 187, "produto4.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p4.png")),
+       (null, 187, "produto5.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p5.png")),
+       (null, 187, "produto6.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p6.png")),
+       (null, 187, "produto7.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p7.png")),
+       (null, 187, "produto8.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p8.png")),
+       (null, 187, "produto9.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p9.png")),
+       (null, 187, "produto10.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p10.png")),
+       (null, 187, "produto11.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p11.png")),
+       (null, 187, "produto12.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p12.png")),
+       (null, 187, "produto13.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p13.png")),
+       (null, 187, "produto14.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p14.png")),
+       (null, 187, "produto15.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p15.png")),
+       (null, 187, "produto16.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p16.png")),
+       (null, 187, "produto17.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p17.png")),
+       (null, 187, "produto18.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p18.png")),
+       (null, 187, "produto19.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p19.png")),
+       (null, 187, "produto20.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p20.png")),
+       (null, 187, "produto21.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p21.png")),
+       (null, 187, "produto22.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p22.png")),
+       (null, 187, "produto23.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/p23.png")),
 
 
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
-       (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
        (null, 187, "oi.png", "image/png", LOAD_FILE("C:/Users/kaue_s_andrade/Documents/GitHub/PetShop-Top-Care-BackEnd/petshop/src/main/resources/image/oi.png")),
@@ -163,14 +165,14 @@ VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adult
 - Blend de proteínas, máxima satisfação para o paladar;
 - Maior rendimento, ingredientes de alto aproveitamento;
 - Saúde e vitalidade, alimento de alta qualidade, rico em vitaminas e minerais;
-- Disponível em embalagens de 15kg e 20kg.", "Massa pra caramba!", 1),
+- Disponível em embalagens de 15kg e 20kg.", "Massa pra caramba!", 3),
        (null, 2, true, "Areia Higiênica Pipicat", 4, "- Indicada para gatos;
 - Controle de odores superior com pipicat odor block;
 - Forma torrões mais firmes;
 - Fácil de limpar;
 - Grãos finos;
 - Sem fragrância;
-- Disponível em embalagem com 4kg, 12kg e 20kg.", "Legal pra caramba!", 2),
+- Disponível em embalagem com 4kg, 12kg e 20kg.", "Legal pra caramba!", 5),
        (null, 3, true, "Super Secão Tapete Higiênico para Cachorro", 4.5, "- Indicado para cães;
 - Fofinho igual fralda de bebê;
 - Ideal para quem faz trocas menos frequentes do tapete no ambiente, com superabsorção;
@@ -179,35 +181,35 @@ VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adult
 - Atrativo canino que faz com que o seu pet encontre o tapete e tenha vontade de fazer xixi nele;
 - Fitas adesivas em todas as extremidades do tapete, que podem ser coladas no piso ou na parede, caso seu pet levante a pata para fazer xixi;
 - Mantém a sua casa sempre limpa, sem patas molhadas pelo chão;
-- Disponível em embalagem com 7 unidades, 14 unidades e 30 unidades.", "Show pra caramba!", 3),
+- Disponível em embalagem com 7 unidades, 14 unidades e 30 unidades.", "Show pra caramba!", 5),
        (null, 4, true, "Ração Whiskas Adulto", 4, "- Indicada para gatos adultos;
 - Ajuda na saúde do trato urinário;
 - Contém ômega 6 para uma pelagem brilhante;
-- Disponível em embalagens de 10,1kg.", "Saúde e bem-estar para seu gato.", 3),
+- Disponível em embalagens de 10,1kg.", "Saúde e bem-estar para seu gato.", 4),
        (null, 5, true, "Areia Sanitária Pipicat", 4, "- Areia sanitária para gatos;
 - Alta absorção e controle de odores;
-- Disponível em embalagens de 4kg e 12kg.", "Controle de odores garantido.", 3),
+- Disponível em embalagens de 4kg e 12kg.", "Controle de odores garantido.", 5),
        (null, 6, true, "Shampoo Pet Clean", 5, "- Indicado para cães e gatos;
 - Limpeza profunda e fragrância suave;
 - Hipoalergênico e pH balanceado;
-- Disponível em frascos de 500ml.", "Cuidado completo para pele e pelos.", 4),
+- Disponível em frascos de 500ml.", "Cuidado completo para pele e pelos.", 1),
        (null, 7, true, "Tapete Higiênico Dog's Care", 5, "- Tapete higiênico descartável;
 - Alta absorção e barreiras laterais antivazamento;
 - Contém atrativo canino para facilitar o uso;
 - Disponível em pacotes de 30 unidades.", "Praticidade e limpeza para seu pet.", 5),
        (null, 8, true, "Brinquedo Mordedor Ossinho", 4, "- Indicado para cães de pequeno e médio porte;
 - Material resistente e atóxico;
-- Ajuda a manter os dentes limpos e saudáveis.", "Diversão e saúde bucal para seu cão.", 5),
+- Ajuda a manter os dentes limpos e saudáveis.", "Diversão e saúde bucal para seu cão.", 1),
        (null, 9, true, "Ração Purina Pro Plan", 5, "- Ração premium indicada para cães adultos;
 - Fórmula com proteínas de alta qualidade;
 - Ajuda a manter a saúde intestinal;
 - Disponível em embalagens de 15kg.", "Nutrição avançada para seu cão.", 1),
        (null, 10, true, "Antipulgas Frontline", 4, "- Antipulgas para cães e gatos;
 - Eficácia comprovada por até 30 dias;
-- Disponível em pipetas de 0,67ml.", "Proteção contra pulgas e carrapatos.", 3),
+- Disponível em pipetas de 0,67ml.", "Proteção contra pulgas e carrapatos.", 5),
        (null, 11, true, "Coleira Antipulgas Seresto", 5, "- Proteção contra pulgas e carrapatos por até 8 meses;
 - À prova d'água;
-- Disponível para cães e gatos.", "Proteção de longa duração.", 2),
+- Disponível para cães e gatos.", "Proteção de longa duração.", 1),
        (null, 12, true, "Ração N&D Ancestral", 5, "- Indicada para cães adultos de raças grandes;
 - Sem adição de transgênicos;
 - Disponível em embalagens de 12kg e 18kg.", "Alimento natural para raças grandes.", 1),
@@ -229,7 +231,7 @@ VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adult
        (null, 18, true, "Arranhador para Gatos", 4, "- Brinquedo arranhador para gatos;
 - Feito com material resistente e reciclável;
 - Ajuda a manter as unhas saudáveis.", "Diversão e bem-estar para seu gato.", 4),
-       (null, 19, true, "Ração Gran Plus", 4, "- Ração premium para gatos castrados;
+       (null, 19, true, "Ração Golden Gran Plus", 4, "- Ração premium para gatos castrados;
 - Ajuda no controle de peso;
 - Disponível em embalagens de 10,1kg.", "Nutrição ideal para gatos castrados.", 3),
        (null, 20, true, "Coleira Guia Conforto", 5, "- Coleira com guia integrada;
@@ -245,7 +247,7 @@ VALUES (null, 1, true, "Ração Golden Special", 3, "- Indicada para cães adult
        (null, 23, true, "Ração Royal Canin Mini Indoor", 5, "- Indicada para cães de raças pequenas;
 - Promove uma digestão saudável;
 - Reduz o odor das fezes;
-- Disponível em embalagens de 7,5kg.", "Ração especial para cães de pequeno porte.", 2);
+- Disponível em embalagens de 7,5kg.", "Ração especial para cães de pequeno porte.", 1);
 
 INSERT INTO product_variant (id, variant_code, variant_title, available, discount, price, stock, product_id)
 VALUES (null, 11, "15kg", 1, 0, 149.99, 100, 1),

@@ -82,7 +82,7 @@ public class SortByServiceImpl implements SortByServiceInt {
 
         switch (sortByValue){
             case "Popularidade" -> {
-                return Sort.by("rating").ascending();
+                return Sort.by("rating").descending();
             }
             case "Nome (A-Z)" -> {
                 return Sort.by("title").ascending();
@@ -106,7 +106,7 @@ public class SortByServiceImpl implements SortByServiceInt {
                 return Sort.by("variants.stock").ascending();
             }
             default -> {
-                return Sort.by("rating").ascending();
+                return Sort.by("rating").descending();
             }
         }
     }
