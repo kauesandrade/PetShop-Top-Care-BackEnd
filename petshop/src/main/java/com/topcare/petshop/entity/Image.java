@@ -31,7 +31,7 @@ public abstract class Image {
     private Long size;
 
     @Lob
-    @Column(columnDefinition = "BLOB", nullable = false)
+    @Column(name = "file", columnDefinition="LONGBLOB")
     @NonNull
     private byte[] file;
 
